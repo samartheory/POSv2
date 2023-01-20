@@ -36,15 +36,15 @@ public class OrderItemApiController {
     public OrderItemData get(@PathVariable int id) throws ApiException {
         return dto.get(id);
     }
-    @ApiOperation(value = "Gets list of all Orders")
+    @ApiOperation(value = "Gets list of all Orders with given order id")
     @RequestMapping(path = "/api/orderitem/with/{id}", method = RequestMethod.GET)
-    public List<OrderItemData> getAllWithId(@PathVariable int id) {
+    public List<OrderItemData> getAllWithId(@PathVariable int id) throws ApiException {
         return dto.getAllWithId(id);
     }
 
     @ApiOperation(value = "Gets list of all Orders")
     @RequestMapping(path = "/api/orderitem", method = RequestMethod.GET)
-    public List<OrderItemData> getAll() {
+    public List<OrderItemData> getAll() throws ApiException {
         return dto.getAll();
     }
 

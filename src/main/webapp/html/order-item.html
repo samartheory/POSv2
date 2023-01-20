@@ -10,6 +10,7 @@
 <div class="container">
 
 <h3 id ="order-item-title">Order #</h3>
+	<button type="button" class="btn btn-success btn-lg" id="create-order" onclick="addOrder(this)">Place</button>
 
  <!-- Top row with form-->
  <div class="row">
@@ -24,11 +25,14 @@
 			  <div class="form-group">
 			    <label for="inputQuantity" class="col-sm-2 col-form-label">Quantity</label>
 			    <div class="col-sm-10">
-			      <input type="text" class="form-control" name="quantity" id="inputQuantity" placeholder="Enter Quantity">
+			      <input type="number" class="form-control" name="quantity" id="inputQuantity" placeholder="Enter Quantity">
 			    </div>
 			  </div>
-
-			  &nbsp;
+				<div class="form-group">
+					<div class="col-sm-10">
+						<input type="hidden" class="form-control" name="orderId" id="inputId">
+					</div>
+				</div>
 			  <button type="button" class="btn btn-primary" id="add-data">Add Item</button>
 			</form>
 	 </div>

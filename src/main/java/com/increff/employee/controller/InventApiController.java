@@ -46,8 +46,8 @@ public class InventApiController {
 
     @ApiOperation(value = "Updates an Invent")
     @RequestMapping(path = "/api/invent/{id}", method = RequestMethod.PUT)
-    public void update(@PathVariable int id, @RequestBody InventForm f) throws ApiException {
-        dto.update(id, f);
+    public void update(@PathVariable int id,@RequestBody int newQuantity) throws ApiException {
+        System.out.println("inside api");
+        dto.update(id,newQuantity);
     }
-
 }

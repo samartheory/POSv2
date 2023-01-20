@@ -40,4 +40,8 @@ public class AppUiController extends AbstractUiController {
 	public ModelAndView orderItem(@PathVariable int id) {
 		return mav("order-item.html");
 	}
+	@RequestMapping(value = "/ui/orderitemplaced/{id}")
+	public ModelAndView orderItemPlaced(@PathVariable int id) {
+		return mav("order-item-placed.html");
+	}
 }

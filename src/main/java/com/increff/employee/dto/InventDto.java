@@ -48,10 +48,9 @@ public class InventDto {
         }
         return list2;
     }
-    public void update( int id, InventForm f) throws ApiException {
-        ProductPojo productPojo = productService.getIdByBarcode(f.getBarcode());
-        InventPojo p = convert(f,productPojo.getId());
-        service.update(id, p);
+    public void update(int id,int newQuantity) throws ApiException {
+        System.out.println("inside update");
+        service.update(id,newQuantity);
     }
 
 }

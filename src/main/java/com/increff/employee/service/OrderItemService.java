@@ -22,9 +22,7 @@ public class OrderItemService {
 		if(orderItemPojo.getQuantity() == 0){
 			throw new ApiException("Quantity can't be zero");
 		}
-		if(Objects.nonNull(getCheck(orderItemPojo.getId()))){
-			throw new ApiException("Item is already added");
-		}
+		itemInsideOrder(orderItemPojo.getOrderId(),orderItemPojo.getProductId());
 		dao.insert(orderItemPojo);
 	}
 
@@ -46,6 +44,15 @@ public class OrderItemService {
 	public List<OrderItemPojo> getAllWithId(int id) {
 		return dao.selectAllWithId(id);
 	}
+	@Transactional
+	public void itemInsideOrder(int orderId,int productId) throws ApiException {
+		List<OrderItemPojo> orderItemPojoList = getAllWithId(orderId);
+		for (OrderItemPojo p : orderItemPojoList) {
+			if(p.getProductId() == productId){
+				throw new ApiException("Item already exists");
+			}
+		}
+	}
 	@Transactional(rollbackOn  = ApiException.class)
 	public void update(int id, OrderItemPojo p) throws ApiException {
 //		normalize(p);
@@ -56,8 +63,8 @@ public class OrderItemService {
 	@Transactional
 	public OrderItemPojo getCheck(int id) throws ApiException {
 		OrderItemPojo p = dao.select(id);
-		if (Objects.isNull(p)) {
-			throw new ApiException("Order with given ID does not exist, id: " + id);
+		if (Objects.nonNull(p)) {
+			throw new ApiException("Order Item with given ID already exists, id: " + id);
 		}
 		return p;
 	}

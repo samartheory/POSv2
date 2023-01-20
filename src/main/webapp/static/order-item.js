@@ -8,7 +8,7 @@ function orderIdFromUrl(){
         console.log(queryString);
         // Get the value of a specific parameter
         var idfromurl =  queryString.split("orderitem/")[1];
-        return idfromurl;
+        return Number(idfromurl);
 }
 function orderIdTitle(){
     // Get the query string from the URL
@@ -24,9 +24,10 @@ function orderIdTitle(){
 function addOrderItem(event){
 	//Set the values to update
 	var $form = $("#order-item-form");
+	document.getElementById("inputId").value = orderIdFromUrl();
 	var json = toJson($form);
+	console.dir(json);
 	var url = getOrderItemUrl();
-    console.log(json)
 	$.ajax({
 	   url: url,
 	   type: 'POST',
@@ -35,7 +36,7 @@ function addOrderItem(event){
        	'Content-Type': 'application/json'
        },	   
 	   success: function(response) {
-	   		getOrderItemList();
+	   		getOrderItemList(Number(orderIdFromUrl()));
 	   },
 	   error: handleAjaxError
 	});
@@ -70,7 +71,7 @@ function updateOrderItem(event){
 }
 
 function getOrderItemListHelper(){
-    getOrderItemList(orderIdFromUrl());
+    getOrderItemList(Number(orderIdFromUrl()));
 }
 function getOrderItemList(id){
 	var url = getOrderItemUrl()+"/with/"+id;
@@ -91,7 +92,7 @@ function deleteOrderItem(id){
 	   url: url,
 	   type: 'DELETE',
 	   success: function(data) {
-	   		getOrderItemList(id);
+	   		getOrderItemList(Number(orderIdFromUrl()));
 	   },
 	   error: handleAjaxError
 	});

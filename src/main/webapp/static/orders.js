@@ -172,6 +172,9 @@ function downloadErrors(){
 function redirect(id){
     window.location.href = onlyBaseUrl() + "/ui/orderitem/" + id;
 }
+function redirectPlaced(id){
+    window.location.href = onlyBaseUrl() + "/ui/orderitemplaced/" + id;
+}
 //UI DISPLAY METHODS
 
 function displayOrderList(data){
@@ -180,8 +183,8 @@ function displayOrderList(data){
 	for(var i in data){
 		var e = data[i];
 		if(e.status == false){
-            var buttonHtml = '<button type="button" class="btn btn-success btn-sm" onclick="place(' + e.id + ')">Place</button>  '
-                buttonHtml += '<button type="button" class="btn btn-outline-danger btn-sm" onclick="redirect(' + e.id + ')">Edit</button>  '
+            var buttonHtml = '<button type="button" class="btn btn-outline-danger btn-sm" onclick="redirect(' + e.id + ')">Edit</button>  '
+                buttonHtml += '<button type="button" class="btn btn-success btn-sm" onclick="place(' + e.id + ')">Place</button>  '
             var row = '<tr>'
                     + '<td>' + e.id + '</td>'
                     + '<td>' + e.time + '</td>'
@@ -191,7 +194,7 @@ function displayOrderList(data){
             $tbody.append(row);
         }
         else{
-            var buttonHtml = '<button type="button" class="btn btn-primary btn-sm" onclick="redirect(' + e.id + ')">View</button>  '
+            var buttonHtml = '<button type="button" class="btn btn-primary btn-sm" onclick="redirectPlaced(' + e.id + ')">View</button>  '
             var row = '<tr>'
                     + '<td>' + e.id + '</td>'
                     + '<td>' + e.time + '</td>'

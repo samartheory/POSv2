@@ -19,31 +19,20 @@ public class OrderItemDtoHelper {
         orderItemPojo.setProductId(productPojo.getId());
         orderItemPojo.setQuantity(orderItemForm.getQuantity());
         orderItemPojo.setMrp(productPojo.getMrp());
+        orderItemPojo.setOrderId(orderItemForm.getOrderId());
+
         return orderItemPojo;
     }
-    public static List<OrderItemData> getAllConverter(OrderItemService orderItemService) {
-        List<OrderItemPojo> list = orderItemService.getAll();
-        List<OrderItemData> list2 = new ArrayList<OrderItemData>();
-        for (OrderItemPojo p : list) {
-            list2.add(convert(p));
-        }
-        return list2;
-    }
-    public static List<OrderItemData> getAllWithIdConverter(OrderItemService orderItemService,int id) {
-        List<OrderItemPojo> list = orderItemService.getAllWithId(id);
-        List<OrderItemData> list2 = new ArrayList<OrderItemData>();
-        for (OrderItemPojo p : list) {
-            list2.add(convert(p));
-        }
-        return list2;
-    }
-    public static OrderItemData convert(OrderItemPojo orderItemPojo){
-        OrderItemData orderItemData = new OrderItemData();
-        orderItemData.setOrderId(orderItemData.getOrderId());
-        orderItemData.setId(orderItemPojo.getId());
-        orderItemData.setProductId(orderItemPojo.getProductId());
-        orderItemData.setQuantity(orderItemPojo.getQuantity());
-        orderItemData.setMrp(orderItemPojo.getMrp());
-        return orderItemData;
-    }
+
+
+//    public static OrderItemData convertWithBarcode(OrderItemPojo orderItemPojo){
+//        OrderItemData orderItemData = new OrderItemData();
+//        orderItemData.setOrderId(orderItemData.getOrderId());
+//        orderItemData.setId(orderItemPojo.getId());
+//        orderItemData.setProductId(orderItemPojo.getProductId());
+//        orderItemData.setQuantity(orderItemPojo.getQuantity());
+//        orderItemData.setMrp(orderItemPojo.getMrp());
+//        return orderItemData;
+//    }
+
 }

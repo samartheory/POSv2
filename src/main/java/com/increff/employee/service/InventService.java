@@ -43,12 +43,16 @@ public class InventService {
 	}
 
 	@Transactional(rollbackFor = ApiException.class)
-	public void update(int id, InventPojo p) throws ApiException {
+	public void update(int id,int newQuantity) throws ApiException {
 		InventPojo ex = getCheck(id);
-		ex.setQuantity(p.getQuantity());
+		ex.setQuantity(newQuantity);
 		dao.update(ex);
 	}
-
+	@Transactional(rollbackFor = ApiException.class)
+	public void updateQuantity(int id,int newQuantity) throws ApiException {
+		InventPojo inventPojo = get(id);
+		inventPojo.setQuantity(newQuantity);
+	}
 	@Transactional(readOnly = true)
 	public InventPojo getCheck(int id) throws ApiException {
 		InventPojo p = dao.select(id);
