@@ -13819,3 +13819,9 @@ java.lang.NoClassDefFoundError: Could not initialize class org.springframework.w
 	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:782)
 	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:914)
 	at java.base/java.lang.Thread.run(Thread.java:832)
+2023-01-23 00:44:52 WARN  SqlExceptionHelper:137 - SQL Error: 0, SQLState: S1009
+2023-01-23 00:44:52 ERROR SqlExceptionHelper:142 - Connection is read-only. Queries leading to data modification are not allowed
+2023-01-23 00:44:55 WARN  SqlExceptionHelper:137 - SQL Error: 0, SQLState: S1009
+2023-01-23 00:44:55 ERROR SqlExceptionHelper:142 - Connection is read-only. Queries leading to data modification are not allowed
+2023-01-23 00:45:15 WARN  SqlExceptionHelper:137 - SQL Error: 0, SQLState: S1009
+2023-01-23 00:45:15 ERROR SqlExceptionHelper:142 - Connection is read-only. Queries leading to data modification are not allowed

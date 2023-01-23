@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="POS23" />
         <module name="POS23-placeOrder" />
+        <module name="POS23v2" />
       </profile>
     </annotationProcessing>
   </component>

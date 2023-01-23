@@ -44,4 +44,13 @@ public class AppUiController extends AbstractUiController {
 	public ModelAndView orderItemPlaced(@PathVariable int id) {
 		return mav("order-item-placed.html");
 	}
+	@RequestMapping(value = "/ui/reports")
+	public ModelAndView report() {
+		return mav("reports.html");
+	}
+	@RequestMapping(value = "/ui/reports/sale")
+	public ModelAndView report_sale() {
+		return mav("reports_sale.html");
+	}
 }
+//todo Brand delete not working
