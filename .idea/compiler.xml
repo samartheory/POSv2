@@ -8,8 +8,11 @@
         <outputRelativeToContentRoot value="true" />
         <module name="POS23" />
         <module name="POS23-placeOrder" />
-        <module name="POS23v2" />
+        <module name="invoice" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="POS23v2" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

@@ -56,5 +56,9 @@ public class AppUiController extends AbstractUiController {
 	public ModelAndView report_brand() {
 		return mav("reports_brand.html");
 	}
+	@RequestMapping(value = "/ui/reports/inventory")
+	public ModelAndView report_inventory() {
+		return mav("reports_inventory.html");
+	}
 }
 //todo Brand delete not working
