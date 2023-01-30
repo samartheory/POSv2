@@ -11,6 +11,7 @@ com\increff\employee\controller\OrderItemApiController.class
 com\increff\employee\model\OrderData.class
 com\increff\employee\dao\UserDao.class
 com\increff\employee\controller\ProductApiController.class
+com\increff\employee\model\InvoiceData.class
 com\increff\employee\controller\InitApiController.class
 com\increff\employee\pojo\OrderPojo.class
 com\increff\employee\controller\SampleController.class
@@ -56,6 +57,7 @@ com\increff\employee\model\BrandForm.class
 com\increff\employee\pojo\UserPojo.class
 com\increff\employee\service\ApiException.class
 com\increff\employee\controller\BrandApiController.class
+com\increff\employee\model\OrderItemDataForInvoice.class
 com\increff\employee\controller\InventApiController.class
 com\increff\employee\spring\ControllerConfig.class
 com\increff\employee\model\OrderItemForm.class
