@@ -1,7 +1,6 @@
 package com.increff.employee.model;
 
 public class UserData {
-
 	private int id;
 	private String email;
 	private String role;

@@ -4,12 +4,17 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.increff</groupId>
+    <!--    <parent>-->
+            <groupId>org.increff.invoice</groupId>
+    <!--        <artifactId>pos-project</artifactId>-->
+    <!--        <version>1.0-SNAPSHOT</version>-->
+    <!--    </parent>-->
     <artifactId>invoice</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>invoice</name>
     <url>http://maven.apache.org</url>
+
     <properties>
         <!-- Maven configuration -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -31,10 +36,13 @@
 
         <!-- Jetty configuration -->
         <jetty.version>9.4.21.v20190926</jetty.version>
-        <jetty.http.port>9001</jetty.http.port>
-        <jetty.context>/employee</jetty.context>
+        <jetty.http.port>8000</jetty.http.port>
+        <jetty.context>/invoice</jetty.context>
         <failOnMissingWebXml>false</failOnMissingWebXml>
+
+
     </properties>
+
     <dependencies>
 
         <!-- SPRING -->
@@ -42,13 +50,6 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
             <version>${spring.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.24</version>
-            <scope>provided</scope>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.springframework/spring-tx -->
@@ -59,24 +60,34 @@
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-web -->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.security</groupId>-->
+<!--            <artifactId>spring-security-config</artifactId>-->
+<!--            <version>${spring.version}</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.security</groupId>-->
+<!--            <artifactId>spring-security-web</artifactId>-->
+<!--            <version>${spring.version}</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.apache.xmlgraphics</groupId>-->
+<!--            <artifactId>fop</artifactId>-->
+<!--            <version>2.4</version>-->
+<!--        </dependency>-->
         <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-config</artifactId>
-            <version>4.2.13.RELEASE</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-web</artifactId>
-            <version>4.2.13.RELEASE</version>
+            <groupId>org.apache.xmlgraphics</groupId>
+            <artifactId>fop</artifactId>
+            <version>0.93</version>
         </dependency>
 
 
         <!-- https://mvnrepository.com/artifact/org.springframework/spring-orm -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-orm</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework</groupId>-->
+<!--            <artifactId>spring-orm</artifactId>-->
+<!--            <version>${spring.version}</version>-->
+<!--        </dependency>-->
 
 
         <!-- Using Swagger for REST API documentation -->
@@ -181,12 +192,29 @@
             <version>${javax.servlet.version}</version>
             <scope>provided</scope>
         </dependency>
-        <!--		<dependency>-->
-        <!--			<groupId>com.fasterxml.jackson.core</groupId>-->
-        <!--			<artifactId>jackson-databind</artifactId>-->
-        <!--			<version>2.13.3</version>-->
-        <!--		</dependency>-->
+        <dependency>
+            <groupId>com.github.lbovolini</groupId>
+            <artifactId>ObjectMapper</artifactId>
+            <version>0.2.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>2.9.5</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.24</version>
+            <scope>provided</scope>
+        </dependency>
+
+
     </dependencies>
+
     <build>
         <plugins>
             <!-- Jetty plugin, for web application testing -->
@@ -195,7 +223,7 @@
                 <artifactId>jetty-maven-plugin</artifactId>
                 <version>${jetty.version}</version>
                 <configuration>
-                    <scanIntervalSeconds>5</scanIntervalSeconds>
+                    <scanIntervalSeconds>1</scanIntervalSeconds>
                     <useTestClasspath>false</useTestClasspath>
                     <systemProperties>
                         <systemProperty>
@@ -244,19 +272,23 @@
 
 
     </build>
-    <reporting>
-        <plugins>
-            <!-- SureFire Report plugin as part of site generation -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-report-plugin</artifactId>
-                <version>3.0.0-M4</version>
-                <configuration>
-                </configuration>
-            </plugin>
 
-            <!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-jxr-plugin</artifactId>
-                <version>3.0.0</version> </plugin> -->
-        </plugins>
-    </reporting>
+
+    <!--	<reporting>-->
+    <!--		<plugins>-->
+    <!--			&lt;!&ndash; SureFire Report plugin as part of site generation &ndash;&gt;-->
+    <!--			<plugin>-->
+    <!--				<groupId>org.apache.maven.plugins</groupId>-->
+    <!--				<artifactId>maven-surefire-report-plugin</artifactId>-->
+    <!--				<version>3.0.0-M4</version>-->
+    <!--				<configuration>-->
+    <!--				</configuration>-->
+    <!--			</plugin>-->
+
+    <!--			&lt;!&ndash; <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-jxr-plugin</artifactId> -->
+    <!--				<version>3.0.0</version> </plugin> &ndash;&gt;-->
+    <!--		</plugins>-->
+    <!--	</reporting>-->
+
+
 </project>

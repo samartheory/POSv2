@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 
 @Api
@@ -38,6 +39,11 @@ public class OrderApiController {
     @RequestMapping(path = "/api/orders/{id}", method = RequestMethod.GET)
     public OrderData get(@PathVariable int id) throws ApiException {
         return dto.get(id);
+    }
+    @ApiOperation(value = "Returns a Base64 string if invoice pdf")
+    @RequestMapping(path = "/api/orders/invoice/{id}", method = RequestMethod.GET)
+    public String getPdfString(@PathVariable int id) throws ApiException, IOException {
+        return dto.getPdfString(id);
     }
 
     @ApiOperation(value = "Gets list of all Orders")
