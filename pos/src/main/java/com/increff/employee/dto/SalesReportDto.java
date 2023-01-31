@@ -90,7 +90,7 @@ public class SalesReportDto {
         String brand = salesReportForm.getBrand();
         String category = salesReportForm.getCategory();
         if(startDate != "" && endDate != ""){
-            if(startDate.compareTo(endDate) == 1){
+            if(startDate.compareTo(endDate) > 0){
                 throw new ApiException("Start Date cannot be greater than End date");
             }
         }

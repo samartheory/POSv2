@@ -21,7 +21,11 @@ import com.increff.employee.service.ApiException;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-
+//todo make commons layer and put common files
+//todo convert all exceptions in invoice as api exceptions
+//todo make scheduler which updates every 1 day(5 minutes for testing) even if there are no orders
+//todo write tests for dto
+//todo instead of calling isNull for strings use isEmpty in StringUtil.java
 @Api
 @RestController
 public class BrandApiController {

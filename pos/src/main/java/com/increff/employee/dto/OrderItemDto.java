@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.increff.employee.dto.OrderItemDtoHelper.*;
+import static com.increff.employee.util.StringUtil.isEmpty;
 
 @Service
 public class OrderItemDto {
@@ -38,7 +39,7 @@ public class OrderItemDto {
     private void validate(List<OrderItemForm> orderItemForms) throws ApiException {
         for(int i=0;i<orderItemForms.size();i++){
             //empty checks
-            if(orderItemForms.get(i).getBarcode().isEmpty() || orderItemForms.get(i).getQuantity() <=0){
+            if(isEmpty(orderItemForms.get(i).getBarcode()) || orderItemForms.get(i).getQuantity() <= 0){
                 throw new ApiException("Barcode or Quantity is invalid");
             }
             orderItemForms.get(i).setBarcode(StringUtil.toLowerCase(orderItemForms.get(i).getBarcode()));
@@ -46,13 +47,13 @@ public class OrderItemDto {
             ProductPojo productPojo = productService.getIdByBarcode(orderItemForms.get(i).getBarcode());
             int availableQuantity = inventService.get(productPojo.getId()).getQuantity();
             if(availableQuantity < orderItemForms.get(i).getQuantity()){
-                throw new ApiException("Not enough items. Available Items = " + availableQuantity);
+                throw new ApiException("Invalid " +  orderItemForms.get(i).getBarcode() +" Count. Available Items = " + availableQuantity);
             }
         }
     }
     public void add(OrderItemForm orderItemForm) throws ApiException {
 
-        if(StringUtil.isEmpty(orderItemForm.getBarcode())){
+        if(isEmpty(orderItemForm.getBarcode())){
             throw new ApiException("Barcode cannot be empty");
         }
         if(orderItemForm.getQuantity() <= 0){

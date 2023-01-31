@@ -18,7 +18,6 @@ public class BrandDao extends AbstractDao {
 	private static final String SELECT_ID = "select p from BrandPojo p where id=:id";
 	private static final String SELECT_ALL = "select p from BrandPojo p";
 	private static final String SELECT_BY_BRAND_CAT = "select p from BrandPojo p where brand = : brand and category = : category";
-//	private static final String SELECT_BY_CAT = "select p from BrandPojo p where category=:category";
 	@PersistenceContext
 	private EntityManager em;
 

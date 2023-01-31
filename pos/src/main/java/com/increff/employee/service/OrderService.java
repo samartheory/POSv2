@@ -23,7 +23,7 @@ public class OrderService {
 
 	@Transactional(rollbackFor = ApiException.class)
 	public void add(OrderPojo p) throws ApiException {
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 		ZonedDateTime now = ZonedDateTime.now();
 		p.setTime(now.format(dtf));
 		p.setStatus(false);
@@ -74,82 +74,28 @@ public class OrderService {
 	public List<OrderPojo> getByDate(String start,String end) {
 		List<OrderPojo> orderPojoList = getAll();
 		List<OrderPojo> toReturn = new ArrayList<>();
+
 		if(start == "" && end == ""){
 			return orderPojoList;
 		}
 		else if(start == ""){
-			int endYear = Integer.parseInt(end.substring(0,3));
-			int endMonth = Integer.parseInt(end.substring(5,6));
-			int endDate = Integer.parseInt(end.substring(8,9));
-
 			for(OrderPojo p : orderPojoList){
-				//"start_date":"2023-01-26" form
-				//2023/01/20 11:55:08
-				String curDate = p.getTime();
-				int curEndYear = Integer.parseInt(curDate.substring(0,3));
-				int curEndMonth = Integer.parseInt(curDate.substring(5,6));
-				int curEndDate = Integer.parseInt(curDate.substring(8,9));
-
-				if(curEndYear < endYear){
+				if(p.getTime().compareTo(end) <= 0){
 					toReturn.add(p);
-				}
-				else if(curEndYear == endYear){
-					if(curEndMonth < endMonth){
-						toReturn.add(p);
-					}
-					else if(curEndMonth == endMonth){
-						if(curEndDate <= endDate){
-							toReturn.add(p);
-						}
-					}
 				}
 			}
 		}
 		else if(end == ""){
-			int startYear = Integer.parseInt(start.substring(0,3));
-			int startMonth = Integer.parseInt(start.substring(5,6));
-			int startDate = Integer.parseInt(start.substring(8,9));
-			for(OrderPojo p : orderPojoList){
-				//"start_date":"2023-01-26" form
-				//2023/01/20 11:55:08
-				String curDate = p.getTime();
-				int curStartYear = Integer.parseInt(curDate.substring(0,3));
-				int curStartMonth = Integer.parseInt(curDate.substring(5,6));
-				int curStartDate = Integer.parseInt(curDate.substring(8,9));
-
-				if(curStartYear > startYear){
+			for(OrderPojo p : orderPojoList) {
+				if(p.getTime().compareTo(start) >= 0){
 					toReturn.add(p);
-				}
-				else if(curStartYear == startYear){
-					if(curStartMonth > startMonth){
-						toReturn.add(p);
-					}
-					else if(curStartMonth == startMonth){
-						if(curStartDate >= startDate){
-							toReturn.add(p);
-						}
-					}
 				}
 			}
 		}
 		else{
-			int endYear = Integer.parseInt(end.substring(0,3));
-			int endMonth = Integer.parseInt(end.substring(5,6));
-			int endDate = Integer.parseInt(end.substring(8,9));
-			int startYear = Integer.parseInt(start.substring(0,3));
-			int startMonth = Integer.parseInt(start.substring(5,6));
-			int startDate = Integer.parseInt(start.substring(8,9));
 			for(OrderPojo p:orderPojoList){
-				String curDate = p.getTime();
-				int curStartYear = Integer.parseInt(curDate.substring(0,3));
-				int curStartMonth = Integer.parseInt(curDate.substring(5,6));
-				int curStartDate = Integer.parseInt(curDate.substring(8,9));
-				if(curStartYear <= endYear && curStartYear >= startYear){
-					if(curStartMonth <= endMonth && curStartMonth >= startMonth){
-						if(curStartDate <= endDate && curStartDate >= startDate){
-							toReturn.add(p);
-						}
-					}
+				if(p.getTime().compareTo(start) >= 0 && p.getTime().compareTo(end) <= 0){
+					toReturn.add(p);
 				}
 			}
 		}
