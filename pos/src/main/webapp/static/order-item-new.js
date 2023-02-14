@@ -1,27 +1,104 @@
+$(document).ready(function() {
+	$("#add").click(function() {
+		$("#datatable").append(
+			' <tr> <td> <input type="text" class="itemBarcode" style="width:60%"/></td> <td> <input type="number" class="itemQuantity" style="width:60%"/></td> </tr>'
+		);
+	});
+});
+function getNewOrderUrl() {
+	var baseUrl = $("meta[name=baseUrl]").attr("content");
+	return baseUrl + "/api/orderitem/new";
+}
+function addOrder() {
+	var itemBarcodes = document.getElementsByClassName("itemBarcode");
+	var itemQuantities = document.getElementsByClassName("itemQuantity");
+	let orderItems = [];
 
+	// JSONObj
 
+	for (let i = 0; i < itemBarcodes.length; i++) {
+//	    if (!itemBarcodes[i].value && !itemQuantities[i].value) continue;
+//		var orderItem = {
+//			barcode: itemBarcodes[i].value,
+//			quantity: parseInt(itemQuantities[i].value),
+//		};
+		// var jsonOrderItem = JSON.stringify(orderItem);
+		let jsonOrderItem = new Object();
+		jsonOrderItem = {
+			barcode: itemBarcodes[i].value,
+			quantity: itemQuantities[i].value,
+			orderId : 0
+		};
+		orderItems.push(jsonOrderItem);
+	}
+	// var $form = $("#brand-form");
+	// var json = toJson($form);
+	var url = getNewOrderUrl();
+    console.log(JSON.stringify(orderItems))
+	$.ajax({
+		url: url,
+		type: "POST",
+		data: JSON.stringify(orderItems),
+		dataType: "json",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		success: function(data) {
+		    alert("Order Made");
+            var url = $("meta[name=baseUrl]").attr("content") + "/ui/orderitem/" + data;
+            window.location.replace(url);
+		},
+		error: handleAjaxError,
+//		statusCode: {
+//			200: function() {
+//				alert("order saved");
+//				var url = $("meta[name=baseUrl]").attr("content") + "/ui/orders";
+//				window.location.replace(url);
+//			},
+//			400: handleAjaxError
+//		}
+	});
+
+	return false;
+}
+function myDeleteFunction() {
+  document.getElementById("datatable").deleteRow(-1);
+}
 function getOrderItemUrl(){
 	var baseUrl = $("meta[name=baseUrl]").attr("content")
-	return baseUrl + "/api/orderitem";
+	return baseUrl + "/api/orderitem/new";
 }
-function orderIdFromUrl(){
-        var queryString = window.location.href;
-        console.log(queryString);
-        // Get the value of a specific parameter
-        var idfromurl =  queryString.split("orderitem/")[1];
-        return Number(idfromurl);
-}
-function orderIdTitle(){
-    // Get the query string from the URL
-    var queryString = window.location.href;
-    console.log(queryString);
-    // Get the value of a specific parameter
-    var idfromurl =  queryString.split("orderitem/")[1];
-    console.log(idfromurl);
-    var myElement = document.getElementById("order-item-title");
-    myElement.innerHTML = "Order #" + idfromurl;
-}
+
 //BUTTON ACTIONS
+function addNewItem(){
+     var rowCount = $("#item-details tr").length;
+     console.log(rowCount);
+     var table = document.getElementById("item-details");
+     var row = table.insertRow(rowCount);
+//     var cell1 = row.insertCell(0);
+     row.innerHTML = '<td><label for="barcode">Barcode</label><input type="text" id="barcode" placeholder="Enter Barcode"></td><td ><label for="quantity">Quantity</label><input type="text" id="quantity" placeholder="Enter Quantity"></td>';
+}
+function submits(event){
+    	var $form = $("#form");
+    	var json = toJson($form);
+    	console.log($form);
+    	console.log(json);
+//    	var url = getOrderItemUrl();
+//    	$.ajax({
+//    	   url: url,
+//    	   type: 'POST',
+//    	   data: json,
+//    	   headers: {
+//           	'Content-Type': 'application/json'
+//           },
+//    	   success: function(response) {
+//    	   		alert("Successfully Submitted")
+//    	   },
+//    	   error: handleAjaxError
+//    	});
+//
+//    	return false;
+}
 function addOrderItem(event){
 	//Set the values to update
 	var $form = $("#order-item-form");
@@ -226,17 +303,16 @@ function displayOrderItem(data){
 }
 
 //INITIALIZATION CODE
-function init(){
-console.log("inside init");
-	$('#add-data').click(addOrderItem);
-	$('#update-order-item').click(updateOrderItem);
-	$('#refresh-data').click(getOrderItemListHelper);
-	$('#upload-data').click(displayUploadData);
-	$('#process-data').click(processData);
-	$('#download-errors').click(downloadErrors);
-    $('#orderItemFile').on('change', updateFileName)
-}
-
-$(document).ready(init);
-$(document).ready(getOrderItemListHelper);
-$(document).ready(orderIdTitle);
+//function init(){
+//console.log("inside init");
+//	$('#add-data').click(addOrderItem);
+//	$('#update-order-item').click(updateOrderItem);
+//	$('#refresh-data').click(getOrderItemListHelper);
+//	$('#upload-data').click(displayUploadData);
+//	$('#process-data').click(processData);
+//	$('#download-errors').click(downloadErrors);
+//    $('#orderItemFile').on('change', updateFileName)
+//}
+//
+//$(document).ready(init);
+//$(document).ready(getOrderItemListHelper);

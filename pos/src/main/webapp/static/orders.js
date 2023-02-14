@@ -24,6 +24,9 @@ function orderIdTitle(){
     myElement.innerHTML = "Order #" + idfromurl;
 }
 //BUTTON ACTIONS
+function newOrder(){
+
+}
 function addOrder(event){
 	//Set the values to update
 	var $form = $("#order-form");
@@ -185,6 +188,7 @@ function displayOrderList(data){
 		if(e.status == false){
             var buttonHtml = '<button type="button" class="btn btn-outline-danger btn-sm" onclick="redirect(' + e.id + ')">Edit</button>  '
                 buttonHtml += '<button type="button" class="btn btn-success btn-sm" onclick="place(' + e.id + ')">Place</button>  '
+                buttonHtml += '<button type="button" class="btn btn-success btn-sm" onclick="deleteOrder(' + e.id + ')">Delete</button>  '
             var row = '<tr>'
                     + '<td>' + e.id + '</td>'
                     + '<td>' + e.time + '</td>'

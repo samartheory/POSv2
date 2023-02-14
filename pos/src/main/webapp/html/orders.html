@@ -1,6 +1,7 @@
 <!doctype html>
 
 <html lang="en">
+<meta name="baseUrl" th:attr="content=${baseUrl}">
 <head th:replace="snippets.html :: name_head">
 	<style>
 		h3{
@@ -17,7 +18,7 @@
 <div class="container">
 
 <h3>Orders</h3>
-	<button type="button" class="btn btn-success btn-lg" id="create-order" onclick="addOrder(this)">Create Order</button>
+	<a class="btn btn-success btn-lg" id="create-order" th:href="@{/ui/orders/new}">Create Order</a>
  <!-- Top row with form-->
 <!-- <div class="row">-->
 <!--	 <div class="col-12">-->

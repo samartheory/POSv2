@@ -17,6 +17,7 @@ import org.apache.http.util.EntityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.google.gson.Gson;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -42,6 +43,7 @@ public class OrderDto {
         OrderPojo p = new OrderPojo();
         orderService.add(p);
     }
+    @Transactional(rollbackFor = ApiException.class)
     public void place(int id) throws ApiException {
         List<OrderItemPojo>orderItemPojoList = orderItemService.getAllWithId(id);
         if(orderItemPojoList.size() == 0){

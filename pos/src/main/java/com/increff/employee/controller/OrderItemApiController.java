@@ -25,8 +25,8 @@ public class OrderItemApiController {
     }
     @ApiOperation(value = "Adds Multiple Order Items and creates an new order")
     @RequestMapping(path = "/api/orderitem/new", method = RequestMethod.POST)
-    public void addNew(@RequestBody List<OrderItemForm> orderItemForms) throws ApiException {
-        dto.addNew(orderItemForms);
+    public int addNew(@RequestBody List<OrderItemForm> orderItemForms) throws ApiException {
+        return dto.addNew(orderItemForms);
     }
     @ApiOperation(value = "Deletes Order")
     @RequestMapping(path = "/api/orderitem/{id}", method = RequestMethod.DELETE)

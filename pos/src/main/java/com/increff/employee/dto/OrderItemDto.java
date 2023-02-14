@@ -24,7 +24,7 @@ public class OrderItemDto {
     private InventService inventService;
     @Autowired
     private OrderService orderService;
-    public void addNew(List<OrderItemForm> orderItemForms) throws ApiException {
+    public int addNew(List<OrderItemForm> orderItemForms) throws ApiException {
         validate(orderItemForms);
         OrderPojo orderPojo = new OrderPojo();
         orderService.add(orderPojo);
@@ -35,6 +35,7 @@ public class OrderItemDto {
             f.setOrderId(thisOrderId);
             orderItemService.add(productToOrderItem(productPojo, f));
         }
+        return thisOrderId;
     }
     private void validate(List<OrderItemForm> orderItemForms) throws ApiException {
         for(int i=0;i<orderItemForms.size();i++){

@@ -96,24 +96,16 @@ public class SalesReportDto {
         }
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         ZonedDateTime now = ZonedDateTime.now();
-        String currenDate = now.format(dtf);
+        String currentDate = now.format(dtf);
         if(startDate != ""){
-            if(startDate.compareTo(currenDate) == 1){
+            if(startDate.compareTo(currentDate) == 1){
                 throw new ApiException("Start date cannot be greater than current date");
             }
         }
         if(endDate != ""){
-            if(endDate.compareTo(currenDate) == 1){
+            if(endDate.compareTo(currentDate) == 1){
                 throw new ApiException("End date cannot be greater than current date");
             }
         }
-//        if(salesReportForm.getEnd_date()==null) {
-//            salesReportForm.setEnd_date(new String());
-//        }
-//        if(salesReportForm.getStart_date()==null) {
-//            salesReportForm.setStart(new GregorianCalendar(2022, Calendar.JANUARY, 1).getTime());
-//        }
-//        salesReportForm.setStart(getStartOfDay(salesReportForm.getStart(),Calendar.getInstance()));
-//        salesReportForm.setEnd(getEndOfDay(salesReportForm.getEnd(),Calendar.getInstance()));
     }
 }
