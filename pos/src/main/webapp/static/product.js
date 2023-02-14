@@ -140,15 +140,19 @@ function displayProductList(data){
 	$tbody.empty();
 	for(var i in data){
 		var e = data[i];
-		var buttonHtml = '<button onclick="deleteProduct(' + e.id + ')">delete</button>'
-		buttonHtml += ' <button onclick="displayEditProduct(' + e.id + ')">edit</button>'
+		var buttonHtml = '<button class="btn btn-success btn-sm" onclick="deleteProduct(' + e.id + ')">Delete</button>'
+		buttonHtml += ' <button class="btn btn-dark btn-sm" onclick="displayEditProduct(' + e.id + ')">Edit</button>'
+		var mrps = e.mrp.toString();
+		if(mrps.indexOf('.') == -1){
+		    mrps += ".00"
+		}
 		var row = '<tr>'
 		+ '<td>' + e.id + '</td>'
 		+ '<td>' + e.barcode + '</td>'
 		+ '<td>'  + e.brand + '</td>'
 		+ '<td>'  + e.category + '</td>'
 		+ '<td>'  + e.name + '</td>'
-		+ '<td>'  + e.mrp + '</td>'
+		+ '<td>'  + mrps + '</td>'
 		+ '<td>' + buttonHtml + '</td>'
 		+ '</tr>';
         $tbody.append(row);

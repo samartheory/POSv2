@@ -52,6 +52,9 @@ public class OrderDto {
         for(OrderItemPojo p:orderItemPojoList){
             InventPojo inventPojo = inventService.get(p.getProductId());
             int availableQuantity = inventPojo.getQuantity();
+            if(availableQuantity - p.getQuantity() < 0){
+                throw new ApiException("Not enough items, Available item(s) = " + availableQuantity);
+            }
             inventService.updateQuantity(p.getProductId(),availableQuantity-p.getQuantity());
         }
         orderService.place(id);

@@ -35,7 +35,7 @@ public class ProductDtoHelper {
         p.setBarcode(f.getBarcode());
         p.setBrand_category(brandAndCatId);
         p.setName(f.getName());
-        p.setMrp(f.getMrp());
+        p.setMrp(Math.round(f.getMrp() * 100.0) / 100.0);
         return p;
     }
 }

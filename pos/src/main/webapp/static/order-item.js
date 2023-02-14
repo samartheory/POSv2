@@ -1,8 +1,11 @@
 
-
 function getOrderItemUrl(){
 	var baseUrl = $("meta[name=baseUrl]").attr("content")
 	return baseUrl + "/api/orderitem";
+}
+function getPlaceUrl(){
+	var baseUrl = $("meta[name=baseUrl]").attr("content")
+	return baseUrl + "/api/orders/";
 }
 function orderIdFromUrl(){
         var queryString = window.location.href;
@@ -22,6 +25,23 @@ function orderIdTitle(){
     myElement.innerHTML = "Order #" + idfromurl;
 }
 //BUTTON ACTIONS
+function place(){
+    var url = getPlaceUrl() + orderIdFromUrl();
+    $.ajax({
+    	   url: url,
+    	   type: 'POST',
+    	   headers: {
+           	'Content-Type': 'application/json'
+           },
+    	   success: function(response) {
+    	   		var url = $("meta[name=baseUrl]").attr("content") + "/ui/orderitemplaced/" +  orderIdFromUrl();
+                window.location.replace(url);
+    	   },
+    	   error: handleAjaxError
+    	});
+
+    	return false;
+}
 function addOrderItem(event){
 	//Set the values to update
 	var $form = $("#order-item-form");
@@ -165,12 +185,15 @@ function displayOrderItemList(data){
 		var e = data[i];
         var buttonHtml = '<button type="button" class="btn btn-primary btn-sm" onclick="displayEditOrderItem(' + e.id + ')">Edit</button>  '
             buttonHtml += '<button type="button" class="btn btn-primary btn-sm" onclick="deleteOrderItem(' + e.id + ')">Delete</button>  '
-
+        var mrps = e.mrp.toString();
+        		if(mrps.indexOf('.') == -1){
+        		    mrps += ".00"
+        		}
         var row = '<tr>'
                 + '<td>' + e.id + '</td>'
                 + '<td>' + e.barcode + '</td>'
                 + '<td>' + e.quantity + '</td>'
-                + '<td>' + e.mrp + '</td>'
+                + '<td>' + mrps + '</td>'
                 + '<td>' + buttonHtml + '</td>'
                 + '</tr>';
         $tbody.append(row);

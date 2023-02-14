@@ -65,4 +65,3 @@ public class AppUiController extends AbstractUiController {
 		return mav("reports_inventory.html");
 	}
 }
-//todo Brand delete not working

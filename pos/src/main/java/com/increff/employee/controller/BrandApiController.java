@@ -21,18 +21,27 @@ import com.increff.employee.service.ApiException;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-//additions
+/*high*/
 //todo make commons layer and put common files
-//todo convert all exceptions in invoice as api exceptions
 //todo make scheduler which updates every 1 day(5 minutes for testing) even if there are no orders
 //todo write tests for dto
-//todo make a abstract class that has timestamp for each update, delete
 //todo make login system
-//edits
-//todo instead of calling isNull for strings use isEmpty in StringUtil.java
+//todo edit in order item not working
+//todo add download invoice button
 //todo toasts
-//todo hide id in brand and instead use serial number in js
+//todo on successful addition or refresh - clear form fields
+//todo inventory edit option not working
+//todo decimal checks in quantity
 
+/*mid*/
+//todo make a abstract class that has timestamp for each update, delete
+//todo convert all exceptions in invoice as api exceptions
+//todo instead of calling isNull for strings use isEmpty in StringUtil.java
+//todo hide id in brand and instead use serial number in js
+//todo delete api from everywhere
+//todo brand edit model - do not remove or refresh modal on failure, only on success
+//todo download template then check for proper validations and errors
+//todo show total cost in orders after placing
 @Api
 @RestController
 public class BrandApiController {
