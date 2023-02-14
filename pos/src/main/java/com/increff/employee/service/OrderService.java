@@ -23,9 +23,9 @@ public class OrderService {
 
 	@Transactional(rollbackFor = ApiException.class)
 	public void add(OrderPojo p) throws ApiException {
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+//		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 		ZonedDateTime now = ZonedDateTime.now();
-		p.setTime(now.format(dtf));
+		p.setTime(now);
 		p.setStatus(false);
 		dao.insert(p);
 	}
@@ -80,26 +80,34 @@ public class OrderService {
 		}
 		else if(start == ""){
 			for(OrderPojo p : orderPojoList){
-				if(p.getTime().compareTo(end) <= 0){
+				if(zoneDateToString(p.getTime()).compareTo(end) <= 0){
 					toReturn.add(p);
 				}
 			}
 		}
 		else if(end == ""){
 			for(OrderPojo p : orderPojoList) {
-				if(p.getTime().compareTo(start) >= 0){
+				if(zoneDateToString(p.getTime()).compareTo(start) >= 0){
 					toReturn.add(p);
 				}
 			}
 		}
 		else{
 			for(OrderPojo p:orderPojoList){
-				if(p.getTime().compareTo(start) >= 0 && p.getTime().compareTo(end) <= 0){
+				System.out.println(zoneDateToString(p.getTime()).compareTo(start));
+				System.out.println(start);
+
+				if(zoneDateToString(p.getTime()).compareTo(start) >= 0 && zoneDateToString(p.getTime()).compareTo(end) <= 0){
 					toReturn.add(p);
 				}
 			}
 		}
 		return toReturn;
+	}
+	public String zoneDateToString(ZonedDateTime time){
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		String formattedString = time.format(formatter);
+		return formattedString;
 	}
 //	protected static void normalize(OrderPojo p) {
 //		p.setBrand_category(StringUtil.toLowerCase(p.getBrand_category()));

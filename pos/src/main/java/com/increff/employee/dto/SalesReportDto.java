@@ -36,6 +36,7 @@ public class SalesReportDto {
         String endDate = form.getEnd_date();
         String brand = form.getBrand();
         String category = form.getCategory();
+        System.out.println("inthis");
         List<OrderPojo> orderList = orderService.getByDate(startDate,endDate);
         List<OrderItemPojo> orderItemList = new ArrayList<OrderItemPojo>();
         for(OrderPojo orderPojo:orderList){

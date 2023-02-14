@@ -7,6 +7,8 @@ import com.increff.employee.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,9 +25,13 @@ public class OrderDtoHelper {
     public static OrderData convert(OrderPojo p) {
         OrderData orderData = new OrderData();
         orderData.setId(p.getId());
-        orderData.setTime(p.getTime());
+        orderData.setTime(zoneDateToString(p.getTime()));
         orderData.setStatus(p.isStatus());
         return orderData;
     }
-
+    public static String zoneDateToString(ZonedDateTime time){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formattedString = time.format(formatter);
+        return formattedString;
+    }
 }
