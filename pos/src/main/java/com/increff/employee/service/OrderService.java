@@ -71,6 +71,10 @@ public class OrderService {
 		return p;
 	}
 	@Transactional(readOnly = true)
+	public List<OrderPojo> getBetweenDates(ZonedDateTime startDate, ZonedDateTime endDate) {
+		return dao.selectBetweeenDates(startDate, endDate);
+	}
+	@Transactional(readOnly = true)
 	public List<OrderPojo> getByDate(String start,String end) {
 		List<OrderPojo> orderPojoList = getAll();
 		List<OrderPojo> toReturn = new ArrayList<>();

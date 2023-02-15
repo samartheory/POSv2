@@ -1,0 +1,57 @@
+<!doctype html>
+
+<html lang="en" style="overflow-y: scroll;">
+
+<head th:replace="snippets.html :: name_head">
+</head>
+
+<body>
+
+<nav th:replace="snippets.html :: name_app_navbar"></nav>
+
+<div class="container">
+
+    <div class="row">
+        <button type="submit" style="margin:10px 0 20px 20px;height:45px" class="btn btn-success" id="download-report"
+                onclick="downloadReport()">Download Report
+        </button>
+    </div>
+    <div class="row">
+        <!-- Table -->
+        <div class="col-12">
+            <table class="table table-hover table-bordered" id="brand-table">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">#Invoiced Orders</th>
+                    <th scope="col">#Invoiced Order Items</th>
+                    <th scope="col">Revenue(INR)</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+</div> <!-- Container end-->
+
+<footer class="footer  mt-1" style="position:fixed;top:100%;">
+    © Increff 2023
+    &nbsp;
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script th:src="@{/static/app.js}"/></script>
+    <script th:src="@{/static/papaparse.min.js}"/></script>
+
+</footer>
+<script th:src="@{/static/daySalesReport.js}" /></script>
+
+</body>	
+
+</html>

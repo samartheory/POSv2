@@ -9,6 +9,8 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.time.ZonedDateTime;
 import java.util.List;
 
 @Repository
@@ -17,6 +19,8 @@ public class OrderDao extends AbstractDao {
 	private static final String DELETE_ID = "delete from OrderPojo p where id=:id";
 	private static final String SELECT_ID = "select p from OrderPojo p where id=:id";
 	private static final String SELECT_ALL = "select p from OrderPojo p";
+	private static final String select_all_orderDate = "select p from OrderPojo p where time >= :startDate and time <= :endDate and status = true";
+
 
 	@PersistenceContext
 	private EntityManager em;
@@ -30,6 +34,12 @@ public class OrderDao extends AbstractDao {
 		Query query = em.createQuery(DELETE_ID);
 		query.setParameter("id", id);
 		return query.executeUpdate();
+	}
+	@Transactional(readOnly = true)
+	public List<OrderPojo> selectBetweeenDates(ZonedDateTime startDate, ZonedDateTime endDate) {
+		//select orders between two dates
+		TypedQuery<OrderPojo> query = getQuery(select_all_orderDate, OrderPojo.class);
+		return query.setParameter("startDate", startDate).setParameter("endDate", endDate).getResultList();
 	}
 @Transactional(readOnly = true)
 	public OrderPojo select(int id) {

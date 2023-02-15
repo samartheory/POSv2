@@ -1,5 +1,6 @@
 com\increff\employee\dao\ProductDao.class
 com\increff\employee\dto\BrandDto.class
+com\increff\employee\model\DaySalesData.class
 com\increff\employee\model\ProductForm.class
 com\increff\employee\dto\ProductDto.class
 com\increff\employee\util\StringUtil.class
@@ -12,12 +13,14 @@ com\increff\employee\model\OrderData.class
 com\increff\employee\dao\UserDao.class
 com\increff\employee\controller\ProductApiController.class
 com\increff\employee\model\InvoiceData.class
+com\increff\employee\scheduler\DaySalesScheduler.class
 com\increff\employee\controller\InitApiController.class
 com\increff\employee\pojo\OrderPojo.class
 com\increff\employee\controller\SampleController.class
 com\increff\employee\controller\SiteUiController.class
 com\increff\employee\model\BrandData.class
 com\increff\employee\pojo\InventPojo.class
+com\increff\employee\service\DaySalesService.class
 com\increff\employee\model\InventForm.class
 com\increff\employee\service\BrandService.class
 com\increff\employee\pojo\BrandPojo.class
@@ -28,6 +31,7 @@ com\increff\employee\controller\AbstractUiController.class
 com\increff\employee\model\SalesReportData.class
 com\increff\employee\model\SalesReportForm.class
 com\increff\employee\dto\ProductDtoHelper.class
+com\increff\employee\pojo\DaySalesPojo.class
 com\increff\employee\service\OrderItemService.class
 com\increff\employee\dao\AbstractDao.class
 com\increff\employee\dto\BrandDtoHelper.class
@@ -35,7 +39,9 @@ com\increff\employee\model\InfoData.class
 com\increff\employee\model\InventData.class
 com\increff\employee\dto\OrderDto.class
 com\increff\employee\service\InventService.class
+com\increff\employee\controller\daySalesReportController.class
 com\increff\employee\controller\AppRestControllerAdvice.class
+com\increff\employee\dao\DaySalesDao.class
 com\increff\employee\spring\WebInitializer.class
 com\increff\employee\util\UserPrincipal.class
 com\increff\employee\pojo\ProductPojo.class
@@ -54,6 +60,7 @@ com\increff\employee\model\UserData.class
 com\increff\employee\model\UserForm.class
 com\increff\employee\util\IOUtil.class
 com\increff\employee\model\BrandForm.class
+com\increff\employee\dto\DaySalesDto.class
 com\increff\employee\pojo\UserPojo.class
 com\increff\employee\service\ApiException.class
 com\increff\employee\controller\BrandApiController.class
