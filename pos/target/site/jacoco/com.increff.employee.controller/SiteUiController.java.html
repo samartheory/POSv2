@@ -5,12 +5,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-<span class="fc" id="L8">public class SiteUiController extends AbstractUiController {</span>
+<span class="nc" id="L8">public class SiteUiController extends AbstractUiController {</span>
 
 	// WEBSITE PAGES
 	@RequestMapping(value = &quot;&quot;)
 	public ModelAndView index() {
-<span class="nc" id="L13">		return mav(&quot;index.html&quot;);</span>
+<span class="nc" id="L13">		return mav(&quot;home.html&quot;);</span>
 	}
 
 	@RequestMapping(value = &quot;/site/login&quot;)
@@ -23,10 +23,10 @@ import org.springframework.web.servlet.ModelAndView;
 <span class="nc" id="L23">		return mav(&quot;logout.html&quot;);</span>
 	}
 
-	@RequestMapping(value = &quot;/site/pricing&quot;)
-	public ModelAndView pricing() {
-<span class="nc" id="L28">		return mav(&quot;pricing.html&quot;);</span>
-	}
+//	@RequestMapping(value = &quot;/site/pricing&quot;)
+//	public ModelAndView pricing() {
+//		return mav(&quot;pricing.html&quot;);
+//	}
 
 	@RequestMapping(value = &quot;/site/features&quot;)
 	public ModelAndView features() {

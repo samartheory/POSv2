@@ -10,7 +10,7 @@ import com.increff.employee.util.SecurityUtil;
 import com.increff.employee.util.UserPrincipal;
 
 @Controller
-<span class="fc" id="L13">public abstract class AbstractUiController {</span>
+<span class="nc" id="L13">public abstract class AbstractUiController {</span>
 
 	@Autowired
 	private InfoData info;
@@ -21,14 +21,13 @@ import com.increff.employee.util.UserPrincipal;
 	protected ModelAndView mav(String page) {
 		// Get current user
 <span class="nc" id="L23">		UserPrincipal principal = SecurityUtil.getPrincipal();</span>
-
-<span class="nc bnc" id="L25" title="All 2 branches missed.">		info.setEmail(principal == null ? &quot;&quot; : principal.getEmail());</span>
+<span class="nc bnc" id="L24" title="All 2 branches missed.">		info.setEmail(principal == null ? &quot;&quot; : principal.getEmail());</span>
 
 		// Set info
-<span class="nc" id="L28">		ModelAndView mav = new ModelAndView(page);</span>
-<span class="nc" id="L29">		mav.addObject(&quot;info&quot;, info);</span>
-<span class="nc" id="L30">		mav.addObject(&quot;baseUrl&quot;, baseUrl);</span>
-<span class="nc" id="L31">		return mav;</span>
+<span class="nc" id="L27">		ModelAndView mav = new ModelAndView(page);</span>
+<span class="nc" id="L28">		mav.addObject(&quot;info&quot;, info);</span>
+<span class="nc" id="L29">		mav.addObject(&quot;baseUrl&quot;, baseUrl);</span>
+<span class="nc" id="L30">		return mav;</span>
 	}
 
 }

@@ -23,6 +23,11 @@ function addOrder() {
 //			quantity: parseInt(itemQuantities[i].value),
 //		};
 		// var jsonOrderItem = JSON.stringify(orderItem);
+		var val = itemQuantities[i].value;
+        if(val.includes('.') || val.includes('-')){
+       	    alert("Invalid Quantity");
+       	    return;
+       	}
 		let jsonOrderItem = new Object();
 		jsonOrderItem = {
 			barcode: itemBarcodes[i].value,

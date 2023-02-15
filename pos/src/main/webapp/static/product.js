@@ -7,6 +7,11 @@ function getProductUrl(){
 //BUTTON ACTIONS
 function addProduct(event){
 	//Set the values to update
+	var val = document.getElementById("inputMrp").value;
+    	if(val.includes('-')){
+    	    alert("Invalid MRP");
+    	    return;
+    }
 	var $form = $("#product-form");
 	var json = toJson($form);
 	var url = getProductUrl();

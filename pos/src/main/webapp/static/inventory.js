@@ -8,6 +8,11 @@ function getInventoryUrl(){
 function addInventory(event){
 	//Set the values to update
 	var $form = $("#inventory-form");
+	var val = document.getElementById("inputName").value;
+	if(val.includes('.') || val.includes('-')){
+	    alert("Invalid Quantity");
+	    return;
+	}
 	var json = toJson($form);
 	var url = getInventoryUrl();
 

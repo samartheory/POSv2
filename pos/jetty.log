@@ -9140,3 +9140,9 @@ java.lang.IllegalArgumentException: Parameter value [2023-02-14 00:00:00] did no
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
 	at java.base/java.lang.Thread.run(Thread.java:832)
+2023-02-15 18:14:07 WARN  SqlExceptionHelper:137 - SQL Error: 1062, SQLState: 23000
+2023-02-15 18:14:07 ERROR SqlExceptionHelper:142 - Duplicate entry '1' for key 'inventpojo.PRIMARY'
+2023-02-15 18:14:07 ERROR ExceptionMapperStandardImpl:39 - HHH000346: Error during managed flush [org.hibernate.exception.ConstraintViolationException: could not execute statement]
+2023-02-15 18:14:16 WARN  SqlExceptionHelper:137 - SQL Error: 1062, SQLState: 23000
+2023-02-15 18:14:16 ERROR SqlExceptionHelper:142 - Duplicate entry '1' for key 'inventpojo.PRIMARY'
+2023-02-15 18:14:16 ERROR ExceptionMapperStandardImpl:39 - HHH000346: Error during managed flush [org.hibernate.exception.ConstraintViolationException: could not execute statement]

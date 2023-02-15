@@ -27,11 +27,11 @@ import io.swagger.annotations.ApiOperation;
 //todo write tests for dto
 //todo make login system
 //todo edit in order item not working
-//todo add download invoice button
+//add download invoice button
 //todo toasts
-//todo on successful addition or refresh - clear form fields
+
 //todo inventory edit option not working
-//todo decimal checks in quantity
+//decimal checks in quantity
 
 /*mid*/
 //todo make a abstract class that has timestamp for each update, delete
@@ -42,6 +42,7 @@ import io.swagger.annotations.ApiOperation;
 //todo brand edit model - do not remove or refresh modal on failure, only on success
 //todo download template then check for proper validations and errors
 //todo show total cost in orders after placing
+//todo on successful addition or refresh - clear form fields
 @Api
 @RestController
 public class BrandApiController {

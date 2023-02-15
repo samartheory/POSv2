@@ -20,7 +20,31 @@ function orderIdTitle(){
     var myElement = document.getElementById("order-item-title");
     myElement.innerHTML = "Order #" + idfromurl + " [Placed]";
 }
+function onlyBaseUrl(){
+	var baseUrl = $("meta[name=baseUrl]").attr("content")
+	return baseUrl;
+}
 //BUTTON ACTIONS
+function downloadInvoice(){
+    var url = onlyBaseUrl() + "/api/orders/invoice/" + orderIdFromUrl();
+    $.ajax({
+    	   url: url,
+    	   type: 'GET',
+    	   success: function(data) {
+    	   		downloadPDF(data);
+    	   },
+    	   error: handleAjaxError
+    	});
+}
+function downloadPDF(pdf) {
+    const linkSource = `data:application/pdf;base64,${pdf}`;
+    const downloadLink = document.createElement("a");
+    const fileName = "invoice.pdf";
+
+    downloadLink.href = linkSource;
+    downloadLink.download = fileName;
+    downloadLink.click();
+}
 function addOrderItem(event){
 	//Set the values to update
 	var $form = $("#order-item-form");
