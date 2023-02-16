@@ -3,13 +3,6 @@ package com.increff.employee.dto;
 import com.increff.employee.model.InventData;
 import com.increff.employee.model.InventForm;
 import com.increff.employee.pojo.InventPojo;
-import com.increff.employee.service.ApiException;
-import com.increff.employee.service.InventService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class InventDtoHelper {

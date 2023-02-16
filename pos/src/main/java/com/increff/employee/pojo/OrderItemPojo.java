@@ -10,7 +10,7 @@ import javax.persistence.Id;
 @Getter
 @Setter
 @Entity
-public class OrderItemPojo {
+public class OrderItemPojo {//todo orderid, product id unique constraint
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	int id;

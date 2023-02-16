@@ -2,6 +2,7 @@ package com.increff.employee.service;
 
 import com.increff.employee.dao.BrandDao;
 import com.increff.employee.pojo.BrandPojo;
+import com.increff.employee.util.ApiException;
 import com.increff.employee.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Service
 public class BrandService {
@@ -27,7 +29,7 @@ public class BrandService {
 		dao.insert(p);
 	}
 
-	@Transactional(readOnly = true)
+	@Transactional(readOnly = true)//todo remove delete from service layer
 	public void delete(int id) {
 		dao.delete(id);
 	}
@@ -43,14 +45,15 @@ public class BrandService {
 	}
 	@Transactional(readOnly = true)
 	public List<BrandPojo> getByCategory(String category) {
-		List<BrandPojo>brandPojoList = getAll();
-		List<BrandPojo>toReturn = new ArrayList<>();
-		for(BrandPojo p:brandPojoList){
-			if(p.getCategory().equals(category)){
-				toReturn.add(p);
-			}
-		}
-		return toReturn;
+//		List<BrandPojo>brandPojoList = getAll();
+		return getAll().stream().filter(brandPojo -> brandPojo.getCategory().equals(category)).collect(Collectors.toList());
+//		List<BrandPojo>toReturn = new ArrayList<>();
+//		for(BrandPojo p:brandPojoList){
+//			if(p.getCategory().equals(category)){
+//				toReturn.add(p);
+//			}
+//		}
+//		return toReturn;
 	}
 	@Transactional(readOnly = true)
 	public List<BrandPojo> getByBrand(String brand) {

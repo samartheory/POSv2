@@ -1,9 +1,8 @@
 package com.increff.employee.service;
 
-import com.increff.employee.dao.BrandDao;
 import com.increff.employee.dao.ProductDao;
-import com.increff.employee.pojo.BrandPojo;
 import com.increff.employee.pojo.ProductPojo;
+import com.increff.employee.util.ApiException;
 import com.increff.employee.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +18,7 @@ public class ProductService {
 	private ProductDao dao;
 //	@Autowired
 //	private BrandDao brandDao;
-	@Transactional
+	@Transactional(rollbackFor = ApiException.class)
 	public void add(ProductPojo p) throws ApiException {
 		if(StringUtil.isEmpty(p.getBarcode()) || StringUtil.isEmpty(p.getName())) {
 			throw new ApiException("Brand/Name/Category cannot be empty");
@@ -78,7 +77,7 @@ public class ProductService {
 		return p;
 	}
 
-	protected static void normalize(ProductPojo p) {
+	private void normalize(ProductPojo p) {
 		p.setBarcode(StringUtil.toLowerCase(p.getBarcode()));
 		p.setName(StringUtil.toLowerCase(p.getName()));
 	}

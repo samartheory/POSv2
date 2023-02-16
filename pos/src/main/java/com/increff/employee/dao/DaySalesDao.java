@@ -1,7 +1,6 @@
 package com.increff.employee.dao;
 
 import com.increff.employee.pojo.DaySalesPojo;
-import com.increff.employee.service.ApiException;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -9,7 +8,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Repository
@@ -22,7 +20,7 @@ public class DaySalesDao extends AbstractDao {
 	@PersistenceContext
 	private EntityManager entityManager;
 
-	@Transactional(rollbackFor = ApiException.class)
+	@Transactional
 	public void insert(DaySalesPojo daySalesPojo) {
 		entityManager.persist(daySalesPojo);
 	}
@@ -34,9 +32,6 @@ public class DaySalesDao extends AbstractDao {
 	}
 	@Transactional(readOnly = true)
 	public DaySalesPojo selectWithDate(ZonedDateTime time){
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-		String date = time.format(formatter);
-		date += " 00:00:00";
 		TypedQuery<DaySalesPojo> query = getQuery(SELECT_WITH_DATE, DaySalesPojo.class);
 		query.setParameter("date",time);
 		return query.getSingleResult();

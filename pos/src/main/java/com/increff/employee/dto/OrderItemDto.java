@@ -5,9 +5,12 @@ import com.increff.employee.pojo.OrderItemPojo;
 import com.increff.employee.pojo.OrderPojo;
 import com.increff.employee.pojo.ProductPojo;
 import com.increff.employee.service.*;
+import com.increff.employee.util.ApiException;
 import com.increff.employee.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,13 +24,13 @@ public class OrderItemDto {
     @Autowired
     private ProductService productService;
     @Autowired
-    private InventService inventService;
+    private InventoryService inventoryService;
     @Autowired
     private OrderService orderService;
+    @Transactional(rollbackFor = ApiException.class)
     public int addNew(List<OrderItemForm> orderItemForms) throws ApiException {
         validate(orderItemForms);
-        OrderPojo orderPojo = new OrderPojo();
-        orderService.add(orderPojo);
+        OrderPojo orderPojo = orderService.add();
         int thisOrderId = orderPojo.getId();
 
         for(OrderItemForm f:orderItemForms) {
@@ -46,7 +49,7 @@ public class OrderItemDto {
             orderItemForms.get(i).setBarcode(StringUtil.toLowerCase(orderItemForms.get(i).getBarcode()));
             //inventory check
             ProductPojo productPojo = productService.getIdByBarcode(orderItemForms.get(i).getBarcode());
-            int availableQuantity = inventService.get(productPojo.getId()).getQuantity();
+            int availableQuantity = inventoryService.get(productPojo.getId()).getQuantity();
             if(availableQuantity < orderItemForms.get(i).getQuantity()){
                 throw new ApiException("Invalid " +  orderItemForms.get(i).getBarcode() +" Count. Available Items = " + availableQuantity);
             }
@@ -61,7 +64,7 @@ public class OrderItemDto {
             throw new ApiException("Quantity should be a natural number");
         }
         ProductPojo productPojo = productService.getIdByBarcode(orderItemForm.getBarcode());
-        int availableQuantity = inventService.get(productPojo.getId()).getQuantity();
+        int availableQuantity = inventoryService.get(productPojo.getId()).getQuantity();
         if(availableQuantity < orderItemForm.getQuantity()){
             throw new ApiException("Not enough items. Available Items = " + availableQuantity);
         }

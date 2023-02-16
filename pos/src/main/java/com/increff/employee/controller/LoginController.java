@@ -20,7 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.increff.employee.model.InfoData;
 import com.increff.employee.model.LoginForm;
 import com.increff.employee.pojo.UserPojo;
-import com.increff.employee.service.ApiException;
+import com.increff.employee.util.ApiException;
 import com.increff.employee.service.UserService;
 import com.increff.employee.util.SecurityUtil;
 import com.increff.employee.util.UserPrincipal;

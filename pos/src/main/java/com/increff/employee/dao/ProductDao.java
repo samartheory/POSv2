@@ -1,7 +1,7 @@
 package com.increff.employee.dao;
 
 import com.increff.employee.pojo.ProductPojo;
-import com.increff.employee.service.ApiException;
+import com.increff.employee.util.ApiException;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -22,7 +22,7 @@ public class ProductDao extends AbstractDao {
 	@PersistenceContext
 	private EntityManager em;
 
-	@Transactional(rollbackFor = ApiException.class)
+	@Transactional
 	public void insert(ProductPojo p) {
 		em.persist(p);
 	}
@@ -49,7 +49,7 @@ public class ProductDao extends AbstractDao {
 		TypedQuery<ProductPojo> query = getQuery(SELECT_ALL, ProductPojo.class);
 		return query.getResultList();
 	}
-	@Transactional(rollbackFor = ApiException.class)
+	@Transactional
 	public void update(ProductPojo p) {
 	}
 }

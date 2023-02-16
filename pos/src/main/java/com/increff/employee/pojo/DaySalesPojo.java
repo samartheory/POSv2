@@ -15,8 +15,8 @@ import java.time.ZonedDateTime;
 @Table(name = "pos_day_sales")
 public class DaySalesPojo{
 
-    @Id
-    private ZonedDateTime date;
+    @Id//todo make new id variable as id instead of this
+    private ZonedDateTime date;//todo make abstract pojo
     @Column(nullable = false)
     private int invoiced_orders_count;
     @Column(nullable = false)

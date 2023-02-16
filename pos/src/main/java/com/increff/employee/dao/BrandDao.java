@@ -1,11 +1,8 @@
 package com.increff.employee.dao;
 
-import com.increff.employee.service.ApiException;
-import lombok.extern.log4j.Log4j;
 import org.springframework.stereotype.Repository;
 import com.increff.employee.pojo.BrandPojo;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,10 +15,10 @@ public class BrandDao extends AbstractDao {
 	private static final String SELECT_ID = "select p from BrandPojo p where id=:id";
 	private static final String SELECT_ALL = "select p from BrandPojo p";
 	private static final String SELECT_BY_BRAND_CAT = "select p from BrandPojo p where brand = : brand and category = : category";
-	@PersistenceContext
-	private EntityManager em;
-
-	@Transactional(rollbackFor = ApiException.class)
+//	@PersistenceContext
+//	private EntityManager em;
+//todo remove em from dao layers
+	@Transactional
 	public void insert(BrandPojo p) {
 			em.persist(p);
 //			TODO: configure log4j
@@ -33,7 +30,7 @@ public class BrandDao extends AbstractDao {
 		query.setParameter("category", category);
 		return getSingle(query);
 	}
-	@Transactional(rollbackFor = ApiException.class)
+	@Transactional
 	public int delete(int id) {
 		Query query = em.createQuery(DELETE_ID);
 		query.setParameter("id", id);
@@ -55,7 +52,7 @@ public class BrandDao extends AbstractDao {
 		TypedQuery<BrandPojo> query = getQuery(SELECT_ALL, BrandPojo.class);
 		return query.getResultList();
 	}
-	@Transactional(rollbackFor = ApiException.class)
+	@Transactional
 	public void update(BrandPojo p) {
 	}
 

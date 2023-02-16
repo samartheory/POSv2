@@ -1,14 +1,10 @@
 package com.increff.employee.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import com.increff.employee.dao.BrandDao;
 import com.increff.employee.dto.BrandDto;
 import com.increff.employee.model.BrandData;
 import com.increff.employee.model.BrandForm;
-import com.increff.employee.pojo.BrandPojo;
-import com.increff.employee.service.BrandService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 
-import com.increff.employee.service.ApiException;
+import com.increff.employee.util.ApiException;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -29,9 +25,9 @@ import io.swagger.annotations.ApiOperation;
 //edit in order item not working
 //add download invoice button
 //todo toasts
-
-//todo inventory edit option not working
+//inventory edit option not working
 //decimal checks in quantity
+//todo upload not working in some part
 
 /*mid*/
 //todo make a abstract class that has timestamp for each update, delete
@@ -61,7 +57,7 @@ public class BrandApiController {
     @RequestMapping(path = "/api/brand/{id}", method = RequestMethod.DELETE)
     // /api/1
     public void delete(@PathVariable int id) {
-        dto.delete(id);
+        dto.delete(id);//todo remove delete from brand product and inventory
     }
 
     @ApiOperation(value = "Gets an brand by ID")

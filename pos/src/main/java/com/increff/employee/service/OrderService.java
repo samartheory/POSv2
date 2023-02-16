@@ -1,14 +1,13 @@
 package com.increff.employee.service;
 
 import com.increff.employee.dao.OrderDao;
-import com.increff.employee.pojo.OrderItemPojo;
 import com.increff.employee.pojo.OrderPojo;
-import com.increff.employee.util.StringUtil;
+import com.increff.employee.util.ApiException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import org.springframework.transaction.annotation.Transactional;
-import java.time.LocalDateTime;
+
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -22,12 +21,13 @@ public class OrderService {
 	private OrderDao dao;
 
 	@Transactional(rollbackFor = ApiException.class)
-	public void add(OrderPojo p) throws ApiException {
+	public OrderPojo add() throws ApiException {
 //		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-		ZonedDateTime now = ZonedDateTime.now();
-		p.setTime(now);
+		OrderPojo p = new OrderPojo();
+		p.setTime(ZonedDateTime.now());
 		p.setStatus(false);
 		dao.insert(p);
+		return p;
 	}
 
 	@Transactional(rollbackFor = ApiException.class)
@@ -45,7 +45,7 @@ public class OrderService {
 		}
 	}
 
-	@Transactional(rollbackFor = ApiException.class)
+	@Transactional
 	public OrderPojo get(int id) throws ApiException {
 		return getCheck(id);
 	}
@@ -55,12 +55,6 @@ public class OrderService {
 		return dao.selectAll();
 	}
 
-	@Transactional(rollbackFor = ApiException.class)
-	public void update(int id, OrderPojo p) throws ApiException {
-//		normalize(p);
-		OrderPojo ex = getCheck(id);
-		dao.update(ex);
-	}
 
 	@Transactional(readOnly = true)
 	public OrderPojo getCheck(int id) throws ApiException {
@@ -78,7 +72,7 @@ public class OrderService {
 	public List<OrderPojo> getByDate(String start,String end) {
 		List<OrderPojo> orderPojoList = getAll();
 		List<OrderPojo> toReturn = new ArrayList<>();
-
+//todo move the below logic into a private function
 		if(start == "" && end == ""){
 			return orderPojoList;
 		}
@@ -108,7 +102,7 @@ public class OrderService {
 		}
 		return toReturn;
 	}
-	public String zoneDateToString(ZonedDateTime time){
+	private String zoneDateToString(ZonedDateTime time){
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		String formattedString = time.format(formatter);
 		return formattedString;

@@ -38,11 +38,11 @@ com\increff\employee\dto\BrandDtoHelper.class
 com\increff\employee\model\InfoData.class
 com\increff\employee\model\InventData.class
 com\increff\employee\dto\OrderDto.class
-com\increff\employee\service\InventService.class
 com\increff\employee\controller\daySalesReportController.class
 com\increff\employee\controller\AppRestControllerAdvice.class
 com\increff\employee\dao\DaySalesDao.class
 com\increff\employee\spring\WebInitializer.class
+com\increff\employee\util\ApiException.class
 com\increff\employee\util\UserPrincipal.class
 com\increff\employee\pojo\ProductPojo.class
 com\increff\employee\controller\ReportsApiController.class
@@ -53,6 +53,7 @@ com\increff\employee\model\ProductData.class
 com\increff\employee\model\MessageData.class
 com\increff\employee\dao\BrandDao.class
 com\increff\employee\controller\OrderApiController.class
+com\increff\employee\service\InventoryService.class
 com\increff\employee\service\OrderService.class
 com\increff\employee\dao\OrderItemDao.class
 com\increff\employee\dto\InventDto.class
@@ -62,7 +63,6 @@ com\increff\employee\util\IOUtil.class
 com\increff\employee\model\BrandForm.class
 com\increff\employee\dto\DaySalesDto.class
 com\increff\employee\pojo\UserPojo.class
-com\increff\employee\service\ApiException.class
 com\increff\employee\controller\BrandApiController.class
 com\increff\employee\model\OrderItemDataForInvoice.class
 com\increff\employee\controller\InventApiController.class

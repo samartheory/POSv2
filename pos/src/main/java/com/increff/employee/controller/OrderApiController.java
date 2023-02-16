@@ -2,7 +2,7 @@ package com.increff.employee.controller;
 
 import com.increff.employee.dto.OrderDto;
 import com.increff.employee.model.OrderData;
-import com.increff.employee.service.ApiException;
+import com.increff.employee.util.ApiException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;

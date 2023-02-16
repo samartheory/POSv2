@@ -3,7 +3,7 @@ package com.increff.employee.controller;
 import com.increff.employee.dto.InventDto;
 import com.increff.employee.model.InventData;
 import com.increff.employee.model.InventForm;
-import com.increff.employee.service.ApiException;
+import com.increff.employee.util.ApiException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,7 +47,6 @@ public class InventApiController {
     @ApiOperation(value = "Updates an Invent")
     @RequestMapping(path = "/api/invent/{id}", method = RequestMethod.PUT)
     public void update(@PathVariable int id,@RequestBody int newQuantity) throws ApiException {
-        System.out.println("inside api");
         dto.update(id,newQuantity);
     }
 }

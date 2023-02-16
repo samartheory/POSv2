@@ -4,7 +4,7 @@ import com.increff.employee.model.DaySalesData;
 import com.increff.employee.pojo.DaySalesPojo;
 import com.increff.employee.pojo.OrderItemPojo;
 import com.increff.employee.pojo.OrderPojo;
-import com.increff.employee.service.ApiException;
+import com.increff.employee.util.ApiException;
 import com.increff.employee.service.DaySalesService;
 import com.increff.employee.service.OrderItemService;
 import com.increff.employee.service.OrderService;
@@ -28,27 +28,23 @@ public class DaySalesDto {
     @Autowired
     private OrderItemService orderItemService;
     public void add() throws ApiException {
-        ZonedDateTime prevDateStart = getPrevStartEnd(true);
+        ZonedDateTime prevDateStart = getPrevStartEnd(true);//todo make 2 functions
         ZonedDateTime prevDateEnd = getPrevStartEnd(false);
-        System.out.println(prevDateStart+ " "+ prevDateEnd);
         List<OrderPojo> orderPojos = orderService.getBetweenDates(prevDateStart, prevDateEnd);
-        System.out.println(orderPojos.size());
-        if (orderPojos.size() == 0) {
+        if (orderPojos.isEmpty()) {
             return;
         }
-        int prevDayOrderCount = 0;
         int prevDayOrderItemsCount = 0;
         double totalRevenue = 0;
         for (OrderPojo orderPojo : orderPojos) {
-            prevDayOrderCount += 1;
             List<OrderItemPojo> orderItemPojos = orderItemService.getAllWithId(orderPojo.getId());
             for (OrderItemPojo orderItemPojo : orderItemPojos) {
                 prevDayOrderItemsCount += orderItemPojo.getQuantity();
                 totalRevenue += orderItemPojo.getMrp();
             }
         }
-        DaySalesPojo daySalesPojo = convert(prevDateStart, prevDayOrderCount, prevDayOrderItemsCount, totalRevenue);
-        if(daySalesService.presentWithDate(prevDateStart)) {
+        DaySalesPojo daySalesPojo = convert(prevDateStart, orderPojos.size(), prevDayOrderItemsCount, totalRevenue);
+        if(daySalesService.presentWithDate(prevDateStart)) {//todo move presentwithdate to add inside service
             daySalesService.add(daySalesPojo);
         }
     }

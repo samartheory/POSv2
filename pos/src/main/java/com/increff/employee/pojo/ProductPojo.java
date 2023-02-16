@@ -11,11 +11,11 @@ import javax.persistence.Id;
 @Setter
 @Entity
 public class ProductPojo {
-
+//todo not null in all pojos
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)//todo generation type table
 	private int id;
-	private String barcode;
+	private String barcode;//todo unique constraints
 	private int brand_category;
 	private String name;
 	private double mrp;

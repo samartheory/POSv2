@@ -4521,14 +4521,14 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:585)
 	... 77 more
 2022-12-29 17:06:12 WARN  AnnotationConfigWebApplicationContext:550 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'documentationPluginsBootstrapper' defined in URL [jar:file:/C:/Users/praja/.m2/repository/io/springfox/springfox-spring-web/2.4.0/springfox-spring-web-2.4.0.jar!/springfox/documentation/spring/web/plugins/DocumentationPluginsBootstrapper.class]: Unsatisfied dependency expressed through constructor parameter 1; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'webMvcRequestHandlerProvider' defined in URL [jar:file:/C:/Users/praja/.m2/repository/io/springfox/springfox-spring-web/2.4.0/springfox-spring-web-2.4.0.jar!/springfox/documentation/spring/web/plugins/WebMvcRequestHandlerProvider.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/web/servlet/config/annotation/DelegatingWebMvcConfiguration.class]: Invocation of init method failed; nested exception is java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'brandApiControllerRef' method 
-public void com.increff.employee.controller.BrandApiControllerRef.add(com.increff.employee.model.BrandForm) throws com.increff.employee.service.ApiException
+public void com.increff.employee.controller.BrandApiControllerRef.add(com.increff.employee.model.BrandForm) throws com.increff.employee.util.ApiException
 to {[/api/brand],methods=[POST]}: There is already 'brandApiController' bean method
-public void com.increff.employee.controller.BrandApiController.add(com.increff.employee.model.BrandForm) throws com.increff.employee.service.ApiException mapped.
+public void com.increff.employee.controller.BrandApiController.add(com.increff.employee.model.BrandForm) throws com.increff.employee.util.ApiException mapped.
 2022-12-29 17:06:12 ERROR DispatcherServlet:502 - Context initialization failed
 org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'documentationPluginsBootstrapper' defined in URL [jar:file:/C:/Users/praja/.m2/repository/io/springfox/springfox-spring-web/2.4.0/springfox-spring-web-2.4.0.jar!/springfox/documentation/spring/web/plugins/DocumentationPluginsBootstrapper.class]: Unsatisfied dependency expressed through constructor parameter 1; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'webMvcRequestHandlerProvider' defined in URL [jar:file:/C:/Users/praja/.m2/repository/io/springfox/springfox-spring-web/2.4.0/springfox-spring-web-2.4.0.jar!/springfox/documentation/spring/web/plugins/WebMvcRequestHandlerProvider.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/web/servlet/config/annotation/DelegatingWebMvcConfiguration.class]: Invocation of init method failed; nested exception is java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'brandApiControllerRef' method 
-public void com.increff.employee.controller.BrandApiControllerRef.add(com.increff.employee.model.BrandForm) throws com.increff.employee.service.ApiException
+public void com.increff.employee.controller.BrandApiControllerRef.add(com.increff.employee.model.BrandForm) throws com.increff.employee.util.ApiException
 to {[/api/brand],methods=[POST]}: There is already 'brandApiController' bean method
-public void com.increff.employee.controller.BrandApiController.add(com.increff.employee.model.BrandForm) throws com.increff.employee.service.ApiException mapped.
+public void com.increff.employee.controller.BrandApiController.add(com.increff.employee.model.BrandForm) throws com.increff.employee.util.ApiException mapped.
 	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:749)
 	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:189)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1193)
@@ -4608,9 +4608,9 @@ public void com.increff.employee.controller.BrandApiController.add(com.increff.e
 	at org.codehaus.plexus.classworlds.launcher.Launcher.main(Launcher.java:347)
 	at org.codehaus.classworlds.Launcher.main(Launcher.java:47)
 Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'webMvcRequestHandlerProvider' defined in URL [jar:file:/C:/Users/praja/.m2/repository/io/springfox/springfox-spring-web/2.4.0/springfox-spring-web-2.4.0.jar!/springfox/documentation/spring/web/plugins/WebMvcRequestHandlerProvider.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/web/servlet/config/annotation/DelegatingWebMvcConfiguration.class]: Invocation of init method failed; nested exception is java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'brandApiControllerRef' method 
-public void com.increff.employee.controller.BrandApiControllerRef.add(com.increff.employee.model.BrandForm) throws com.increff.employee.service.ApiException
+public void com.increff.employee.controller.BrandApiControllerRef.add(com.increff.employee.model.BrandForm) throws com.increff.employee.util.ApiException
 to {[/api/brand],methods=[POST]}: There is already 'brandApiController' bean method
-public void com.increff.employee.controller.BrandApiController.add(com.increff.employee.model.BrandForm) throws com.increff.employee.service.ApiException mapped.
+public void com.increff.employee.controller.BrandApiController.add(com.increff.employee.model.BrandForm) throws com.increff.employee.util.ApiException mapped.
 	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:749)
 	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:189)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1193)
@@ -4631,9 +4631,9 @@ public void com.increff.employee.controller.BrandApiController.add(com.increff.e
 	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:741)
 	... 77 more
 Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/web/servlet/config/annotation/DelegatingWebMvcConfiguration.class]: Invocation of init method failed; nested exception is java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'brandApiControllerRef' method 
-public void com.increff.employee.controller.BrandApiControllerRef.add(com.increff.employee.model.BrandForm) throws com.increff.employee.service.ApiException
+public void com.increff.employee.controller.BrandApiControllerRef.add(com.increff.employee.model.BrandForm) throws com.increff.employee.util.ApiException
 to {[/api/brand],methods=[POST]}: There is already 'brandApiController' bean method
-public void com.increff.employee.controller.BrandApiController.add(com.increff.employee.model.BrandForm) throws com.increff.employee.service.ApiException mapped.
+public void com.increff.employee.controller.BrandApiController.add(com.increff.employee.model.BrandForm) throws com.increff.employee.util.ApiException mapped.
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1628)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:555)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
@@ -4651,9 +4651,9 @@ public void com.increff.employee.controller.BrandApiController.add(com.increff.e
 	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:741)
 	... 94 more
 Caused by: java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'brandApiControllerRef' method 
-public void com.increff.employee.controller.BrandApiControllerRef.add(com.increff.employee.model.BrandForm) throws com.increff.employee.service.ApiException
+public void com.increff.employee.controller.BrandApiControllerRef.add(com.increff.employee.model.BrandForm) throws com.increff.employee.util.ApiException
 to {[/api/brand],methods=[POST]}: There is already 'brandApiController' bean method
-public void com.increff.employee.controller.BrandApiController.add(com.increff.employee.model.BrandForm) throws com.increff.employee.service.ApiException mapped.
+public void com.increff.employee.controller.BrandApiController.add(com.increff.employee.model.BrandForm) throws com.increff.employee.util.ApiException mapped.
 	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.assertUniqueMethodMapping(AbstractHandlerMethodMapping.java:576)
 	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:540)
 	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.registerHandlerMethod(AbstractHandlerMethodMapping.java:264)
@@ -8701,14 +8701,14 @@ java.lang.NoClassDefFoundError: Could not initialize class org.springframework.w
 	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:914)
 	at java.base/java.lang.Thread.run(Thread.java:832)
 2023-01-05 15:13:54 WARN  AnnotationConfigWebApplicationContext:550 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'documentationPluginsBootstrapper' defined in URL [jar:file:/C:/Users/praja/.m2/repository/io/springfox/springfox-spring-web/2.4.0/springfox-spring-web-2.4.0.jar!/springfox/documentation/spring/web/plugins/DocumentationPluginsBootstrapper.class]: Unsatisfied dependency expressed through constructor parameter 1; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'webMvcRequestHandlerProvider' defined in URL [jar:file:/C:/Users/praja/.m2/repository/io/springfox/springfox-spring-web/2.4.0/springfox-spring-web-2.4.0.jar!/springfox/documentation/spring/web/plugins/WebMvcRequestHandlerProvider.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/web/servlet/config/annotation/DelegatingWebMvcConfiguration.class]: Invocation of init method failed; nested exception is java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'orderItemApiController' method 
-public void com.increff.employee.controller.OrderItemApiController.add() throws com.increff.employee.service.ApiException
+public void com.increff.employee.controller.OrderItemApiController.add() throws com.increff.employee.util.ApiException
 to {[/api/Order],methods=[POST]}: There is already 'orderApiController' bean method
-public void com.increff.employee.controller.OrderApiController.add() throws com.increff.employee.service.ApiException mapped.
+public void com.increff.employee.controller.OrderApiController.add() throws com.increff.employee.util.ApiException mapped.
 2023-01-05 15:13:54 ERROR DispatcherServlet:502 - Context initialization failed
 org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'documentationPluginsBootstrapper' defined in URL [jar:file:/C:/Users/praja/.m2/repository/io/springfox/springfox-spring-web/2.4.0/springfox-spring-web-2.4.0.jar!/springfox/documentation/spring/web/plugins/DocumentationPluginsBootstrapper.class]: Unsatisfied dependency expressed through constructor parameter 1; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'webMvcRequestHandlerProvider' defined in URL [jar:file:/C:/Users/praja/.m2/repository/io/springfox/springfox-spring-web/2.4.0/springfox-spring-web-2.4.0.jar!/springfox/documentation/spring/web/plugins/WebMvcRequestHandlerProvider.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/web/servlet/config/annotation/DelegatingWebMvcConfiguration.class]: Invocation of init method failed; nested exception is java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'orderItemApiController' method 
-public void com.increff.employee.controller.OrderItemApiController.add() throws com.increff.employee.service.ApiException
+public void com.increff.employee.controller.OrderItemApiController.add() throws com.increff.employee.util.ApiException
 to {[/api/Order],methods=[POST]}: There is already 'orderApiController' bean method
-public void com.increff.employee.controller.OrderApiController.add() throws com.increff.employee.service.ApiException mapped.
+public void com.increff.employee.controller.OrderApiController.add() throws com.increff.employee.util.ApiException mapped.
 	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:749)
 	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:189)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1193)
@@ -8788,9 +8788,9 @@ public void com.increff.employee.controller.OrderApiController.add() throws com.
 	at org.codehaus.plexus.classworlds.launcher.Launcher.main(Launcher.java:347)
 	at org.codehaus.classworlds.Launcher.main(Launcher.java:47)
 Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'webMvcRequestHandlerProvider' defined in URL [jar:file:/C:/Users/praja/.m2/repository/io/springfox/springfox-spring-web/2.4.0/springfox-spring-web-2.4.0.jar!/springfox/documentation/spring/web/plugins/WebMvcRequestHandlerProvider.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/web/servlet/config/annotation/DelegatingWebMvcConfiguration.class]: Invocation of init method failed; nested exception is java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'orderItemApiController' method 
-public void com.increff.employee.controller.OrderItemApiController.add() throws com.increff.employee.service.ApiException
+public void com.increff.employee.controller.OrderItemApiController.add() throws com.increff.employee.util.ApiException
 to {[/api/Order],methods=[POST]}: There is already 'orderApiController' bean method
-public void com.increff.employee.controller.OrderApiController.add() throws com.increff.employee.service.ApiException mapped.
+public void com.increff.employee.controller.OrderApiController.add() throws com.increff.employee.util.ApiException mapped.
 	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:749)
 	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:189)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1193)
@@ -8811,9 +8811,9 @@ public void com.increff.employee.controller.OrderApiController.add() throws com.
 	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:741)
 	... 77 more
 Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/web/servlet/config/annotation/DelegatingWebMvcConfiguration.class]: Invocation of init method failed; nested exception is java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'orderItemApiController' method 
-public void com.increff.employee.controller.OrderItemApiController.add() throws com.increff.employee.service.ApiException
+public void com.increff.employee.controller.OrderItemApiController.add() throws com.increff.employee.util.ApiException
 to {[/api/Order],methods=[POST]}: There is already 'orderApiController' bean method
-public void com.increff.employee.controller.OrderApiController.add() throws com.increff.employee.service.ApiException mapped.
+public void com.increff.employee.controller.OrderApiController.add() throws com.increff.employee.util.ApiException mapped.
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1628)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:555)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
@@ -8831,9 +8831,9 @@ public void com.increff.employee.controller.OrderApiController.add() throws com.
 	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:741)
 	... 94 more
 Caused by: java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'orderItemApiController' method 
-public void com.increff.employee.controller.OrderItemApiController.add() throws com.increff.employee.service.ApiException
+public void com.increff.employee.controller.OrderItemApiController.add() throws com.increff.employee.util.ApiException
 to {[/api/Order],methods=[POST]}: There is already 'orderApiController' bean method
-public void com.increff.employee.controller.OrderApiController.add() throws com.increff.employee.service.ApiException mapped.
+public void com.increff.employee.controller.OrderApiController.add() throws com.increff.employee.util.ApiException mapped.
 	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.assertUniqueMethodMapping(AbstractHandlerMethodMapping.java:576)
 	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:540)
 	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.registerHandlerMethod(AbstractHandlerMethodMapping.java:264)
@@ -13826,14 +13826,14 @@ java.lang.NoClassDefFoundError: Could not initialize class org.springframework.w
 2023-01-23 00:45:15 WARN  SqlExceptionHelper:137 - SQL Error: 0, SQLState: S1009
 2023-01-23 00:45:15 ERROR SqlExceptionHelper:142 - Connection is read-only. Queries leading to data modification are not allowed
 2023-01-23 12:44:27 WARN  AnnotationConfigWebApplicationContext:550 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'documentationPluginsBootstrapper' defined in URL [jar:file:/C:/Users/praja/.m2/repository/io/springfox/springfox-spring-web/2.4.0/springfox-spring-web-2.4.0.jar!/springfox/documentation/spring/web/plugins/DocumentationPluginsBootstrapper.class]: Unsatisfied dependency expressed through constructor parameter 1; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'webMvcRequestHandlerProvider' defined in URL [jar:file:/C:/Users/praja/.m2/repository/io/springfox/springfox-spring-web/2.4.0/springfox-spring-web-2.4.0.jar!/springfox/documentation/spring/web/plugins/WebMvcRequestHandlerProvider.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/web/servlet/config/annotation/DelegatingWebMvcConfiguration.class]: Invocation of init method failed; nested exception is java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'reportsApiController' method 
-public void com.increff.employee.controller.ReportsApiController.add() throws com.increff.employee.service.ApiException
+public void com.increff.employee.controller.ReportsApiController.add() throws com.increff.employee.util.ApiException
 to {[/api/orders],methods=[POST]}: There is already 'orderApiController' bean method
-public void com.increff.employee.controller.OrderApiController.add() throws com.increff.employee.service.ApiException mapped.
+public void com.increff.employee.controller.OrderApiController.add() throws com.increff.employee.util.ApiException mapped.
 2023-01-23 12:44:27 ERROR DispatcherServlet:502 - Context initialization failed
 org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'documentationPluginsBootstrapper' defined in URL [jar:file:/C:/Users/praja/.m2/repository/io/springfox/springfox-spring-web/2.4.0/springfox-spring-web-2.4.0.jar!/springfox/documentation/spring/web/plugins/DocumentationPluginsBootstrapper.class]: Unsatisfied dependency expressed through constructor parameter 1; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'webMvcRequestHandlerProvider' defined in URL [jar:file:/C:/Users/praja/.m2/repository/io/springfox/springfox-spring-web/2.4.0/springfox-spring-web-2.4.0.jar!/springfox/documentation/spring/web/plugins/WebMvcRequestHandlerProvider.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/web/servlet/config/annotation/DelegatingWebMvcConfiguration.class]: Invocation of init method failed; nested exception is java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'reportsApiController' method 
-public void com.increff.employee.controller.ReportsApiController.add() throws com.increff.employee.service.ApiException
+public void com.increff.employee.controller.ReportsApiController.add() throws com.increff.employee.util.ApiException
 to {[/api/orders],methods=[POST]}: There is already 'orderApiController' bean method
-public void com.increff.employee.controller.OrderApiController.add() throws com.increff.employee.service.ApiException mapped.
+public void com.increff.employee.controller.OrderApiController.add() throws com.increff.employee.util.ApiException mapped.
 	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:749)
 	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:189)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1193)
@@ -13913,9 +13913,9 @@ public void com.increff.employee.controller.OrderApiController.add() throws com.
 	at org.codehaus.plexus.classworlds.launcher.Launcher.main(Launcher.java:347)
 	at org.codehaus.classworlds.Launcher.main(Launcher.java:47)
 Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'webMvcRequestHandlerProvider' defined in URL [jar:file:/C:/Users/praja/.m2/repository/io/springfox/springfox-spring-web/2.4.0/springfox-spring-web-2.4.0.jar!/springfox/documentation/spring/web/plugins/WebMvcRequestHandlerProvider.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/web/servlet/config/annotation/DelegatingWebMvcConfiguration.class]: Invocation of init method failed; nested exception is java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'reportsApiController' method 
-public void com.increff.employee.controller.ReportsApiController.add() throws com.increff.employee.service.ApiException
+public void com.increff.employee.controller.ReportsApiController.add() throws com.increff.employee.util.ApiException
 to {[/api/orders],methods=[POST]}: There is already 'orderApiController' bean method
-public void com.increff.employee.controller.OrderApiController.add() throws com.increff.employee.service.ApiException mapped.
+public void com.increff.employee.controller.OrderApiController.add() throws com.increff.employee.util.ApiException mapped.
 	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:749)
 	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:189)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1193)
@@ -13936,9 +13936,9 @@ public void com.increff.employee.controller.OrderApiController.add() throws com.
 	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:741)
 	... 77 more
 Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/web/servlet/config/annotation/DelegatingWebMvcConfiguration.class]: Invocation of init method failed; nested exception is java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'reportsApiController' method 
-public void com.increff.employee.controller.ReportsApiController.add() throws com.increff.employee.service.ApiException
+public void com.increff.employee.controller.ReportsApiController.add() throws com.increff.employee.util.ApiException
 to {[/api/orders],methods=[POST]}: There is already 'orderApiController' bean method
-public void com.increff.employee.controller.OrderApiController.add() throws com.increff.employee.service.ApiException mapped.
+public void com.increff.employee.controller.OrderApiController.add() throws com.increff.employee.util.ApiException mapped.
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1628)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:555)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
@@ -13956,9 +13956,9 @@ public void com.increff.employee.controller.OrderApiController.add() throws com.
 	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:741)
 	... 94 more
 Caused by: java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'reportsApiController' method 
-public void com.increff.employee.controller.ReportsApiController.add() throws com.increff.employee.service.ApiException
+public void com.increff.employee.controller.ReportsApiController.add() throws com.increff.employee.util.ApiException
 to {[/api/orders],methods=[POST]}: There is already 'orderApiController' bean method
-public void com.increff.employee.controller.OrderApiController.add() throws com.increff.employee.service.ApiException mapped.
+public void com.increff.employee.controller.OrderApiController.add() throws com.increff.employee.util.ApiException mapped.
 	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.assertUniqueMethodMapping(AbstractHandlerMethodMapping.java:576)
 	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:540)
 	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.registerHandlerMethod(AbstractHandlerMethodMapping.java:264)

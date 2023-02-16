@@ -1,7 +1,6 @@
 package com.increff.employee.dao;
 
 import com.increff.employee.pojo.InventPojo;
-import com.increff.employee.service.ApiException;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -22,18 +21,11 @@ public class InventDao extends AbstractDao {
 	@PersistenceContext
 	private EntityManager em;
 
-	@Transactional(rollbackFor = ApiException.class)
+	@Transactional
 	public void insert(InventPojo p) {
 			em.persist(p);
 	}
-	@Transactional(readOnly = true)
-	public InventPojo selectByBrandCategory(String brand, String category) {
-		TypedQuery<InventPojo> query = em().createQuery(SELECT_BY_BRAND_CAT, InventPojo.class);
-		query.setParameter("brand", brand);
-		query.setParameter("category", category);
-		return getSingle(query);
-	}
-	@Transactional(rollbackFor = ApiException.class)
+	@Transactional
 	public int delete(int id) {
 		Query query = em.createQuery(DELETE_ID);
 		query.setParameter("id", id);
@@ -50,7 +42,7 @@ public class InventDao extends AbstractDao {
 		TypedQuery<InventPojo> query = getQuery(SELECT_ALL, InventPojo.class);
 		return query.getResultList();
 	}
-@Transactional(rollbackFor = ApiException.class)
+@Transactional
 	public void update(InventPojo p) {
 	}
 

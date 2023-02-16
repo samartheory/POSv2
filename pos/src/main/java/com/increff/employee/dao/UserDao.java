@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
-import com.increff.employee.service.ApiException;
 import org.springframework.transaction.annotation.Transactional;
 
 import org.springframework.stereotype.Repository;
@@ -21,11 +20,11 @@ public class UserDao extends AbstractDao {
 	private static final String SELECT_ALL = "select p from UserPojo p";
 
 
-	@Transactional(rollbackFor = ApiException.class)
+	@Transactional
 	public void insert(UserPojo p) {
 		em().persist(p);
 	}
-	@Transactional(rollbackFor = ApiException.class)
+	@Transactional
 	public int delete(int id) {
 		Query query = em().createQuery(DELETE_ID);
 		query.setParameter("id", id);
@@ -48,7 +47,7 @@ public class UserDao extends AbstractDao {
 		TypedQuery<UserPojo> query = getQuery(SELECT_ALL, UserPojo.class);
 		return query.getResultList();
 	}
-	@Transactional(rollbackFor = ApiException.class)
+	@Transactional
 	public void update(UserPojo p) {
 	}
 

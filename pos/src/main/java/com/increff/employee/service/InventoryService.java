@@ -1,10 +1,8 @@
 package com.increff.employee.service;
 
 import com.increff.employee.dao.InventDao;
-import com.increff.employee.dao.ProductDao;
 import com.increff.employee.pojo.InventPojo;
-import com.increff.employee.pojo.ProductPojo;
-import com.increff.employee.util.StringUtil;
+import com.increff.employee.util.ApiException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,20 +11,20 @@ import java.util.List;
 import java.util.Objects;
 
 @Service
-public class InventService {
+public class InventoryService {
 
 	@Autowired
 	private InventDao dao;
 
 	@Transactional(rollbackFor = ApiException.class)
 	public void add(InventPojo p) throws ApiException {
-		if(p.getQuantity() == 0) {
-			throw new ApiException("quantity cannot be empty");
+		if(p.getQuantity() < 0) {
+			throw new ApiException("Quantity cannot be negative");
 		}
 		dao.insert(p);
 	}
 	//TODO: if we add an already existing product into the inventory than it adds new and old quantity
-	@Transactional(readOnly = true)
+	@Transactional
 	public void delete(int id) {
 		dao.delete(id);
 	}
@@ -47,7 +45,7 @@ public class InventService {
 		ex.setQuantity(newQuantity);
 		dao.update(ex);
 	}
-	@Transactional(rollbackFor = ApiException.class)
+	@Transactional(rollbackFor = ApiException.class)//todo remove 1 update fucntion
 	public void updateQuantity(int id,int newQuantity) throws ApiException {
 		InventPojo inventPojo = get(id);
 		inventPojo.setQuantity(newQuantity);

@@ -1,13 +1,13 @@
 package com.increff.employee.dto;
 import com.increff.employee.model.InvoiceData;
 import com.increff.employee.model.OrderData;
-import com.increff.employee.model.OrderItemData;
 import com.increff.employee.model.OrderItemDataForInvoice;
 import com.increff.employee.pojo.InventPojo;
 import com.increff.employee.pojo.OrderItemPojo;
 import com.increff.employee.pojo.OrderPojo;
 import com.increff.employee.pojo.ProductPojo;
 import com.increff.employee.service.*;
+import com.increff.employee.util.ApiException;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
@@ -20,11 +20,8 @@ import com.google.gson.Gson;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.http.HttpClient;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import static com.increff.employee.dto.OrderDtoHelper.convert;
 import static com.increff.employee.dto.OrderDtoHelper.getAllConverter;
@@ -36,13 +33,10 @@ public class OrderDto {
     @Autowired
     private OrderItemService orderItemService;
     @Autowired
-    private InventService inventService;
+    private InventoryService inventoryService;
     @Autowired
     private ProductService productService;
-    public void add() throws ApiException {
-        OrderPojo p = new OrderPojo();
-        orderService.add(p);
-    }
+
     @Transactional(rollbackFor = ApiException.class)
     public void place(int id) throws ApiException {
         List<OrderItemPojo>orderItemPojoList = orderItemService.getAllWithId(id);
@@ -50,16 +44,16 @@ public class OrderDto {
             throw new ApiException("Order doesn't have any items");
         }
         for(OrderItemPojo p:orderItemPojoList){
-            InventPojo inventPojo = inventService.get(p.getProductId());
+            InventPojo inventPojo = inventoryService.get(p.getProductId());
             int availableQuantity = inventPojo.getQuantity();
             if(availableQuantity - p.getQuantity() < 0){
                 throw new ApiException("Not enough items, Available item(s) = " + availableQuantity);
             }
-            inventService.updateQuantity(p.getProductId(),availableQuantity-p.getQuantity());
+            inventoryService.updateQuantity(p.getProductId(),availableQuantity-p.getQuantity());
         }
         orderService.place(id);
     }
-    public void delete(int id) {
+    public void delete(int id) {//todo also delete corresponding orderitems
         orderService.delete(id);
     }
 

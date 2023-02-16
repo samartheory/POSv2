@@ -47,7 +47,7 @@ console.log(json)
 	$.ajax({
 	   url: url,
 	   type: 'PUT',
-	   data: json,
+	   data: quantity,
 	   headers: {
        	'Content-Type': 'application/json'
        },	   

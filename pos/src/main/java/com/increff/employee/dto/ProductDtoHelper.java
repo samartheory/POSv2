@@ -4,14 +4,9 @@ import com.increff.employee.model.ProductData;
 import com.increff.employee.model.ProductForm;
 import com.increff.employee.pojo.BrandPojo;
 import com.increff.employee.pojo.ProductPojo;
-import com.increff.employee.service.ApiException;
+import com.increff.employee.util.ApiException;
 import com.increff.employee.service.BrandService;
-import com.increff.employee.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class ProductDtoHelper {
     @Autowired
