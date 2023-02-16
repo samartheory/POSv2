@@ -68,7 +68,11 @@ public class OrderItemDto {
         orderItemService.add(productToOrderItem(productPojo,orderItemForm));
     }
 
-    public void delete(int id) {
+    public void delete(int id) throws ApiException {
+        int orderId = orderItemService.get(id).getOrderId();
+        if(orderItemService.getAllWithId(orderId).size() == 1){
+            throw new ApiException("Order can't be empty");
+        }
         orderItemService.delete(id);
     }
 
@@ -76,7 +80,19 @@ public class OrderItemDto {
         OrderItemPojo p = orderItemService.get(id);
         return convert(p);
     }
-
+public void update(int id,int newQuantity) throws ApiException {
+        if(newQuantity <= 0){
+            throw new ApiException("Invalid Quantity");
+        }
+        OrderItemPojo newPojo = new OrderItemPojo();
+        OrderItemPojo oldPojo = orderItemService.get(id);
+        newPojo.setOrderId(oldPojo.getOrderId());
+        newPojo.setQuantity(newQuantity);
+        newPojo.setId(oldPojo.getId());
+        newPojo.setMrp(oldPojo.getMrp());
+        newPojo.setProductId(oldPojo.getProductId());
+        orderItemService.update(id,newPojo);
+    }
     public List<OrderItemData> getAll() throws ApiException {
         return getAllConverter(orderItemService);
     }

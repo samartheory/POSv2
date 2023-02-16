@@ -26,7 +26,7 @@ import io.swagger.annotations.ApiOperation;
 //make scheduler which updates every 1 day(5 minutes for testing) even if there are no orders
 //todo write tests for dto
 //todo make login system
-//todo edit in order item not working
+//edit in order item not working
 //add download invoice button
 //todo toasts
 

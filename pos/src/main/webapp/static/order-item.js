@@ -3,6 +3,7 @@ function getOrderItemUrl(){
 	var baseUrl = $("meta[name=baseUrl]").attr("content")
 	return baseUrl + "/api/orderitem";
 }
+
 function getPlaceUrl(){
 	var baseUrl = $("meta[name=baseUrl]").attr("content")
 	return baseUrl + "/api/orders/";
@@ -47,7 +48,7 @@ function addOrderItem(event){
 	var $form = $("#order-item-form");
 	document.getElementById("inputId").value = orderIdFromUrl();
 	var json = toJson($form);
-	console.dir(json);
+	console.log(json);
 	var url = getOrderItemUrl();
 	$.ajax({
 	   url: url,
@@ -66,24 +67,27 @@ function addOrderItem(event){
 }
 
 function updateOrderItem(event){
-	$('#edit-order-item-modal').modal('toggle');
+	$('#order-item-edit-form').modal('toggle');
 	//Get the ID
 	var id = $("#order-item-edit-form input[name=id]").val();
 	var url = getOrderItemUrl() + "/" + id;
-
+    var newQ = $("#order-item-edit-form input[name=quantity]").val();
+    console.log(newQ)
 	//Set the values to update
-	var $form = $("#order-item-edit-form");
-	var json = toJson($form);
-
+//	var $form = $("#order-item-edit-form");
+//	var json = toJson($form);
+    var jsontext = '{"quantity":"'+newQ+'"}'
+    const json = JSON.parse(jsontext);
+    console.log(jsontext)
 	$.ajax({
 	   url: url,
 	   type: 'PUT',
-	   data: json,
+	   data: newQ,
 	   headers: {
        	'Content-Type': 'application/json'
        },	   
 	   success: function(response) {
-	   		getOrderItemList(id);
+	   		location.reload()
 	   },
 	   error: handleAjaxError
 	});
@@ -95,6 +99,7 @@ function getOrderItemListHelper(){
     getOrderItemList(Number(orderIdFromUrl()));
 }
 function getOrderItemList(id){
+    console.log("atl")
 	var url = getOrderItemUrl()+"/with/"+id;
 	$.ajax({
 	   url: url,
@@ -179,6 +184,7 @@ function redirect(id){
 //UI DISPLAY METHODS
 
 function displayOrderItemList(data){
+console.log("disp")
 	var $tbody = $('#order-item-table').find('tbody');
 	$tbody.empty();
 	for(var i in data){
@@ -243,9 +249,10 @@ function displayUploadData(){
 }
 
 function displayOrderItem(data){
-	$("#order-item-edit-form input[name=barcode]").val(data.barcode);
+console.log(data)
+	$("#order-item-edit-form input[name=id]").val(data.id);
 	$("#order-item-edit-form input[name=quantity]").val(data.quantity);
-	$('#edit-order-item-modal').modal('toggle');
+	$('#order-item-edit-form').modal('toggle');
 }
 
 //INITIALIZATION CODE
