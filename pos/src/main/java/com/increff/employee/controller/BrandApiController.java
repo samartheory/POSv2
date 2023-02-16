@@ -27,7 +27,7 @@ import io.swagger.annotations.ApiOperation;
 //todo toasts
 //inventory edit option not working
 //decimal checks in quantity
-//todo upload not working in some part
+//upload not working in some part
 
 /*mid*/
 //todo make a abstract class that has timestamp for each update, delete
