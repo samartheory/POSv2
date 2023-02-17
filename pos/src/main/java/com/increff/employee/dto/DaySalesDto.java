@@ -28,8 +28,8 @@ public class DaySalesDto {
     @Autowired
     private OrderItemService orderItemService;
     public void add() throws ApiException {
-        ZonedDateTime prevDateStart = getPrevStartEnd(true);//todo make 2 functions
-        ZonedDateTime prevDateEnd = getPrevStartEnd(false);
+        ZonedDateTime prevDateStart = getPrevStart();
+        ZonedDateTime prevDateEnd = getPrevEnd();
         List<OrderPojo> orderPojos = orderService.getBetweenDates(prevDateStart, prevDateEnd);
         if (orderPojos.isEmpty()) {
             return;
@@ -58,15 +58,13 @@ public class DaySalesDto {
         return daySalesDataList;
     }
 
-    private ZonedDateTime getPrevStartEnd(boolean flag) {
-        if (flag) {
+    private ZonedDateTime getPrevStart() {
             return LocalDate.now().minusDays(1).atStartOfDay(ZoneId.systemDefault());
-        }
-        else {
-            return LocalDate.now().minusDays(1).atStartOfDay(ZoneId.systemDefault()).withHour(23).withMinute(59).withSecond(59);
-        }
     }
+    private ZonedDateTime getPrevEnd() {
+            return LocalDate.now().minusDays(1).atStartOfDay(ZoneId.systemDefault()).withHour(23).withMinute(59).withSecond(59);
 
+    }
     private DaySalesData convert(DaySalesPojo daySalesPojo) {
         DaySalesData daySalesData = new DaySalesData();
         daySalesData.setDate(daySalesPojo.getDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));

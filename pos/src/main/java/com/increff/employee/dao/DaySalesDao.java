@@ -17,12 +17,10 @@ public class DaySalesDao extends AbstractDao {
 	private static final String SELECT_WITH_DATE = "select p from DaySalesPojo p where date=:date";
 
 
-	@PersistenceContext
-	private EntityManager entityManager;
 
 	@Transactional
 	public void insert(DaySalesPojo daySalesPojo) {
-		entityManager.persist(daySalesPojo);
+		em.persist(daySalesPojo);
 	}
 
 	@Transactional(readOnly = true)

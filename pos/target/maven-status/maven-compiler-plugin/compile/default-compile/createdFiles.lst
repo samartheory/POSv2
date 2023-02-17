@@ -13,7 +13,6 @@ com\increff\employee\model\OrderData.class
 com\increff\employee\dao\UserDao.class
 com\increff\employee\controller\ProductApiController.class
 com\increff\employee\model\InvoiceData.class
-com\increff\employee\scheduler\DaySalesScheduler.class
 com\increff\employee\controller\InitApiController.class
 com\increff\employee\pojo\OrderPojo.class
 com\increff\employee\controller\SampleController.class
@@ -38,6 +37,7 @@ com\increff\employee\dto\BrandDtoHelper.class
 com\increff\employee\model\InfoData.class
 com\increff\employee\model\InventData.class
 com\increff\employee\dto\OrderDto.class
+com\increff\employee\spring\SecurityConfig.class
 com\increff\employee\controller\daySalesReportController.class
 com\increff\employee\controller\AppRestControllerAdvice.class
 com\increff\employee\dao\DaySalesDao.class
@@ -77,3 +77,4 @@ com\increff\employee\controller\AppUiController.class
 com\increff\employee\dto\OrderDtoHelper.class
 com\increff\employee\controller\LoginController.class
 com\increff\employee\model\OrderItemData.class
+com\increff\employee\spring\SpringSecurityInitializer.class

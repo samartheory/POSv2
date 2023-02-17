@@ -23,7 +23,6 @@ public class InventoryService {
 		}
 		dao.insert(p);
 	}
-	//TODO: if we add an already existing product into the inventory than it adds new and old quantity
 	@Transactional
 	public void delete(int id) {
 		dao.delete(id);

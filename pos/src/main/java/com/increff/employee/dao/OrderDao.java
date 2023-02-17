@@ -21,9 +21,6 @@ public class OrderDao extends AbstractDao {
 	private static final String SELECT_ALL_ORDER_DATE = "select p from OrderPojo p where time >= :startDate and time <= :endDate and status = true";
 
 
-	@PersistenceContext
-	private EntityManager em;
-
 	@Transactional
 	public void insert(OrderPojo p) {
 		em.persist(p);

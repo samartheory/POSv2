@@ -19,7 +19,7 @@ public class DaySalesService {
 
     @Transactional(rollbackFor = ApiException.class)
     public void add(DaySalesPojo daySalesPojo) throws ApiException {
-        daySalesDao.insert(daySalesPojo);
+            daySalesDao.insert(daySalesPojo);
     }
     @Transactional(readOnly = true)
     public boolean presentWithDate(ZonedDateTime time){

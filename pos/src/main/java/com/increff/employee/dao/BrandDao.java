@@ -11,13 +11,10 @@ import java.util.List;
 @Repository
 public class BrandDao extends AbstractDao {
 
-	private static final String DELETE_ID = "delete from BrandPojo p where id=:id";
 	private static final String SELECT_ID = "select p from BrandPojo p where id=:id";
 	private static final String SELECT_ALL = "select p from BrandPojo p";
 	private static final String SELECT_BY_BRAND_CAT = "select p from BrandPojo p where brand = : brand and category = : category";
-//	@PersistenceContext
-//	private EntityManager em;
-//todo remove em from dao layers
+
 	@Transactional
 	public void insert(BrandPojo p) {
 			em.persist(p);
@@ -30,12 +27,7 @@ public class BrandDao extends AbstractDao {
 		query.setParameter("category", category);
 		return getSingle(query);
 	}
-	@Transactional
-	public int delete(int id) {
-		Query query = em.createQuery(DELETE_ID);
-		query.setParameter("id", id);
-		return query.executeUpdate();
-	}
+
 //	public BrandPojo selectByCat(String category) {
 //		TypedQuery<BrandPojo> query = em().createQuery(SELECT_BY_CAT, BrandPojo.class);
 //		query.setParameter("category", category);

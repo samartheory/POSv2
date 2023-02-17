@@ -19,9 +19,6 @@ public class ProductDao extends AbstractDao {
 	private static final String SELECT_ALL = "select p from ProductPojo p";
 	private static final String SELECT_BY_BARCODE = "select p from ProductPojo p where barcode = : barcode";
 
-	@PersistenceContext
-	private EntityManager em;
-
 	@Transactional
 	public void insert(ProductPojo p) {
 		em.persist(p);

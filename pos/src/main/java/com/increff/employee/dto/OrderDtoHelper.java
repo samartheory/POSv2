@@ -2,7 +2,6 @@ package com.increff.employee.dto;
 
 import com.increff.employee.model.OrderData;
 import com.increff.employee.pojo.OrderPojo;
-import com.increff.employee.service.OrderService;
 
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
@@ -11,8 +10,7 @@ import java.util.List;
 
 public class OrderDtoHelper {
 
-    public static List<OrderData> getAllConverter(OrderService orderService) {
-        List<OrderPojo> list = orderService.getAll();
+    public static List<OrderData> getAllConverter(List<OrderPojo> list) {
         List<OrderData> list2 = new ArrayList<OrderData>();
         for (OrderPojo p : list) {
             list2.add(convert(p));

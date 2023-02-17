@@ -31,14 +31,12 @@ public class OrderItemDto {
     public int addNew(List<OrderItemForm> orderItemForms) throws ApiException {
         validate(orderItemForms);
         OrderPojo orderPojo = orderService.add();
-        int thisOrderId = orderPojo.getId();
 
         for(OrderItemForm f:orderItemForms) {
             ProductPojo productPojo = productService.getIdByBarcode(f.getBarcode());
-            f.setOrderId(thisOrderId);
-            orderItemService.add(productToOrderItem(productPojo, f));
+            orderItemService.add(OrderItemDtoHelper.productToOrderItem(productPojo, f,orderPojo.getId()));
         }
-        return thisOrderId;
+        return orderPojo.getId();
     }
     private void validate(List<OrderItemForm> orderItemForms) throws ApiException {
         for(int i=0;i<orderItemForms.size();i++){
@@ -68,7 +66,7 @@ public class OrderItemDto {
         if(availableQuantity < orderItemForm.getQuantity()){
             throw new ApiException("Not enough items. Available Items = " + availableQuantity);
         }
-        orderItemService.add(productToOrderItem(productPojo,orderItemForm));
+        orderItemService.add(productToOrderItem(productPojo,orderItemForm, orderItemForm.getOrderId()));
     }
 
     public void delete(int id) throws ApiException {
@@ -87,22 +85,30 @@ public void update(int id,int newQuantity) throws ApiException {
         if(newQuantity <= 0){
             throw new ApiException("Invalid Quantity");
         }
-        OrderItemPojo newPojo = new OrderItemPojo();
         OrderItemPojo oldPojo = orderItemService.get(id);
+        if(newQuantity > inventoryService.get(oldPojo.getProductId()).getQuantity()){
+            throw new ApiException("Not enough quantity in inventory");
+        }
+        OrderItemPojo newPojo = new OrderItemPojo();
+        updateHelper(newPojo,newQuantity,oldPojo);
+        orderItemService.update(id,newPojo);
+    }
+
+    private void updateHelper(OrderItemPojo newPojo, int newQuantity, OrderItemPojo oldPojo) {
         newPojo.setOrderId(oldPojo.getOrderId());
         newPojo.setQuantity(newQuantity);
         newPojo.setId(oldPojo.getId());
         newPojo.setMrp(oldPojo.getMrp());
         newPojo.setProductId(oldPojo.getProductId());
-        orderItemService.update(id,newPojo);
     }
+
     public List<OrderItemData> getAll() throws ApiException {
-        return getAllConverter(orderItemService);
+        return getAllConverter();
     }
     public List<OrderItemData> getAllWithId(int id) throws ApiException {
-        return getAllWithIdConverter(orderItemService,id);
+        return getAllWithIdConverter(id);
     }
-    public List<OrderItemData> getAllConverter(OrderItemService orderItemService) throws ApiException {
+    private List<OrderItemData> getAllConverter() throws ApiException {
         List<OrderItemPojo> list = orderItemService.getAll();
         List<OrderItemData> list2 = new ArrayList<OrderItemData>();
         for (OrderItemPojo p : list) {
@@ -110,7 +116,7 @@ public void update(int id,int newQuantity) throws ApiException {
         }
         return list2;
     }
-    public List<OrderItemData> getAllWithIdConverter(OrderItemService orderItemService,int id) throws ApiException {
+    private List<OrderItemData> getAllWithIdConverter(int id) throws ApiException {
         List<OrderItemPojo> list = orderItemService.getAllWithId(id);
         List<OrderItemData> list2 = new ArrayList<OrderItemData>();
         for (OrderItemPojo p : list) {
@@ -118,14 +124,14 @@ public void update(int id,int newQuantity) throws ApiException {
         }
         return list2;
     }
-    public OrderItemData convert(OrderItemPojo orderItemPojo) throws ApiException {
+    private OrderItemData convert(OrderItemPojo orderItemPojo) throws ApiException {
+        ProductPojo productPojo = productService.getCheck(orderItemPojo.getProductId());//todo pass product pojo into a helper function
         OrderItemData orderItemData = new OrderItemData();
         orderItemData.setOrderId(orderItemPojo.getOrderId());
         orderItemData.setId(orderItemPojo.getId());
         orderItemData.setProductId(orderItemPojo.getProductId());
         orderItemData.setQuantity(orderItemPojo.getQuantity());
         orderItemData.setMrp(orderItemPojo.getMrp());
-        ProductPojo productPojo = productService.getCheck(orderItemPojo.getProductId());
         orderItemData.setBarcode(productPojo.getBarcode());
         return orderItemData;
     }

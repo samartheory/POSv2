@@ -29,10 +29,6 @@ public class BrandService {
 		dao.insert(p);
 	}
 
-	@Transactional(readOnly = true)//todo remove delete from service layer
-	public void delete(int id) {
-		dao.delete(id);
-	}
 
 	@Transactional(readOnly = true)
 	public BrandPojo get(int id) throws ApiException {

@@ -12,5 +12,6 @@ public class InventPojo {
 
 	@Id
 	private int id;
+	@Column(nullable = false)
 	private int quantity;
 }

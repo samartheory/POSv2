@@ -19,9 +19,6 @@ public class BrandDto {
         brandService.add(BrandDtoHelper.convert(brandForm));
     }
 
-    public void delete(int id) {
-        brandService.delete(id);
-    }
 
     public BrandData get(int id) throws ApiException {
         return BrandDtoHelper.convert(brandService.get(id));

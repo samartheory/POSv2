@@ -18,8 +18,6 @@ public class OrderItemDao extends AbstractDao {
 	private static final String SELECT_ALL = "select p from OrderItemPojo p";
 	private static final String SELECT_BY_PRODUCT_ID = "select p from OrderItemPojo p where productId=:id";
 	private static final String SELECT_ALL_WITH_ORDER_ID = "select p from OrderItemPojo p where orderId=:id";
-	@PersistenceContext
-	private EntityManager em;
 
 	@Transactional
 	public void insert(OrderItemPojo p) {

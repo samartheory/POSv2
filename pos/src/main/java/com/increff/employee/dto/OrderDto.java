@@ -53,7 +53,12 @@ public class OrderDto {
         }
         orderService.place(id);
     }
-    public void delete(int id) {//todo also delete corresponding orderitems
+    @Transactional
+    public void delete(int id) {
+        List<OrderItemPojo> orderItemPojoList = orderItemService.getAllWithId(id);
+        for(OrderItemPojo p : orderItemPojoList){
+            orderItemService.delete(p.getId());
+        }
         orderService.delete(id);
     }
 
@@ -61,7 +66,7 @@ public class OrderDto {
         OrderPojo p = orderService.get(id);
         return convert(p);
     }
-    public String getPdfString(int id) throws ApiException, IOException {
+    public String getPdfString(int id) throws ApiException, IOException {//todo put this in client layer
         OrderPojo orderPojo = orderService.get(id);
         if(!orderPojo.isStatus()){
             throw new ApiException("Order is not yet placed");
@@ -92,7 +97,7 @@ public class OrderDto {
         for(OrderItemPojo p:orderItemPojoList){
             OrderItemDataForInvoice orderItemDataForInvoice = new OrderItemDataForInvoice();
             ProductPojo productPojo = productService.get(p.getProductId());
-            orderItemDataForInvoice.setId(p.getId());
+            orderItemDataForInvoice.setId(p.getId());//todo put these line into helper
             orderItemDataForInvoice.setMrp(p.getMrp());
             orderItemDataForInvoice.setName(productPojo.getName());
             orderItemDataForInvoice.setQuantity(p.getQuantity());
@@ -100,6 +105,6 @@ public class OrderDto {
         }
     }
     public List<OrderData> getAll() {
-        return getAllConverter(orderService);
+        return getAllConverter(orderService.getAll());
     }
 }

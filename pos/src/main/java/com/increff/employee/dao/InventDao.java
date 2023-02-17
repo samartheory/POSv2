@@ -18,9 +18,6 @@ public class InventDao extends AbstractDao {
 	private static final String SELECT_ALL = "select p from InventPojo p";
 	private static final String SELECT_BY_BRAND_CAT = "select p from InventPojo p where brand = : brand and category = : category";
 
-	@PersistenceContext
-	private EntityManager em;
-
 	@Transactional
 	public void insert(InventPojo p) {
 			em.persist(p);

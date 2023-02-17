@@ -26,7 +26,7 @@ public class GeneratePDF {
         FOUserAgent foUserAgent = fopFactory.newFOUserAgent();
         // Setup output
         OutputStream out;
-        out = new java.io.FileOutputStream(new File("D:\\Increff\\POS23v2\\invoice\\all_invoice\\invoice_"+orderId+".pdf"));//todo add order id
+        out = new java.io.FileOutputStream(new File("D:\\Increff\\POS23v2\\invoice\\all_invoice\\invoice_"+orderId+".pdf"));
         try {
             // Construct fop with desired output format
             Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, foUserAgent, out);

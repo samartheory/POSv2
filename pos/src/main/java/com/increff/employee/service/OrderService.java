@@ -71,8 +71,11 @@ public class OrderService {
 	@Transactional(readOnly = true)
 	public List<OrderPojo> getByDate(String start,String end) {
 		List<OrderPojo> orderPojoList = getAll();
+		return dateHelper(orderPojoList,start,end);
+	}
+
+	private List<OrderPojo> dateHelper(List<OrderPojo> orderPojoList, String start, String end) {
 		List<OrderPojo> toReturn = new ArrayList<>();
-//todo move the below logic into a private function
 		if(start == "" && end == ""){
 			return orderPojoList;
 		}
@@ -102,6 +105,7 @@ public class OrderService {
 		}
 		return toReturn;
 	}
+
 	private String zoneDateToString(ZonedDateTime time){
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		String formattedString = time.format(formatter);

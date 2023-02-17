@@ -6,13 +6,12 @@ import com.increff.employee.util.ApiException;
 
 
 public class OrderItemDtoHelper {
-    public static OrderItemPojo productToOrderItem(ProductPojo productPojo,OrderItemForm orderItemForm) throws ApiException {
+    public static OrderItemPojo productToOrderItem(ProductPojo productPojo, OrderItemForm orderItemForm, int id) throws ApiException {
         OrderItemPojo orderItemPojo = new OrderItemPojo();
         orderItemPojo.setProductId(productPojo.getId());
         orderItemPojo.setQuantity(orderItemForm.getQuantity());
         orderItemPojo.setMrp(productPojo.getMrp());
-        orderItemPojo.setOrderId(orderItemForm.getOrderId());
-
+        orderItemPojo.setOrderId(id);
         return orderItemPojo;
     }
 

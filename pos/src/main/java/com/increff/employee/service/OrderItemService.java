@@ -47,7 +47,11 @@ public class OrderItemService {
 	public List<OrderItemPojo> getAllWithId(int id) {
 		return dao.selectAllWithOrderId(id);
 	}
-
+	@Transactional(rollbackFor  = ApiException.class)//todo all public functions should be above private fucntions
+	public void update(int id, OrderItemPojo p) throws ApiException {
+		OrderItemPojo old = get(id);
+		old.setQuantity(p.getQuantity());
+	}
 	private void checkExistingOrderItem(int orderId, int productId) throws ApiException {
 		List<OrderItemPojo> orderItemPojoList = getAllWithId(orderId);
 		for (OrderItemPojo p : orderItemPojoList) {
@@ -56,12 +60,6 @@ public class OrderItemService {
 			}
 		}
 	}
-	@Transactional(rollbackFor  = ApiException.class)//todo all public functions should be above private fucntions
-	public void update(int id, OrderItemPojo p) throws ApiException {
-		OrderItemPojo old = get(id);
-		old.setQuantity(p.getQuantity());
-	}
-
 
 //	public static void normalize(OrderItemPojo p) {
 //		p.se(StringUtil.toLowerCase(p.getBrand_category()));
