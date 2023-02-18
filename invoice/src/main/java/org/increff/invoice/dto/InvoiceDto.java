@@ -15,7 +15,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Base64;
 @Log4j
-@Service//todo might be wrong
+@Service
 public class InvoiceDto {
 
     public String generateString(InvoiceData invoiceData) {
