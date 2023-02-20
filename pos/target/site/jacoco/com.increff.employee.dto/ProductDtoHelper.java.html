@@ -4,39 +4,34 @@ import com.increff.employee.model.ProductData;
 import com.increff.employee.model.ProductForm;
 import com.increff.employee.pojo.BrandPojo;
 import com.increff.employee.pojo.ProductPojo;
-import com.increff.employee.service.ApiException;
+import com.increff.employee.util.ApiException;
 import com.increff.employee.service.BrandService;
-import com.increff.employee.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-
-<span class="nc" id="L16">public class ProductDtoHelper {</span>
+<span class="nc" id="L11">public class ProductDtoHelper {</span>
     @Autowired
     private BrandService brandService;
     public BrandPojo brandAndCatFromId(int brandAndCatid) throws ApiException {
-<span class="nc" id="L20">        return brandService.get(brandAndCatid);</span>
+<span class="nc" id="L15">        return brandService.get(brandAndCatid);</span>
     }
 
     public static ProductData convert(ProductPojo p,String brand,String category) {
-<span class="nc" id="L24">        ProductData d = new ProductData();</span>
-<span class="nc" id="L25">        d.setBarcode(p.getBarcode());</span>
-<span class="nc" id="L26">        d.setBrand(brand);</span>
-<span class="nc" id="L27">        d.setCategory(category);</span>
-<span class="nc" id="L28">        d.setName(p.getName());</span>
-<span class="nc" id="L29">        d.setMrp(p.getMrp());</span>
-<span class="nc" id="L30">        d.setId(p.getId());</span>
-<span class="nc" id="L31">        return d;</span>
+<span class="nc" id="L19">        ProductData d = new ProductData();</span>
+<span class="nc" id="L20">        d.setBarcode(p.getBarcode());</span>
+<span class="nc" id="L21">        d.setBrand(brand);</span>
+<span class="nc" id="L22">        d.setCategory(category);</span>
+<span class="nc" id="L23">        d.setName(p.getName());</span>
+<span class="nc" id="L24">        d.setMrp(p.getMrp());</span>
+<span class="nc" id="L25">        d.setId(p.getId());</span>
+<span class="nc" id="L26">        return d;</span>
     }
     public static ProductPojo convert(ProductForm f,int brandAndCatId) {
-<span class="nc" id="L34">        ProductPojo p = new ProductPojo();</span>
-<span class="nc" id="L35">        p.setBarcode(f.getBarcode());</span>
-<span class="nc" id="L36">        p.setBrand_category(brandAndCatId);</span>
-<span class="nc" id="L37">        p.setName(f.getName());</span>
-<span class="nc" id="L38">        p.setMrp(Math.round(f.getMrp() * 100.0) / 100.0);</span>
-<span class="nc" id="L39">        return p;</span>
+<span class="nc" id="L29">        ProductPojo p = new ProductPojo();</span>
+<span class="nc" id="L30">        p.setBarcode(f.getBarcode());</span>
+<span class="nc" id="L31">        p.setBrand_category(brandAndCatId);</span>
+<span class="nc" id="L32">        p.setName(f.getName());</span>
+<span class="nc" id="L33">        p.setMrp(Math.round(f.getMrp() * 100.0) / 100.0);</span>
+<span class="nc" id="L34">        return p;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

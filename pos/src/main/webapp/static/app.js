@@ -12,9 +12,23 @@ function toJson($form){
 }
 
 
-function handleAjaxError(response){
-	var response = JSON.parse(response.responseText);
-	alert(response.message);
+function handleAjaxError(response) {
+//  console.log(response);
+//  var response = JSON.parse(response.responseText);
+//  alert(response.message);
+
+  var message = JSON.parse(response.responseText);
+  document.getElementById('status').style.backgroundColor = "#f27474";
+  document.getElementById('status-message').innerHTML = message.message;
+  document.getElementById('status-message').style.color = "white"
+  $('.toast').toast('show');
+}
+
+function handleSuccess(message) {
+    document.getElementById('status-message').innerHTML = message;
+    document.getElementById('status').style.backgroundColor = "#a5dc86";
+//    document.getElementById('status-message').style.color = "white"
+   	$('.toast').toast('show');
 }
 
 function readFileData(file, callback){

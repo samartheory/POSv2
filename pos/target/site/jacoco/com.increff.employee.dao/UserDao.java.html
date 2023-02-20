@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
-import com.increff.employee.service.ApiException;
 import org.springframework.transaction.annotation.Transactional;
 
 import org.springframework.stereotype.Repository;
@@ -13,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.increff.employee.pojo.UserPojo;
 
 @Repository
-<span class="nc" id="L16">public class UserDao extends AbstractDao {</span>
+<span class="fc" id="L15">public class UserDao extends AbstractDao {</span>
 
 	private static final String DELETE_ID = &quot;delete from UserPojo p where id=:id&quot;;
 	private static final String SELECT_ID = &quot;select p from UserPojo p where id=:id&quot;;
@@ -21,36 +20,36 @@ import com.increff.employee.pojo.UserPojo;
 	private static final String SELECT_ALL = &quot;select p from UserPojo p&quot;;
 
 
-	@Transactional(rollbackFor = ApiException.class)
+	@Transactional
 	public void insert(UserPojo p) {
-<span class="nc" id="L26">		em().persist(p);</span>
-<span class="nc" id="L27">	}</span>
-	@Transactional(rollbackFor = ApiException.class)
+<span class="nc" id="L25">		em().persist(p);</span>
+<span class="nc" id="L26">	}</span>
+	@Transactional
 	public int delete(int id) {
-<span class="nc" id="L30">		Query query = em().createQuery(DELETE_ID);</span>
-<span class="nc" id="L31">		query.setParameter(&quot;id&quot;, id);</span>
-<span class="nc" id="L32">		return query.executeUpdate();</span>
+<span class="nc" id="L29">		Query query = em().createQuery(DELETE_ID);</span>
+<span class="nc" id="L30">		query.setParameter(&quot;id&quot;, id);</span>
+<span class="nc" id="L31">		return query.executeUpdate();</span>
 	}
 	@Transactional(readOnly = true)
 	public UserPojo select(int id) {
-<span class="nc" id="L36">		TypedQuery&lt;UserPojo&gt; query = getQuery(SELECT_ID, UserPojo.class);</span>
-<span class="nc" id="L37">		query.setParameter(&quot;id&quot;, id);</span>
-<span class="nc" id="L38">		return getSingle(query);</span>
+<span class="nc" id="L35">		TypedQuery&lt;UserPojo&gt; query = getQuery(SELECT_ID, UserPojo.class);</span>
+<span class="nc" id="L36">		query.setParameter(&quot;id&quot;, id);</span>
+<span class="nc" id="L37">		return getSingle(query);</span>
 	}
 	@Transactional(readOnly = true)
 	public UserPojo select(String email) {
-<span class="nc" id="L42">		TypedQuery&lt;UserPojo&gt; query = getQuery(SELECT_EMAIL, UserPojo.class);</span>
-<span class="nc" id="L43">		query.setParameter(&quot;email&quot;, email);</span>
-<span class="nc" id="L44">		return getSingle(query);</span>
+<span class="nc" id="L41">		TypedQuery&lt;UserPojo&gt; query = getQuery(SELECT_EMAIL, UserPojo.class);</span>
+<span class="nc" id="L42">		query.setParameter(&quot;email&quot;, email);</span>
+<span class="nc" id="L43">		return getSingle(query);</span>
 	}
 	@Transactional(readOnly = true)
 	public List&lt;UserPojo&gt; selectAll() {
-<span class="nc" id="L48">		TypedQuery&lt;UserPojo&gt; query = getQuery(SELECT_ALL, UserPojo.class);</span>
-<span class="nc" id="L49">		return query.getResultList();</span>
+<span class="nc" id="L47">		TypedQuery&lt;UserPojo&gt; query = getQuery(SELECT_ALL, UserPojo.class);</span>
+<span class="nc" id="L48">		return query.getResultList();</span>
 	}
-	@Transactional(rollbackFor = ApiException.class)
+	@Transactional
 	public void update(UserPojo p) {
-<span class="nc" id="L53">	}</span>
+<span class="nc" id="L52">	}</span>
 
 
 }

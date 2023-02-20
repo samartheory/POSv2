@@ -188,7 +188,7 @@ function displayOrderList(data){
 		if(e.status == false){
             var buttonHtml = '<button type="button" class="btn btn-outline-danger btn-sm" onclick="redirect(' + e.id + ')">Edit</button>  '
                 buttonHtml += '<button type="button" class="btn btn-success btn-sm" onclick="place(' + e.id + ')">Place</button>  '
-                buttonHtml += '<button type="button" class="btn btn-success btn-sm" onclick="deleteOrder(' + e.id + ')">Delete</button>  '
+                buttonHtml += '<button type="button" class="btn btn-danger btn-sm" onclick="deleteOrder(' + e.id + ')">Delete</button>  '
             var row = '<tr>'
                     + '<td>' + e.id + '</td>'
                     + '<td>' + e.time + '</td>'
@@ -199,6 +199,8 @@ function displayOrderList(data){
         }
         else{
             var buttonHtml = '<button type="button" class="btn btn-primary btn-sm" onclick="redirectPlaced(' + e.id + ')">View</button>  '
+                buttonHtml += '<button type="button" class="btn btn-success btn-sm" onclick="downloadInvoice(' + e.id + ')">Invoice</button>  '
+
             var row = '<tr>'
                     + '<td>' + e.id + '</td>'
                     + '<td>' + e.time + '</td>'
@@ -209,7 +211,26 @@ function displayOrderList(data){
         }
 	}
 }
+function downloadInvoice(id){
+    var url = onlyBaseUrl() + "/api/orders/invoice/" + id;
+    $.ajax({
+    	   url: url,
+    	   type: 'GET',
+    	   success: function(data) {
+    	   		downloadPDF(data);
+    	   },
+    	   error: handleAjaxError
+    	});
+}
+function downloadPDF(pdf) {
+    const linkSource = `data:application/pdf;base64,${pdf}`;
+    const downloadLink = document.createElement("a");
+    const fileName = "invoice.pdf";
 
+    downloadLink.href = linkSource;
+    downloadLink.download = fileName;
+    downloadLink.click();
+}
 function displayEditOrder(id){
 	var url = getOrderUrl() + "/" + id;
 	$.ajax({

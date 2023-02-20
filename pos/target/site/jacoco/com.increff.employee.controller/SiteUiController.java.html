@@ -5,12 +5,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-<span class="nc" id="L8">public class SiteUiController extends AbstractUiController {</span>
+<span class="fc" id="L8">public class SiteUiController extends AbstractUiController {</span>
 
 	// WEBSITE PAGES
 	@RequestMapping(value = &quot;&quot;)
 	public ModelAndView index() {
-<span class="nc" id="L13">		return mav(&quot;home.html&quot;);</span>
+<span class="nc" id="L13">		return mav(&quot;index.html&quot;);</span>
 	}
 
 	@RequestMapping(value = &quot;/site/login&quot;)

@@ -9,27 +9,27 @@ import java.util.List;
 
 <span class="nc" id="L10">public class BrandDtoHelper {</span>
     public static BrandData convert(BrandPojo p) {
-<span class="nc" id="L12">        BrandData d = new BrandData();</span>
-<span class="nc" id="L13">        d.setBrand(p.getBrand());</span>
-<span class="nc" id="L14">        d.setCategory(p.getCategory());</span>
-<span class="nc" id="L15">        d.setId(p.getId());</span>
-<span class="nc" id="L16">        return d;</span>
+<span class="fc" id="L12">        BrandData d = new BrandData();</span>
+<span class="fc" id="L13">        d.setBrand(p.getBrand());</span>
+<span class="fc" id="L14">        d.setCategory(p.getCategory());</span>
+<span class="fc" id="L15">        d.setId(p.getId());</span>
+<span class="fc" id="L16">        return d;</span>
     }
 
     public static BrandPojo convert(BrandForm f) {
-<span class="nc" id="L20">        BrandPojo p = new BrandPojo();</span>
-<span class="nc" id="L21">        p.setBrand(f.getBrand());</span>
-<span class="nc" id="L22">        p.setCategory(f.getCategory());</span>
+<span class="fc" id="L20">        BrandPojo p = new BrandPojo();</span>
+<span class="fc" id="L21">        p.setBrand(f.getBrand());</span>
+<span class="fc" id="L22">        p.setCategory(f.getCategory());</span>
 //        p.setId(f.getId());
-<span class="nc" id="L24">        return p;</span>
+<span class="fc" id="L24">        return p;</span>
     }
 
     public static List&lt;BrandData&gt; convert(List&lt;BrandPojo&gt; list) {
-<span class="nc" id="L28">        List&lt;BrandData&gt; list2 = new ArrayList&lt;&gt;();</span>
-<span class="nc bnc" id="L29" title="All 2 branches missed.">        for (BrandPojo p : list) {</span>
-<span class="nc" id="L30">            list2.add(convert(p));</span>
-<span class="nc" id="L31">        }</span>
-<span class="nc" id="L32">        return list2;</span>
+<span class="fc" id="L28">        List&lt;BrandData&gt; list2 = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L29" title="All 2 branches covered.">        for (BrandPojo p : list) {</span>
+<span class="fc" id="L30">            list2.add(convert(p));</span>
+<span class="fc" id="L31">        }</span>
+<span class="fc" id="L32">        return list2;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

@@ -24,7 +24,6 @@ public class ProductService {
 			throw new ApiException("Brand/Name/Category cannot be empty");
 		}
 		normalize(p);
-//		System.out.println(p.getId() + p.getBrand() + p.getCategory());
 		checkByBarcode(p.getBarcode());
 		dao.insert(p);
 	}

@@ -12,7 +12,10 @@ public class AppUiController extends AbstractUiController {
 	public ModelAndView home() {
 		return mav("home.html");
 	}
-
+	@RequestMapping(value = "/ui/home2")
+	public ModelAndView home2() {
+		return mav("home2.html");
+	}
 	@RequestMapping(value = "/ui/brand")
 	public ModelAndView brand() {
 		return mav("brand.html");
@@ -20,10 +23,6 @@ public class AppUiController extends AbstractUiController {
 	@RequestMapping(value = "/ui/admin")
 	public ModelAndView admin() {
 		return mav("user.html");
-	}
-	@RequestMapping(value = "/ui/employee")
-	public ModelAndView employee() {
-		return mav("employee.html");
 	}
 
 	@RequestMapping(value = "/ui/inventory")

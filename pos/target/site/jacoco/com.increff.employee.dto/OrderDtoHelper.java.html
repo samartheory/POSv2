@@ -2,37 +2,32 @@
 
 import com.increff.employee.model.OrderData;
 import com.increff.employee.pojo.OrderPojo;
-import com.increff.employee.service.ApiException;
-import com.increff.employee.service.OrderService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-<span class="nc" id="L15">public class OrderDtoHelper {</span>
+<span class="nc" id="L11">public class OrderDtoHelper {</span>
 
-    public static List&lt;OrderData&gt; getAllConverter(OrderService orderService) {
-<span class="nc" id="L18">        List&lt;OrderPojo&gt; list = orderService.getAll();</span>
-<span class="nc" id="L19">        List&lt;OrderData&gt; list2 = new ArrayList&lt;OrderData&gt;();</span>
-<span class="nc bnc" id="L20" title="All 2 branches missed.">        for (OrderPojo p : list) {</span>
-<span class="nc" id="L21">            list2.add(convert(p));</span>
-<span class="nc" id="L22">        }</span>
-<span class="nc" id="L23">        return list2;</span>
+    public static List&lt;OrderData&gt; getAllConverter(List&lt;OrderPojo&gt; list) {
+<span class="nc" id="L14">        List&lt;OrderData&gt; list2 = new ArrayList&lt;OrderData&gt;();</span>
+<span class="nc bnc" id="L15" title="All 2 branches missed.">        for (OrderPojo p : list) {</span>
+<span class="nc" id="L16">            list2.add(convert(p));</span>
+<span class="nc" id="L17">        }</span>
+<span class="nc" id="L18">        return list2;</span>
     }
     public static OrderData convert(OrderPojo p) {
-<span class="nc" id="L26">        OrderData orderData = new OrderData();</span>
-<span class="nc" id="L27">        orderData.setId(p.getId());</span>
-<span class="nc" id="L28">        orderData.setTime(zoneDateToString(p.getTime()));</span>
-<span class="nc" id="L29">        orderData.setStatus(p.isStatus());</span>
-<span class="nc" id="L30">        return orderData;</span>
+<span class="nc" id="L21">        OrderData orderData = new OrderData();</span>
+<span class="nc" id="L22">        orderData.setId(p.getId());</span>
+<span class="nc" id="L23">        orderData.setTime(zoneDateToString(p.getTime()));</span>
+<span class="nc" id="L24">        orderData.setStatus(p.isStatus());</span>
+<span class="nc" id="L25">        return orderData;</span>
     }
     public static String zoneDateToString(ZonedDateTime time){
-<span class="nc" id="L33">        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(&quot;yyyy-MM-dd HH:mm:ss&quot;);</span>
-<span class="nc" id="L34">        String formattedString = time.format(formatter);</span>
-<span class="nc" id="L35">        return formattedString;</span>
+<span class="nc" id="L28">        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(&quot;yyyy-MM-dd HH:mm:ss&quot;);</span>
+<span class="nc" id="L29">        String formattedString = time.format(formatter);</span>
+<span class="nc" id="L30">        return formattedString;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

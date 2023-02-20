@@ -4,7 +4,7 @@ import com.increff.employee.model.DaySalesData;
 import com.increff.employee.pojo.DaySalesPojo;
 import com.increff.employee.pojo.OrderItemPojo;
 import com.increff.employee.pojo.OrderPojo;
-import com.increff.employee.service.ApiException;
+import com.increff.employee.util.ApiException;
 import com.increff.employee.service.DaySalesService;
 import com.increff.employee.service.OrderItemService;
 import com.increff.employee.service.OrderService;
@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-<span class="nc" id="L22">public class DaySalesDto {</span>
+<span class="fc" id="L22">public class DaySalesDto {</span>
 
     @Autowired
     private DaySalesService daySalesService;
@@ -28,64 +28,58 @@ import java.util.List;
     @Autowired
     private OrderItemService orderItemService;
     public void add() throws ApiException {
-<span class="nc" id="L31">        ZonedDateTime prevDateStart = getPrevStartEnd(true);</span>
-<span class="nc" id="L32">        ZonedDateTime prevDateEnd = getPrevStartEnd(false);</span>
-<span class="nc" id="L33">        System.out.println(prevDateStart+ &quot; &quot;+ prevDateEnd);</span>
-<span class="nc" id="L34">        List&lt;OrderPojo&gt; orderPojos = orderService.getBetweenDates(prevDateStart, prevDateEnd);</span>
-<span class="nc" id="L35">        System.out.println(orderPojos.size());</span>
-<span class="nc bnc" id="L36" title="All 2 branches missed.">        if (orderPojos.size() == 0) {</span>
-<span class="nc" id="L37">            return;</span>
+<span class="nc" id="L31">        ZonedDateTime prevDateStart = getPrevStart();</span>
+<span class="nc" id="L32">        ZonedDateTime prevDateEnd = getPrevEnd();</span>
+<span class="nc" id="L33">        List&lt;OrderPojo&gt; orderPojos = orderService.getBetweenDates(prevDateStart, prevDateEnd);</span>
+<span class="nc bnc" id="L34" title="All 2 branches missed.">        if (orderPojos.isEmpty()) {</span>
+<span class="nc" id="L35">            return;</span>
         }
-<span class="nc" id="L39">        int prevDayOrderCount = 0;</span>
-<span class="nc" id="L40">        int prevDayOrderItemsCount = 0;</span>
-<span class="nc" id="L41">        double totalRevenue = 0;</span>
-<span class="nc bnc" id="L42" title="All 2 branches missed.">        for (OrderPojo orderPojo : orderPojos) {</span>
-<span class="nc" id="L43">            prevDayOrderCount += 1;</span>
-<span class="nc" id="L44">            List&lt;OrderItemPojo&gt; orderItemPojos = orderItemService.getAllWithId(orderPojo.getId());</span>
-<span class="nc bnc" id="L45" title="All 2 branches missed.">            for (OrderItemPojo orderItemPojo : orderItemPojos) {</span>
-<span class="nc" id="L46">                prevDayOrderItemsCount += orderItemPojo.getQuantity();</span>
-<span class="nc" id="L47">                totalRevenue += orderItemPojo.getMrp();</span>
-<span class="nc" id="L48">            }</span>
-<span class="nc" id="L49">        }</span>
-<span class="nc" id="L50">        DaySalesPojo daySalesPojo = convert(prevDateStart, prevDayOrderCount, prevDayOrderItemsCount, totalRevenue);</span>
-<span class="nc bnc" id="L51" title="All 2 branches missed.">        if(daySalesService.presentWithDate(prevDateStart)) {</span>
-<span class="nc" id="L52">            daySalesService.add(daySalesPojo);</span>
+<span class="nc" id="L37">        int prevDayOrderItemsCount = 0;</span>
+<span class="nc" id="L38">        double totalRevenue = 0;</span>
+<span class="nc bnc" id="L39" title="All 2 branches missed.">        for (OrderPojo orderPojo : orderPojos) {</span>
+<span class="nc" id="L40">            List&lt;OrderItemPojo&gt; orderItemPojos = orderItemService.getAllWithId(orderPojo.getId());</span>
+<span class="nc bnc" id="L41" title="All 2 branches missed.">            for (OrderItemPojo orderItemPojo : orderItemPojos) {</span>
+<span class="nc" id="L42">                prevDayOrderItemsCount += orderItemPojo.getQuantity();</span>
+<span class="nc" id="L43">                totalRevenue += orderItemPojo.getMrp();</span>
+<span class="nc" id="L44">            }</span>
+<span class="nc" id="L45">        }</span>
+<span class="nc" id="L46">        DaySalesPojo daySalesPojo = convert(prevDateStart, orderPojos.size(), prevDayOrderItemsCount, totalRevenue);</span>
+<span class="nc bnc" id="L47" title="All 2 branches missed.">        if(daySalesService.presentWithDate(prevDateStart)) {//todo move presentwithdate to add inside service</span>
+<span class="nc" id="L48">            daySalesService.add(daySalesPojo);</span>
         }
-<span class="nc" id="L54">    }</span>
+<span class="nc" id="L50">    }</span>
 
     public List&lt;DaySalesData&gt; getAll() {
-<span class="nc" id="L57">        List&lt;DaySalesPojo&gt; daySalesPojoList = daySalesService.getAll();</span>
-<span class="nc" id="L58">        List&lt;DaySalesData&gt; daySalesDataList = new ArrayList&lt;&gt;();</span>
-<span class="nc bnc" id="L59" title="All 2 branches missed.">        for (DaySalesPojo daySalesPojo: daySalesPojoList) {</span>
-<span class="nc" id="L60">            daySalesDataList.add(convert(daySalesPojo));</span>
-<span class="nc" id="L61">        }</span>
-<span class="nc" id="L62">        return daySalesDataList;</span>
+<span class="nc" id="L53">        List&lt;DaySalesPojo&gt; daySalesPojoList = daySalesService.getAll();</span>
+<span class="nc" id="L54">        List&lt;DaySalesData&gt; daySalesDataList = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L55" title="All 2 branches missed.">        for (DaySalesPojo daySalesPojo: daySalesPojoList) {</span>
+<span class="nc" id="L56">            daySalesDataList.add(convert(daySalesPojo));</span>
+<span class="nc" id="L57">        }</span>
+<span class="nc" id="L58">        return daySalesDataList;</span>
     }
 
-    private ZonedDateTime getPrevStartEnd(boolean flag) {
-<span class="nc bnc" id="L66" title="All 2 branches missed.">        if (flag) {</span>
-<span class="nc" id="L67">            return LocalDate.now().minusDays(1).atStartOfDay(ZoneId.systemDefault());</span>
-        }
-        else {
-<span class="nc" id="L70">            return LocalDate.now().minusDays(1).atStartOfDay(ZoneId.systemDefault()).withHour(23).withMinute(59).withSecond(59);</span>
-        }
+    private ZonedDateTime getPrevStart() {
+<span class="nc" id="L62">            return LocalDate.now().minusDays(1).atStartOfDay(ZoneId.systemDefault());</span>
     }
+    private ZonedDateTime getPrevEnd() {
+<span class="nc" id="L65">            return LocalDate.now().minusDays(1).atStartOfDay(ZoneId.systemDefault()).withHour(23).withMinute(59).withSecond(59);</span>
 
+    }
     private DaySalesData convert(DaySalesPojo daySalesPojo) {
-<span class="nc" id="L75">        DaySalesData daySalesData = new DaySalesData();</span>
-<span class="nc" id="L76">        daySalesData.setDate(daySalesPojo.getDate().format(DateTimeFormatter.ofPattern(&quot;dd/MM/yyyy&quot;)));</span>
-<span class="nc" id="L77">        daySalesData.setOrderCount(daySalesPojo.getInvoiced_orders_count());</span>
-<span class="nc" id="L78">        daySalesData.setOrderItemCount(daySalesPojo.getInvoiced_items_count());</span>
-<span class="nc" id="L79">        daySalesData.setTotalRevenue(daySalesPojo.getTotal_revenue());</span>
-<span class="nc" id="L80">        return daySalesData;</span>
+<span class="nc" id="L69">        DaySalesData daySalesData = new DaySalesData();</span>
+<span class="nc" id="L70">        daySalesData.setDate(daySalesPojo.getDate().format(DateTimeFormatter.ofPattern(&quot;dd/MM/yyyy&quot;)));</span>
+<span class="nc" id="L71">        daySalesData.setOrderCount(daySalesPojo.getInvoiced_orders_count());</span>
+<span class="nc" id="L72">        daySalesData.setOrderItemCount(daySalesPojo.getInvoiced_items_count());</span>
+<span class="nc" id="L73">        daySalesData.setTotalRevenue(daySalesPojo.getTotal_revenue());</span>
+<span class="nc" id="L74">        return daySalesData;</span>
     }
     private DaySalesPojo convert(ZonedDateTime entryDate, int dayOrderCount, int dayOrderItemCount, double revenue) {
-<span class="nc" id="L83">        DaySalesPojo daySalesPojo = new DaySalesPojo();</span>
-<span class="nc" id="L84">        daySalesPojo.setDate(entryDate);</span>
-<span class="nc" id="L85">        daySalesPojo.setInvoiced_orders_count(dayOrderCount);</span>
-<span class="nc" id="L86">        daySalesPojo.setInvoiced_items_count(dayOrderItemCount);</span>
-<span class="nc" id="L87">        daySalesPojo.setTotal_revenue(revenue);</span>
-<span class="nc" id="L88">        return daySalesPojo;</span>
+<span class="nc" id="L77">        DaySalesPojo daySalesPojo = new DaySalesPojo();</span>
+<span class="nc" id="L78">        daySalesPojo.setDate(entryDate);</span>
+<span class="nc" id="L79">        daySalesPojo.setInvoiced_orders_count(dayOrderCount);</span>
+<span class="nc" id="L80">        daySalesPojo.setInvoiced_items_count(dayOrderItemCount);</span>
+<span class="nc" id="L81">        daySalesPojo.setTotal_revenue(revenue);</span>
+<span class="nc" id="L82">        return daySalesPojo;</span>
     }
 
 }

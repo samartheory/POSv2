@@ -2,75 +2,67 @@
 
 import com.increff.employee.dao.OrderItemDao;
 import com.increff.employee.pojo.OrderItemPojo;
+import com.increff.employee.util.ApiException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
+import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Objects;
 
 @Service
-<span class="nc" id="L15">public class OrderItemService {</span>
+<span class="fc" id="L14">public class OrderItemService {</span>
 
 	@Autowired
 	private OrderItemDao dao;
 
-	@Transactional(rollbackOn = ApiException.class)
+	@Transactional(rollbackFor = ApiException.class)
 	public void add(OrderItemPojo orderItemPojo) throws ApiException {
-<span class="nc bnc" id="L22" title="All 2 branches missed.">		if(orderItemPojo.getQuantity() == 0){</span>
-<span class="nc" id="L23">			throw new ApiException(&quot;Quantity can't be zero&quot;);</span>
+<span class="nc bnc" id="L21" title="All 2 branches missed.">		if(orderItemPojo.getQuantity() &lt;= 0){</span>
+<span class="nc" id="L22">			throw new ApiException(&quot;Quantity is Invalid&quot;);</span>
 		}
-<span class="nc" id="L25">		itemInsideOrder(orderItemPojo.getOrderId(),orderItemPojo.getProductId());</span>
-<span class="nc" id="L26">		dao.insert(orderItemPojo);</span>
-<span class="nc" id="L27">	}</span>
+<span class="nc" id="L24">		checkExistingOrderItem(orderItemPojo.getOrderId(),orderItemPojo.getProductId());</span>
+<span class="nc" id="L25">		dao.insert(orderItemPojo);</span>
+<span class="nc" id="L26">	}</span>
 
 	@Transactional
 	public void delete(int id) {
-<span class="nc" id="L31">		dao.delete(id);</span>
-<span class="nc" id="L32">	}</span>
+<span class="nc" id="L30">		dao.delete(id);</span>
+<span class="nc" id="L31">	}</span>
 
-	@Transactional(rollbackOn = ApiException.class)
+	@Transactional(readOnly = true)
 	public OrderItemPojo get(int id) throws ApiException {
-<span class="nc" id="L36">		return getCheck(id);</span>
+<span class="nc" id="L35">		OrderItemPojo p = dao.select(id);</span>
+<span class="nc bnc" id="L36" title="All 2 branches missed.">		if (Objects.isNull(p)) {</span>
+<span class="nc" id="L37">			throw new ApiException(&quot;Order Item with given ID doesn't exists&quot;);</span>
+		}
+<span class="nc" id="L39">		return p;</span>
 	}
 
 	@Transactional
 	public List&lt;OrderItemPojo&gt; getAll() {
-<span class="nc" id="L41">		return dao.selectAll();</span>
+<span class="nc" id="L44">		return dao.selectAll();</span>
 	}
 	@Transactional
 	public List&lt;OrderItemPojo&gt; getAllWithId(int id) {
-<span class="nc" id="L45">		return dao.selectAllWithId(id);</span>
+<span class="nc" id="L48">		return dao.selectAllWithOrderId(id);</span>
 	}
-	@Transactional
-	public void itemInsideOrder(int orderId,int productId) throws ApiException {
-<span class="nc" id="L49">		List&lt;OrderItemPojo&gt; orderItemPojoList = getAllWithId(orderId);</span>
-<span class="nc bnc" id="L50" title="All 2 branches missed.">		for (OrderItemPojo p : orderItemPojoList) {</span>
-<span class="nc bnc" id="L51" title="All 2 branches missed.">			if(p.getProductId() == productId){</span>
-<span class="nc" id="L52">				throw new ApiException(&quot;Item already exists&quot;);</span>
-			}
-<span class="nc" id="L54">		}</span>
-<span class="nc" id="L55">	}</span>
-	@Transactional(rollbackOn  = ApiException.class)
+	@Transactional(rollbackFor  = ApiException.class)//todo all public functions should be above private fucntions
 	public void update(int id, OrderItemPojo p) throws ApiException {
-//		normalize(p);
-<span class="nc" id="L59">		OrderItemPojo ex = getCheck(id);</span>
-<span class="nc" id="L60">		dao.update(ex);</span>
-<span class="nc" id="L61">	}</span>
+<span class="nc" id="L52">		OrderItemPojo old = get(id);</span>
+<span class="nc" id="L53">		old.setQuantity(p.getQuantity());</span>
+<span class="nc" id="L54">	}</span>
+	private void checkExistingOrderItem(int orderId, int productId) throws ApiException {
+<span class="nc" id="L56">		List&lt;OrderItemPojo&gt; orderItemPojoList = getAllWithId(orderId);</span>
+<span class="nc bnc" id="L57" title="All 2 branches missed.">		for (OrderItemPojo p : orderItemPojoList) {</span>
+<span class="nc bnc" id="L58" title="All 2 branches missed.">			if(p.getProductId() == productId){</span>
+<span class="nc" id="L59">				throw new ApiException(&quot;Item already exists&quot;);</span>
+			}
+<span class="nc" id="L61">		}</span>
+<span class="nc" id="L62">	}</span>
 
-	@Transactional
-	public OrderItemPojo getCheck(int id) throws ApiException {
-<span class="nc" id="L65">		OrderItemPojo p = dao.select(id);</span>
-<span class="nc bnc" id="L66" title="All 2 branches missed.">		if (Objects.nonNull(p)) {</span>
-<span class="nc" id="L67">			throw new ApiException(&quot;Order Item with given ID already exists, id: &quot; + id);</span>
-		}
-<span class="nc" id="L69">		return p;</span>
-	}
-
-//	protected static void normalize(OrderPojo p) {
-//		p.setBrand_category(StringUtil.toLowerCase(p.getBrand_category()));
+//	public static void normalize(OrderItemPojo p) {
+//		p.se(StringUtil.toLowerCase(p.getBrand_category()));
 //		p.setBarcode(StringUtil.toLowerCase(p.getBarcode()));
 //		p.setName(StringUtil.toLowerCase(p.getName()));
 //	}

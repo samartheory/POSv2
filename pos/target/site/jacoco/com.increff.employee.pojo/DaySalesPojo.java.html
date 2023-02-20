@@ -14,15 +14,14 @@ import java.time.ZonedDateTime;
 @Entity
 @Table(name = &quot;pos_day_sales&quot;)
 <span class="nc" id="L16">public class DaySalesPojo{</span>
-
-    @Id
-<span class="nc" id="L19">    private ZonedDateTime date;</span>
+    @Id//todo make new id variable as id instead of this
+<span class="nc" id="L18">    private ZonedDateTime date;//todo make abstract pojo</span>
     @Column(nullable = false)
-<span class="nc" id="L21">    private int invoiced_orders_count;</span>
+<span class="nc" id="L20">    private int invoiced_orders_count;</span>
     @Column(nullable = false)
-<span class="nc" id="L23">    private int invoiced_items_count;</span>
+<span class="nc" id="L22">    private int invoiced_items_count;</span>
     @Column(nullable = false)
-<span class="nc" id="L25">    private double total_revenue;</span>
+<span class="nc" id="L24">    private double total_revenue;</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

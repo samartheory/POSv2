@@ -53,9 +53,13 @@ public class LoginController {
 		SecurityUtil.createContext(session);
 		// Attach Authentication object to the Security Context
 		SecurityUtil.setAuthentication(authentication);
-
-		return new ModelAndView("redirect:/ui/home");
-
+		System.out.println(p.getRole());
+		if(p.getRole().equals("admin")) {
+			return new ModelAndView("redirect:/ui/home");
+		}
+		else{
+			return new ModelAndView("redirect:/ui/home2");
+		}
 	}
 
 	@RequestMapping(path = "/session/logout", method = RequestMethod.GET)

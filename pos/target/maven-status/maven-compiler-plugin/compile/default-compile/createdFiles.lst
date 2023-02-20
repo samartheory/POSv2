@@ -10,6 +10,7 @@ com\increff\employee\model\LoginForm.class
 com\increff\employee\service\ProductService.class
 com\increff\employee\controller\OrderItemApiController.class
 com\increff\employee\model\OrderData.class
+com\increff\employee\spring\Scheduler.class
 com\increff\employee\dao\UserDao.class
 com\increff\employee\controller\ProductApiController.class
 com\increff\employee\model\InvoiceData.class
@@ -71,6 +72,7 @@ com\increff\employee\model\OrderItemForm.class
 com\increff\employee\spring\SpringConfig.class
 com\increff\employee\pojo\OrderItemPojo.class
 com\increff\employee\util\SecurityUtil.class
+com\increff\employee\cron\DaySalesCron.class
 com\increff\employee\spring\DbConfig.class
 com\increff\employee\dao\InventDao.class
 com\increff\employee\controller\AppUiController.class

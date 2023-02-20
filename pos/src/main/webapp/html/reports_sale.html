@@ -3,12 +3,18 @@
 <html lang="en" style="overflow-y: scroll;">
 
 <head th:replace="snippets.html :: name_head">
+    <meta name="role" th:attr="content=${role}">
 </head>
 
 <body>
 
-<nav th:replace="snippets.html :: name_app_navbar"></nav>
-
+<div id="forstandard" style="display:none">
+    <nav th:replace="snippets.html :: name_app_navbar_standard"></nav>
+</div>
+<div id="foradmin" style="display:none">
+    <nav th:replace="snippets.html :: name_app_navbar"></nav>
+</div>
+<div th:replace="snippets.html :: name_status_popup"></div>
 <div class="container">
 
 <h3 style="position:fixed;left:43%;">Sales Report</h3>

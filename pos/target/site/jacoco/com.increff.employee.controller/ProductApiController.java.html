@@ -3,20 +3,17 @@
 import com.increff.employee.dto.ProductDto;
 import com.increff.employee.model.ProductData;
 import com.increff.employee.model.ProductForm;
-import com.increff.employee.pojo.ProductPojo;
-import com.increff.employee.service.ApiException;
-import com.increff.employee.service.ProductService;
+import com.increff.employee.util.ApiException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Api
 @RestController
-<span class="nc" id="L19">public class ProductApiController {</span>
+<span class="fc" id="L16">public class ProductApiController {</span>
 
     @Autowired
     private ProductDto dto;
@@ -24,34 +21,34 @@ import java.util.List;
     @ApiOperation(value = &quot;Adds an product with Categories&quot;)
     @RequestMapping(path = &quot;/api/product&quot;, method = RequestMethod.POST)
     public void add(@RequestBody ProductForm form) throws ApiException {
-<span class="nc" id="L27">        dto.add(form);</span>
-<span class="nc" id="L28">    }</span>
+<span class="nc" id="L24">        dto.add(form);</span>
+<span class="nc" id="L25">    }</span>
 
 
     @ApiOperation(value = &quot;Deletes product&quot;)
     @RequestMapping(path = &quot;/api/product/{id}&quot;, method = RequestMethod.DELETE)
     // /api/1
     public void delete(@PathVariable int id) {
-<span class="nc" id="L35">        dto.delete(id);</span>
-<span class="nc" id="L36">    }</span>
+<span class="nc" id="L32">        dto.delete(id);</span>
+<span class="nc" id="L33">    }</span>
 
     @ApiOperation(value = &quot;Gets an product by ID&quot;)
     @RequestMapping(path = &quot;/api/product/{id}&quot;, method = RequestMethod.GET)
     public ProductData get(@PathVariable int id) throws ApiException {
-<span class="nc" id="L41">        return dto.get(id);</span>
+<span class="nc" id="L38">        return dto.get(id);</span>
     }
 
     @ApiOperation(value = &quot;Gets list of all products and cats&quot;)
     @RequestMapping(path = &quot;/api/product&quot;, method = RequestMethod.GET)
     public List&lt;ProductData&gt; getAll() throws ApiException {
-<span class="nc" id="L47">        return dto.getAll();</span>
+<span class="nc" id="L44">        return dto.getAll();</span>
     }
 
     @ApiOperation(value = &quot;Updates an product&quot;)
     @RequestMapping(path = &quot;/api/product/{id}&quot;, method = RequestMethod.PUT)
     public void update(@PathVariable int id, @RequestBody ProductForm f) throws ApiException {
-<span class="nc" id="L53">        dto.update(id, f);</span>
-<span class="nc" id="L54">    }</span>
+<span class="nc" id="L50">        dto.update(id, f);</span>
+<span class="nc" id="L51">    }</span>
 
 
 }

@@ -3,32 +3,25 @@
 import com.increff.employee.model.InventData;
 import com.increff.employee.model.InventForm;
 import com.increff.employee.pojo.InventPojo;
-import com.increff.employee.service.ApiException;
-import com.increff.employee.service.InventService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
-<span class="nc" id="L15">public class InventDtoHelper {</span>
+<span class="nc" id="L8">public class InventDtoHelper {</span>
 
 
     public static InventData convert(InventPojo p,String barcode) {
-<span class="nc" id="L19">        InventData d = new InventData();</span>
-<span class="nc" id="L20">        d.setQuantity(p.getQuantity());</span>
-<span class="nc" id="L21">        d.setId(p.getId());</span>
-<span class="nc" id="L22">        d.setBarcode(barcode);</span>
-<span class="nc" id="L23">        return d;</span>
+<span class="nc" id="L12">        InventData d = new InventData();</span>
+<span class="nc" id="L13">        d.setQuantity(p.getQuantity());</span>
+<span class="nc" id="L14">        d.setId(p.getId());</span>
+<span class="nc" id="L15">        d.setBarcode(barcode);</span>
+<span class="nc" id="L16">        return d;</span>
     }
 
     public static InventPojo convert(InventForm f,int id) {
-<span class="nc" id="L27">        InventPojo p = new InventPojo();</span>
-<span class="nc" id="L28">        p.setQuantity(f.getQuantity());</span>
+<span class="nc" id="L20">        InventPojo p = new InventPojo();</span>
+<span class="nc" id="L21">        p.setQuantity(f.getQuantity());</span>
 //        p.setBarcode(f.getBarcode());//barcode use
-<span class="nc" id="L30">        p.setId(id);</span>
-<span class="nc" id="L31">        return p;</span>
+<span class="nc" id="L23">        p.setId(id);</span>
+<span class="nc" id="L24">        return p;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

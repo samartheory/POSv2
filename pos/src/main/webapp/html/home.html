@@ -3,25 +3,61 @@
 <html lang="en">
 
 <head th:replace="snippets.html :: name_head"></head>
+<meta name="role" th:attr="content=${role}">
 
 <body>
-
-<nav th:replace="snippets.html :: name_app_navbar"></nav>
-
+<div id="forstandard" style="display:none">
+    <nav th:replace="snippets.html :: name_app_navbar_standard"></nav>
+</div>
+<div id="foradmin" style="display:none">
+    <nav th:replace="snippets.html :: name_app_navbar"></nav>
+</div>
 <div class="container">
 
-<h3>Home</h3>
-
+<h3 style="margin-top:45px;margin-left:6px;">Home</h3>
+    <div class="card" style="width: 18rem;display:inline-block;margin:6px">
+        <div class="card-body">
+            <h5 class="card-title">Brands</h5>
+            <a href="#" class="card-link" th:href="@{/ui/brand}">Go to brands</a>
+        </div>
+    </div>
+    <div class="card" style="width: 18rem;display:inline-block;margin:6px">
+        <div class="card-body">
+            <h5 class="card-title">Inventory</h5>
+            <a href="#" class="card-link" th:href="@{/ui/inventory}">Go to Inventory</a>
+        </div>
+    </div>
+    <div class="card" style="width: 18rem;display:inline-block;margin:6px">
+        <div class="card-body">
+            <h5 class="card-title">Product</h5>
+            <a href="#" class="card-link" th:href="@{/ui/product}">Go to Product</a>
+        </div>
+    </div>
+    <div class="card" style="width: 18rem;display:inline-block;margin:6px">
+        <div class="card-body">
+            <h5 class="card-title">Orders</h5>
+            <a href="#" class="card-link" th:href="@{/ui/orders}">Go to Orders</a>
+        </div>
+    </div>
+    <div class="card" style="width: 18rem;display:inline-block;margin:6px">
+        <div class="card-body">
+            <h5 class="card-title">Reports</h5>
+            <a href="#" th:href="@{/ui/reports}" class="card-link">Go to Reports</a>
+        </div>
+    </div>
+    <div class="card" style="width: 18rem;display:inline-block;margin:6px">
+        <div class="card-body">
+            <h5 class="card-title">Users</h5>
+            <a href="#" class="card-link" th:href="@{/ui/admin}">Go to Users</a>
+        </div>
+    </div>
  <!-- Top row with form-->
-
-
-
 
 </div> <!-- Container end-->
 
 <footer th:replace="snippets.html :: name_footer"></footer>
 
-
+<script th:src="@{/static/home.js}"/></script>
 </body>	
 
 </html>

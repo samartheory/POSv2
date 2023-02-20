@@ -4,8 +4,8 @@ import com.increff.employee.model.InventData;
 import com.increff.employee.model.InventForm;
 import com.increff.employee.pojo.InventPojo;
 import com.increff.employee.pojo.ProductPojo;
-import com.increff.employee.service.ApiException;
-import com.increff.employee.service.InventService;
+import com.increff.employee.util.ApiException;
+import com.increff.employee.service.InventoryService;
 import com.increff.employee.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,44 +14,47 @@ import static com.increff.employee.dto.InventDtoHelper.convert;
 import java.util.ArrayList;
 import java.util.List;
 @Service
-<span class="nc" id="L17">public class InventDto {</span>
+<span class="fc" id="L17">public class InventDto {</span>
     @Autowired
-    private InventService service;
+    private InventoryService service;
     @Autowired
     private ProductService productService;
 //product service
     public void add(InventForm form) throws ApiException {
-<span class="nc" id="L24">        ProductPojo productPojo = productService.getIdByBarcode(form.getBarcode());</span>
-<span class="nc" id="L25">        InventPojo p = convert(form,productPojo.getId());</span>
-<span class="nc" id="L26">        service.add(p);</span>
-<span class="nc" id="L27">    }</span>
+
+<span class="nc" id="L25">        ProductPojo productPojo = productService.getIdByBarcode(form.getBarcode());</span>
+<span class="nc" id="L26">        InventPojo p = convert(form,productPojo.getId());</span>
+<span class="nc" id="L27">        service.add(p);</span>
+<span class="nc" id="L28">    }</span>
 
     public void delete(int id) {
-<span class="nc" id="L30">        service.delete(id);</span>
-<span class="nc" id="L31">    }</span>
+<span class="nc" id="L31">        service.delete(id);</span>
+<span class="nc" id="L32">    }</span>
 
     public InventData get(int id) throws ApiException {
-<span class="nc" id="L34">        ProductPojo productPojo = productService.get(id);</span>
-<span class="nc" id="L35">        InventPojo p = service.get(id);</span>
-<span class="nc" id="L36">        return convert(p,productPojo.getBarcode());</span>
+<span class="nc" id="L35">        ProductPojo productPojo = productService.get(id);</span>
+<span class="nc" id="L36">        InventPojo p = service.get(id);</span>
+<span class="nc" id="L37">        return convert(p,productPojo.getBarcode());</span>
     }
 
     public List&lt;InventData&gt; getAll() throws ApiException {
-<span class="nc" id="L40">        List&lt;InventPojo&gt; list = service.getAll();</span>
-<span class="nc" id="L41">        return getAllConverter(list);</span>
+<span class="nc" id="L41">        List&lt;InventPojo&gt; list = service.getAll();</span>
+<span class="nc" id="L42">        return getAllConverter(list);</span>
     }
     public List&lt;InventData&gt; getAllConverter(List&lt;InventPojo&gt; list) throws ApiException {
-<span class="nc" id="L44">        List&lt;InventData&gt; list2 = new ArrayList&lt;InventData&gt;();</span>
-<span class="nc bnc" id="L45" title="All 2 branches missed.">        for (InventPojo p : list) {</span>
-<span class="nc" id="L46">            ProductPojo productPojo = productService.get(p.getId());</span>
-<span class="nc" id="L47">            list2.add(convert(p,productPojo.getBarcode()));</span>
-<span class="nc" id="L48">        }</span>
-<span class="nc" id="L49">        return list2;</span>
+<span class="nc" id="L45">        List&lt;InventData&gt; list2 = new ArrayList&lt;InventData&gt;();</span>
+<span class="nc bnc" id="L46" title="All 2 branches missed.">        for (InventPojo p : list) {</span>
+<span class="nc" id="L47">            ProductPojo productPojo = productService.get(p.getId());</span>
+<span class="nc" id="L48">            list2.add(convert(p,productPojo.getBarcode()));</span>
+<span class="nc" id="L49">        }</span>
+<span class="nc" id="L50">        return list2;</span>
     }
     public void update(int id,int newQuantity) throws ApiException {
-<span class="nc" id="L52">        System.out.println(&quot;inside update&quot;);</span>
-<span class="nc" id="L53">        service.update(id,newQuantity);</span>
-<span class="nc" id="L54">    }</span>
+<span class="nc bnc" id="L53" title="All 2 branches missed.">        if(newQuantity &lt; 0){</span>
+<span class="nc" id="L54">            throw new ApiException(&quot;Invalid Quantity&quot;);</span>
+        }
+<span class="nc" id="L56">        service.update(id,newQuantity);</span>
+<span class="nc" id="L57">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

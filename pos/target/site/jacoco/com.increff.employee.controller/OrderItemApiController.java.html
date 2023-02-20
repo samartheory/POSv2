@@ -3,7 +3,7 @@
 import com.increff.employee.dto.OrderItemDto;
 import com.increff.employee.model.OrderItemData;
 import com.increff.employee.model.OrderItemForm;
-import com.increff.employee.service.ApiException;
+import com.increff.employee.util.ApiException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ import java.util.List;
 
 @Api
 @RestController
-<span class="nc" id="L16">public class OrderItemApiController {</span>
+<span class="fc" id="L16">public class OrderItemApiController {</span>
 
     @Autowired
     private OrderItemDto dto;
@@ -31,7 +31,7 @@ import java.util.List;
     @ApiOperation(value = &quot;Deletes Order&quot;)
     @RequestMapping(path = &quot;/api/orderitem/{id}&quot;, method = RequestMethod.DELETE)
     // /api/1
-    public void delete(@PathVariable int id) {
+    public void delete(@PathVariable int id) throws ApiException {
 <span class="nc" id="L35">        dto.delete(id);</span>
 <span class="nc" id="L36">    }</span>
 
@@ -57,11 +57,11 @@ import java.util.List;
 <span class="nc" id="L57">        return dto.getAll();</span>
     }
 
-//    @ApiOperation(value = &quot;Updates an Order&quot;)
-//    @RequestMapping(path = &quot;/api/Order/{id}&quot;, method = RequestMethod.PUT)
-//    public void update(@PathVariable int id, @RequestBody OrderForm f) throws ApiException {
-//        dto.update(id, f);
-//    }
+    @ApiOperation(value = &quot;Updates an Order&quot;)
+    @RequestMapping(path = &quot;/api/orderitem/{id}&quot;, method = RequestMethod.PUT)
+    public void update(@PathVariable int id, @RequestBody int newQuantity) throws ApiException {
+<span class="nc" id="L63">        dto.update(id, newQuantity);</span>
+<span class="nc" id="L64">    }</span>
 
 
 }

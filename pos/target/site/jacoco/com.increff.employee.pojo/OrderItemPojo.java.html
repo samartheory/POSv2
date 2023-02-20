@@ -3,20 +3,19 @@
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+
 @Getter
-<span class="nc" id="L11">@Setter</span>
+<span class="nc" id="L9">@Setter</span>
+@Table(uniqueConstraints = { @UniqueConstraint(name = &quot;orderId&amp;productId&quot;, columnNames = { &quot;orderId&quot;, &quot;productId&quot; }) })
 @Entity
-<span class="nc" id="L13">public class OrderItemPojo {</span>
+<span class="fc" id="L12">public class OrderItemPojo {</span>
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-<span class="nc" id="L16">	int id;</span>
-<span class="nc" id="L17">	int orderId;</span>
-<span class="nc" id="L18">	int productId;</span>
-<span class="nc" id="L19">	int quantity;</span>
-<span class="nc" id="L20">	double mrp;</span>
+<span class="nc" id="L15">	int id;</span>
+<span class="nc" id="L16">	int orderId;</span>
+<span class="nc" id="L17">	int productId;</span>
+<span class="nc" id="L18">	int quantity;</span>
+<span class="nc" id="L19">	double mrp;</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

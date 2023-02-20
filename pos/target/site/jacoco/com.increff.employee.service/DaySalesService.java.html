@@ -2,6 +2,7 @@
 
 import com.increff.employee.dao.DaySalesDao;
 import com.increff.employee.pojo.DaySalesPojo;
+import com.increff.employee.util.ApiException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,19 +12,19 @@ import java.util.List;
 import java.util.Objects;
 
 @Service
-<span class="nc" id="L14">public class DaySalesService {</span>
+<span class="fc" id="L15">public class DaySalesService {</span>
 
     @Autowired
     private DaySalesDao daySalesDao;
 
     @Transactional(rollbackFor = ApiException.class)
     public void add(DaySalesPojo daySalesPojo) throws ApiException {
-<span class="nc" id="L21">        daySalesDao.insert(daySalesPojo);</span>
-<span class="nc" id="L22">    }</span>
+<span class="nc" id="L22">            daySalesDao.insert(daySalesPojo);</span>
+<span class="nc" id="L23">    }</span>
     @Transactional(readOnly = true)
     public boolean presentWithDate(ZonedDateTime time){
-<span class="nc" id="L25">        DaySalesPojo daySalesPojo = daySalesDao.selectWithDate(time);</span>
-<span class="nc" id="L26">        return Objects.isNull(daySalesPojo);</span>
+<span class="nc" id="L26">        DaySalesPojo daySalesPojo = daySalesDao.selectWithDate(time);</span>
+<span class="nc" id="L27">        return Objects.isNull(daySalesPojo);</span>
     }
 //	@Transactional(readOnly = true)
 //	public BrandPojo get(int id) throws ApiException {
@@ -32,7 +33,7 @@ import java.util.Objects;
 
     @Transactional(readOnly = true)
     public List&lt;DaySalesPojo&gt; getAll() {
-<span class="nc" id="L35">        return daySalesDao.selectAll();</span>
+<span class="nc" id="L36">        return daySalesDao.selectAll();</span>
     }
 //
 //	@Transactional(rollbackFor = ApiException.class)

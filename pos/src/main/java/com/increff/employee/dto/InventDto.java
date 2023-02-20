@@ -21,7 +21,6 @@ public class InventDto {
     private ProductService productService;
 //product service
     public void add(InventForm form) throws ApiException {
-
         ProductPojo productPojo = productService.getIdByBarcode(form.getBarcode());
         InventPojo p = convert(form,productPojo.getId());
         service.add(p);

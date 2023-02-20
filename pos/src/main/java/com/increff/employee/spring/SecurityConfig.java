@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.http.HttpMethod;
 
 @Configuration
 @EnableWebSecurity
@@ -25,9 +26,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/ui/**")//
 				.and().authorizeRequests()//
 				.antMatchers("/api/admin/**").hasAuthority("admin")//
-				.antMatchers("/api/**").hasAnyAuthority("admin", "standard")//
+				.antMatchers("/api/reports/**").hasAnyAuthority("admin", "standard")//
 				.antMatchers("/ui/admin/**").hasAuthority("admin")//
 				.antMatchers("/ui/**").hasAnyAuthority("admin", "standard")//
+				.antMatchers(HttpMethod.POST,"/api/**").hasAuthority("admin")
+				.antMatchers(HttpMethod.PUT,"/api/**").hasAuthority("admin")
 				// Ignore CSRF and CORS
 				.and().csrf().disable().cors().disable();
 		logger.info("Configuration complete");

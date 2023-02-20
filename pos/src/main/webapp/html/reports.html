@@ -2,11 +2,16 @@
 
 <html lang="en">
 <meta name="baseUrl" th:attr="content=${baseUrl}">
+<meta name="role" th:attr="content=${role}">
 <head th:replace="snippets.html :: name_head"></head>
-
 <body>
 
-<nav th:replace="snippets.html :: name_app_navbar"></nav>
+<div id="forstandard" style="display:none">
+	<nav th:replace="snippets.html :: name_app_navbar_standard"></nav>
+</div>
+<div id="foradmin" style="display:none">
+	<nav th:replace="snippets.html :: name_app_navbar"></nav>
+</div>
 
 <div class="container">
 

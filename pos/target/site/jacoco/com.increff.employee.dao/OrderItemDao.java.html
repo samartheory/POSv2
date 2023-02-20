@@ -11,50 +11,45 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Repository
-<span class="nc" id="L14">public class OrderItemDao extends AbstractDao {</span>
+<span class="fc" id="L14">public class OrderItemDao extends AbstractDao {</span>
 
 	private static final String DELETE_ID = &quot;delete from OrderItemPojo p where id=:id&quot;;
 	private static final String SELECT_ID = &quot;select p from OrderItemPojo p where id=:id&quot;;
 	private static final String SELECT_ALL = &quot;select p from OrderItemPojo p&quot;;
 	private static final String SELECT_BY_PRODUCT_ID = &quot;select p from OrderItemPojo p where productId=:id&quot;;
-
 	private static final String SELECT_ALL_WITH_ORDER_ID = &quot;select p from OrderItemPojo p where orderId=:id&quot;;
-	@PersistenceContext
-	private EntityManager em;
 
 	@Transactional
 	public void insert(OrderItemPojo p) {
-<span class="nc" id="L27">		em.persist(p);</span>
-<span class="nc" id="L28">	}</span>
-
+<span class="nc" id="L24">		em.persist(p);</span>
+<span class="nc" id="L25">	}</span>
+    @Transactional
 	public int delete(int id) {
-<span class="nc" id="L31">		Query query = em.createQuery(DELETE_ID);</span>
-<span class="nc" id="L32">		query.setParameter(&quot;id&quot;, id);</span>
-<span class="nc" id="L33">		return query.executeUpdate();</span>
+<span class="nc" id="L28">		Query query = em.createQuery(DELETE_ID);</span>
+<span class="nc" id="L29">		query.setParameter(&quot;id&quot;, id);</span>
+<span class="nc" id="L30">		return query.executeUpdate();</span>
 	}
-
+	@Transactional(readOnly = true)
 	public OrderItemPojo select(int id) {
-<span class="nc" id="L37">		TypedQuery&lt;OrderItemPojo&gt; query = getQuery(SELECT_ID, OrderItemPojo.class);</span>
-<span class="nc" id="L38">		query.setParameter(&quot;id&quot;, id);</span>
-<span class="nc" id="L39">		return getSingle(query);</span>
+<span class="nc" id="L34">		TypedQuery&lt;OrderItemPojo&gt; query = getQuery(SELECT_ID, OrderItemPojo.class);</span>
+<span class="nc" id="L35">		query.setParameter(&quot;id&quot;, id);</span>
+<span class="nc" id="L36">		return getSingle(query);</span>
 	}
-	public OrderItemPojo selectWithProductId(int id) {
-<span class="nc" id="L42">		TypedQuery&lt;OrderItemPojo&gt; query = getQuery(SELECT_BY_PRODUCT_ID, OrderItemPojo.class);</span>
-<span class="nc" id="L43">		query.setParameter(&quot;id&quot;, id);</span>
-<span class="nc" id="L44">		return getSingle(query);</span>
-	}
+	@Transactional(readOnly = true)
 	public List&lt;OrderItemPojo&gt; selectAll() {
-<span class="nc" id="L47">		TypedQuery&lt;OrderItemPojo&gt; query = getQuery(SELECT_ALL, OrderItemPojo.class);</span>
-<span class="nc" id="L48">		return query.getResultList();</span>
+<span class="nc" id="L40">		TypedQuery&lt;OrderItemPojo&gt; query = getQuery(SELECT_ALL, OrderItemPojo.class);</span>
+<span class="nc" id="L41">		return query.getResultList();</span>
 	}
-	public List&lt;OrderItemPojo&gt; selectAllWithId(int id) {
-<span class="nc" id="L51">		TypedQuery&lt;OrderItemPojo&gt; query = getQuery(SELECT_ALL_WITH_ORDER_ID, OrderItemPojo.class);</span>
-<span class="nc" id="L52">		query.setParameter(&quot;id&quot;,id);</span>
-<span class="nc" id="L53">		return query.getResultList();</span>
+	@Transactional(readOnly = true)
+	public List&lt;OrderItemPojo&gt; selectAllWithOrderId(int id) {
+<span class="nc" id="L45">		TypedQuery&lt;OrderItemPojo&gt; query = getQuery(SELECT_ALL_WITH_ORDER_ID, OrderItemPojo.class);</span>
+<span class="nc" id="L46">		query.setParameter(&quot;id&quot;,id);</span>
+<span class="nc" id="L47">		return query.getResultList();</span>
 	}
+	@Transactional
 	public void update(OrderItemPojo p) {
 
-<span class="nc" id="L57">	}</span>
+<span class="nc" id="L52">	}</span>
 
 
 

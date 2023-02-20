@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-<span class="nc" id="L9">public class AppUiController extends AbstractUiController {</span>
+<span class="fc" id="L9">public class AppUiController extends AbstractUiController {</span>
 
 	@RequestMapping(value = &quot;/ui/home&quot;)
 	public ModelAndView home() {
@@ -17,56 +17,59 @@ import org.springframework.web.servlet.ModelAndView;
 	public ModelAndView brand() {
 <span class="nc" id="L18">		return mav(&quot;brand.html&quot;);</span>
 	}
-
+	@RequestMapping(value = &quot;/ui/admin&quot;)
+	public ModelAndView admin() {
+<span class="nc" id="L22">		return mav(&quot;user.html&quot;);</span>
+	}
 	@RequestMapping(value = &quot;/ui/employee&quot;)
 	public ModelAndView employee() {
-<span class="nc" id="L23">		return mav(&quot;employee.html&quot;);</span>
+<span class="nc" id="L26">		return mav(&quot;employee.html&quot;);</span>
 	}
 
 	@RequestMapping(value = &quot;/ui/inventory&quot;)
 	public ModelAndView inventory() {
-<span class="nc" id="L28">		return mav(&quot;inventory.html&quot;);</span>
+<span class="nc" id="L31">		return mav(&quot;inventory.html&quot;);</span>
 	}
 
 	@RequestMapping(value = &quot;/ui/product&quot;)
 	public ModelAndView product() {
-<span class="nc" id="L33">		return mav(&quot;product.html&quot;);</span>
+<span class="nc" id="L36">		return mav(&quot;product.html&quot;);</span>
 	}
 	@RequestMapping(value = &quot;/ui/orders&quot;)
 	public ModelAndView orders() {
-<span class="nc" id="L37">		return mav(&quot;orders.html&quot;);</span>
+<span class="nc" id="L40">		return mav(&quot;orders.html&quot;);</span>
 	}
 	@RequestMapping(value = &quot;/ui/orders/new&quot;)
 	public ModelAndView ordersNew() {
-<span class="nc" id="L41">		return mav(&quot;order-item-new.html&quot;);</span>
+<span class="nc" id="L44">		return mav(&quot;order-item-new.html&quot;);</span>
 	}
 	@RequestMapping(value = &quot;/ui/orderitem/{id}&quot;)
 	public ModelAndView orderItem(@PathVariable int id) {
-<span class="nc" id="L45">		return mav(&quot;order-item.html&quot;);</span>
+<span class="nc" id="L48">		return mav(&quot;order-item.html&quot;);</span>
 	}
 	@RequestMapping(value = &quot;/ui/orderitemplaced/{id}&quot;)
 	public ModelAndView orderItemPlaced(@PathVariable int id) {
-<span class="nc" id="L49">		return mav(&quot;order-item-placed.html&quot;);</span>
+<span class="nc" id="L52">		return mav(&quot;order-item-placed.html&quot;);</span>
 	}
 	@RequestMapping(value = &quot;/ui/reports&quot;)
 	public ModelAndView report() {
-<span class="nc" id="L53">		return mav(&quot;reports.html&quot;);</span>
+<span class="nc" id="L56">		return mav(&quot;reports.html&quot;);</span>
 	}
 	@RequestMapping(value = &quot;/ui/reports/sale&quot;)
 	public ModelAndView report_sale() {
-<span class="nc" id="L57">		return mav(&quot;reports_sale.html&quot;);</span>
+<span class="nc" id="L60">		return mav(&quot;reports_sale.html&quot;);</span>
 	}
 	@RequestMapping(value = &quot;/ui/reports/brand&quot;)
 	public ModelAndView report_brand() {
-<span class="nc" id="L61">		return mav(&quot;reports_brand.html&quot;);</span>
+<span class="nc" id="L64">		return mav(&quot;reports_brand.html&quot;);</span>
 	}
 	@RequestMapping(value = &quot;/ui/reports/inventory&quot;)
 	public ModelAndView report_inventory() {
-<span class="nc" id="L65">		return mav(&quot;reports_inventory.html&quot;);</span>
+<span class="nc" id="L68">		return mav(&quot;reports_inventory.html&quot;);</span>
 	}
 	@RequestMapping(value = &quot;/ui/daySalesReport&quot;)
 	public ModelAndView daySalesReport() {
-<span class="nc" id="L69">		return mav(&quot;daySalesReport.html&quot;);</span>
+<span class="nc" id="L72">		return mav(&quot;daySalesReport.html&quot;);</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
