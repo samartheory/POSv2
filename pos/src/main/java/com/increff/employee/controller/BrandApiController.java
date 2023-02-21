@@ -24,7 +24,7 @@ import io.swagger.annotations.ApiOperation;
 //make login system
 //edit in order item not working
 //add download invoice button
-//todo toasts
+//toasts
 //inventory edit option not working
 //decimal checks in quantity
 //upload not working in some part

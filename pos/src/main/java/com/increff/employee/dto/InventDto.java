@@ -7,9 +7,10 @@ import com.increff.employee.pojo.ProductPojo;
 import com.increff.employee.util.ApiException;
 import com.increff.employee.service.InventoryService;
 import com.increff.employee.service.ProductService;
+import com.increff.employee.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import static com.increff.employee.dto.InventDtoHelper.convert;
+import static com.increff.employee.dto.helper.InventDtoHelper.convert;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +22,11 @@ public class InventDto {
     private ProductService productService;
 //product service
     public void add(InventForm form) throws ApiException {
+        form.setBarcode(StringUtil.toLowerCase(form.getBarcode()));
         ProductPojo productPojo = productService.getIdByBarcode(form.getBarcode());
+        if(service.ifBarcodePresent(productPojo.getId())){
+            throw new ApiException("Barcode already present");
+        }
         InventPojo p = convert(form,productPojo.getId());
         service.add(p);
     }

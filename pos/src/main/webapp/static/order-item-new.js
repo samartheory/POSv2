@@ -49,7 +49,7 @@ function addOrder() {
 			"Content-Type": "application/json",
 		},
 		success: function(data) {
-		    alert("Order Made");
+		    handleSuccess("Order Made");
             var url = $("meta[name=baseUrl]").attr("content") + "/ui/orderitem/" + data;
             window.location.replace(url);
 		},

@@ -16,7 +16,7 @@ public class InventDao extends AbstractDao {
 	private static final String DELETE_ID = "delete from InventPojo p where id=:id";
 	private static final String SELECT_ID = "select p from InventPojo p where id=:id";
 	private static final String SELECT_ALL = "select p from InventPojo p";
-	private static final String SELECT_BY_BRAND_CAT = "select p from InventPojo p where brand = : brand and category = : category";
+	private static final String SELECT_BY_BARCODE = "select p from InventPojo p where barcode=:barcode";
 
 	@Transactional
 	public void insert(InventPojo p) {

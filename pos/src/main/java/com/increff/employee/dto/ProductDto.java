@@ -10,7 +10,7 @@ import com.increff.employee.service.ProductService;
 import com.increff.employee.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import static com.increff.employee.dto.ProductDtoHelper.convert;
+import static com.increff.employee.dto.helper.ProductDtoHelper.convert;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +21,7 @@ public class ProductDto {
     @Autowired
     private BrandService brandService;
     public void add(ProductForm form) throws ApiException {
+        validateForm(form);
         int brandAndCatId = brandService.getBrandAndCatId(StringUtil.toLowerCase(form.getBrand()), StringUtil.toLowerCase(form.getCategory()));
         ProductPojo p = convert(form,brandAndCatId);
         // Validate if brandpojo exists
@@ -36,6 +37,7 @@ public class ProductDto {
         BrandPojo brandPojo = brandService.get(productPojo.getBrand_category());
         return convert(productPojo,brandPojo.getBrand(),brandPojo.getCategory());
     }
+
     public List<ProductData> getAll() throws ApiException {
         List<ProductPojo> list = productService.getAll();
         return getAllConverter(list);
@@ -53,4 +55,10 @@ public class ProductDto {
         productService.update(id, convert(f,brandAndCatId));
     }
 
+    private void validateForm(ProductForm form) throws ApiException {
+        //todo check if empty and throw exeption and mrp check
+        if(StringUtil.isEmpty(form.getBarcode()) || StringUtil.isEmpty(form.getName())) {
+            throw new ApiException("Brand/Name/Category cannot be empty");
+        }
+    }
 }

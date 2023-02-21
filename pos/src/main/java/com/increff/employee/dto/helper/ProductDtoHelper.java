@@ -1,4 +1,4 @@
-package com.increff.employee.dto;
+package com.increff.employee.dto.helper;
 
 import com.increff.employee.model.ProductData;
 import com.increff.employee.model.ProductForm;

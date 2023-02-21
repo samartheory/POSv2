@@ -44,7 +44,7 @@ public class DaySalesDto {
             }
         }
         DaySalesPojo daySalesPojo = convert(prevDateStart, orderPojos.size(), prevDayOrderItemsCount, totalRevenue);
-        if(daySalesService.presentWithDate(prevDateStart)) {//todo move presentwithdate to add inside service
+        if(daySalesService.presentWithDate(prevDateStart)) {
             daySalesService.add(daySalesPojo);
         }
     }

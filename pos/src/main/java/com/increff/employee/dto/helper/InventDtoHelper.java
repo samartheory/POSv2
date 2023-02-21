@@ -1,8 +1,9 @@
-package com.increff.employee.dto;
+package com.increff.employee.dto.helper;
 
 import com.increff.employee.model.InventData;
 import com.increff.employee.model.InventForm;
 import com.increff.employee.pojo.InventPojo;
+import com.increff.employee.util.StringUtil;
 
 
 public class InventDtoHelper {

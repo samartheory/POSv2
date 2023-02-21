@@ -13,8 +13,12 @@ public class OrderItemPojo {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	int id;
+	@Column(nullable = false)
 	int orderId;
+	@Column(nullable = false)
 	int productId;
+	@Column(nullable = false)
 	int quantity;
+	@Column(nullable = false)
 	double mrp;
 }

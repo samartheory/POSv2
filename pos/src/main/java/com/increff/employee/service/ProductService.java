@@ -20,9 +20,7 @@ public class ProductService {
 //	private BrandDao brandDao;
 	@Transactional(rollbackFor = ApiException.class)
 	public void add(ProductPojo p) throws ApiException {
-		if(StringUtil.isEmpty(p.getBarcode()) || StringUtil.isEmpty(p.getName())) {
-			throw new ApiException("Brand/Name/Category cannot be empty");
-		}
+
 		normalize(p);
 		checkByBarcode(p.getBarcode());
 		dao.insert(p);
@@ -62,7 +60,7 @@ public class ProductService {
 		normalize(p);
 		ProductPojo ex = getCheck(id);
 		ex.setName(p.getName());
-		ex.setBarcode(p.getBarcode());
+//		ex.setBarcode(p.getBarcode());
 		ex.setMrp(p.getMrp());
 		dao.update(ex);
 	}

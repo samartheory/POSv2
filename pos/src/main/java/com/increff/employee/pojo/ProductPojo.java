@@ -10,7 +10,6 @@ import javax.persistence.*;
 @Setter
 @Entity
 public class ProductPojo {
-//todo not null in all pojos
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)//todo generation type table
 	private int id;

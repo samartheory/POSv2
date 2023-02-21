@@ -3,6 +3,7 @@ package com.increff.employee.service;
 import com.increff.employee.dao.InventDao;
 import com.increff.employee.pojo.InventPojo;
 import com.increff.employee.util.ApiException;
+import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -57,6 +58,9 @@ public class InventoryService {
 		}
 		return p;
 	}
-
+	public boolean ifBarcodePresent(int id){
+		InventPojo p = dao.select(id);
+		return !Objects.isNull(p);
+	}
 
 }

@@ -9498,3 +9498,150 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
 2023-02-20 23:09:38 INFO  SecurityConfig:36 - Configuration complete
 2023-02-20 23:19:31 INFO  SecurityConfig:36 - Configuration complete
 2023-02-20 23:21:22 INFO  SecurityConfig:36 - Configuration complete
+2023-02-20 23:22:12 INFO  SecurityConfig:36 - Configuration complete
+2023-02-20 23:28:57 INFO  SecurityConfig:36 - Configuration complete
+2023-02-20 23:47:12 INFO  SecurityConfig:36 - Configuration complete
+2023-02-21 00:01:58 INFO  SecurityConfig:36 - Configuration complete
+2023-02-21 00:07:02 INFO  SecurityConfig:36 - Configuration complete
+2023-02-21 00:24:14 WARN  SqlExceptionHelper:137 - SQL Error: 1062, SQLState: 23000
+2023-02-21 00:24:14 ERROR SqlExceptionHelper:142 - Duplicate entry '8' for key 'inventpojo.PRIMARY'
+2023-02-21 00:24:14 ERROR ExceptionMapperStandardImpl:39 - HHH000346: Error during managed flush [org.hibernate.exception.ConstraintViolationException: could not execute statement]
+2023-02-21 00:32:14 INFO  SecurityConfig:36 - Configuration complete
+2023-02-21 00:32:34 WARN  SqlExceptionHelper:137 - SQL Error: 1054, SQLState: 42S22
+2023-02-21 00:32:34 ERROR SqlExceptionHelper:142 - Unknown column 'barcode' in 'where clause'
+2023-02-21 00:33:03 WARN  SqlExceptionHelper:137 - SQL Error: 1054, SQLState: 42S22
+2023-02-21 00:33:03 ERROR SqlExceptionHelper:142 - Unknown column 'barcode' in 'where clause'
+2023-02-21 00:33:14 WARN  SqlExceptionHelper:137 - SQL Error: 1054, SQLState: 42S22
+2023-02-21 00:33:14 ERROR SqlExceptionHelper:142 - Unknown column 'barcode' in 'where clause'
+2023-02-21 00:34:20 INFO  SecurityConfig:36 - Configuration complete
+2023-02-21 00:34:48 WARN  SqlExceptionHelper:137 - SQL Error: 1054, SQLState: 42S22
+2023-02-21 00:34:48 ERROR SqlExceptionHelper:142 - Unknown column 'barcode' in 'where clause'
+2023-02-21 10:08:00 INFO  SecurityConfig:36 - Configuration complete
+2023-02-21 10:08:35 WARN  SqlExceptionHelper:137 - SQL Error: 1054, SQLState: 42S22
+2023-02-21 10:08:35 ERROR SqlExceptionHelper:142 - Unknown column 'barcode' in 'where clause'
+2023-02-21 10:10:00 INFO  SecurityConfig:36 - Configuration complete
+2023-02-21 10:11:20 WARN  SqlExceptionHelper:137 - SQL Error: 1054, SQLState: 42S22
+2023-02-21 10:11:20 ERROR SqlExceptionHelper:142 - Unknown column 'barcode' in 'where clause'
+2023-02-21 10:15:53 WARN  SqlExceptionHelper:137 - SQL Error: 1054, SQLState: 42S22
+2023-02-21 10:15:53 ERROR SqlExceptionHelper:142 - Unknown column 'barcode' in 'where clause'
+2023-02-21 10:16:12 INFO  SecurityConfig:36 - Configuration complete
+2023-02-21 10:19:57 INFO  SecurityConfig:36 - Configuration complete
+2023-02-21 10:20:40 WARN  SqlExceptionHelper:137 - SQL Error: 1054, SQLState: 42S22
+2023-02-21 10:20:40 ERROR SqlExceptionHelper:142 - Unknown column 'barcode' in 'where clause'
+2023-02-21 10:21:09 WARN  SqlExceptionHelper:137 - SQL Error: 1054, SQLState: 42S22
+2023-02-21 10:21:09 ERROR SqlExceptionHelper:142 - Unknown column 'barcode' in 'where clause'
+2023-02-21 10:21:15 WARN  SqlExceptionHelper:137 - SQL Error: 1054, SQLState: 42S22
+2023-02-21 10:21:15 ERROR SqlExceptionHelper:142 - Unknown column 'barcode' in 'where clause'
+2023-02-21 10:24:35 INFO  SecurityConfig:36 - Configuration complete
+2023-02-21 10:27:07 INFO  SecurityConfig:36 - Configuration complete
+2023-02-21 10:27:59 INFO  SecurityConfig:36 - Configuration complete
+2023-02-21 10:32:22 WARN  ExceptionHandlerExceptionResolver:391 - Failed to invoke @ExceptionHandler method: public com.increff.employee.model.MessageData com.increff.employee.controller.AppRestControllerAdvice.handle(com.increff.employee.util.ApiException)
+org.eclipse.jetty.io.EofException
+	at org.eclipse.jetty.server.HttpConnection$SendCallback.reset(HttpConnection.java:718)
+	at org.eclipse.jetty.server.HttpConnection$SendCallback.access$300(HttpConnection.java:678)
+	at org.eclipse.jetty.server.HttpConnection.send(HttpConnection.java:537)
+	at org.eclipse.jetty.server.HttpChannel.sendResponse(HttpChannel.java:837)
+	at org.eclipse.jetty.server.HttpChannel.write(HttpChannel.java:914)
+	at org.eclipse.jetty.server.HttpOutput.write(HttpOutput.java:259)
+	at org.eclipse.jetty.server.HttpOutput.write(HttpOutput.java:235)
+	at org.eclipse.jetty.server.HttpOutput.flush(HttpOutput.java:499)
+	at org.springframework.security.web.util.OnCommittedResponseWrapper$SaveContextServletOutputStream.flush(OnCommittedResponseWrapper.java:514)
+	at org.springframework.security.web.util.OnCommittedResponseWrapper$SaveContextServletOutputStream.flush(OnCommittedResponseWrapper.java:514)
+	at com.fasterxml.jackson.core.json.UTF8JsonGenerator.flush(UTF8JsonGenerator.java:1100)
+	at com.fasterxml.jackson.databind.ObjectWriter.writeValue(ObjectWriter.java:915)
+	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.writeInternal(AbstractJackson2HttpMessageConverter.java:285)
+	at org.springframework.http.converter.AbstractGenericHttpMessageConverter.write(AbstractGenericHttpMessageConverter.java:100)
+	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor.writeWithMessageConverters(AbstractMessageConverterMethodProcessor.java:231)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.handleReturnValue(RequestResponseBodyMethodProcessor.java:174)
+	at org.springframework.web.method.support.HandlerMethodReturnValueHandlerComposite.handleReturnValue(HandlerMethodReturnValueHandlerComposite.java:81)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:132)
+	at org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver.doResolveHandlerMethodException(ExceptionHandlerExceptionResolver.java:384)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodExceptionResolver.doResolveException(AbstractHandlerMethodExceptionResolver.java:59)
+	at org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver.resolveException(AbstractHandlerExceptionResolver.java:136)
+	at org.springframework.web.servlet.handler.HandlerExceptionResolverComposite.resolveException(HandlerExceptionResolverComposite.java:74)
+	at org.springframework.web.servlet.DispatcherServlet.processHandlerException(DispatcherServlet.java:1207)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1030)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:980)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:897)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:872)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:707)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:790)
+	at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:760)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1617)
+	at org.eclipse.jetty.websocket.server.WebSocketUpgradeFilter.doFilter(WebSocketUpgradeFilter.java:226)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1604)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:317)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:127)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:91)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:114)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:137)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:111)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:170)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:66)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:105)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:56)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:214)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:177)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:346)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:262)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1604)
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:545)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:143)
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:536)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:235)
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:1589)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:233)
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1296)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:188)
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:485)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1559)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:186)
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1211)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:221)
+	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:146)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127)
+	at org.eclipse.jetty.server.Server.handle(Server.java:500)
+	at org.eclipse.jetty.server.HttpChannel.lambda$handle$1(HttpChannel.java:386)
+	at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:560)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:378)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:268)
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:311)
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103)
+	at org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:117)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.runTask(EatWhatYouKill.java:336)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:313)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.tryProduce(EatWhatYouKill.java:171)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.produce(EatWhatYouKill.java:135)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:782)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:914)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+2023-02-21 10:32:49 INFO  SecurityConfig:36 - Configuration complete
+2023-02-21 10:42:37 INFO  SecurityConfig:36 - Configuration complete
+2023-02-21 10:43:36 INFO  SecurityConfig:36 - Configuration complete
+2023-02-21 10:45:02 INFO  SecurityConfig:36 - Configuration complete
+2023-02-21 10:46:26 INFO  SecurityConfig:36 - Configuration complete
+2023-02-21 10:46:58 INFO  SecurityConfig:36 - Configuration complete
+2023-02-21 10:50:19 INFO  SecurityConfig:36 - Configuration complete
+2023-02-21 10:51:51 INFO  SecurityConfig:36 - Configuration complete
+2023-02-21 10:58:48 INFO  SecurityConfig:36 - Configuration complete
+2023-02-21 10:59:44 INFO  SecurityConfig:36 - Configuration complete
+2023-02-21 11:16:02 INFO  SecurityConfig:36 - Configuration complete
+2023-02-21 11:33:34 INFO  SecurityConfig:36 - Configuration complete

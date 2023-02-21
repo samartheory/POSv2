@@ -23,8 +23,19 @@ function handleAjaxError(response) {
   document.getElementById('status-message').style.color = "white"
   $('.toast').toast('show');
 }
+function handleError(response) {
+//  console.log(response);
+//  var response = JSON.parse(response.responseText);
+//  alert(response.message);
 
+  var message = response
+  document.getElementById('status').style.backgroundColor = "#f27474";
+  document.getElementById('status-message').innerHTML = response;
+  document.getElementById('status-message').style.color = "white"
+  $('.toast').toast('show');
+}
 function handleSuccess(message) {
+console.log("mm")
     document.getElementById('status-message').innerHTML = message;
     document.getElementById('status').style.backgroundColor = "#a5dc86";
 //    document.getElementById('status-message').style.color = "white"

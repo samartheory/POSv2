@@ -17,7 +17,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.increff.employee.dto.ProductDtoHelper.convert;
+import static com.increff.employee.dto.helper.ProductDtoHelper.convert;
 
 @Service
 public class SalesReportDto {

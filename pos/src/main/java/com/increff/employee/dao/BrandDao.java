@@ -18,7 +18,6 @@ public class BrandDao extends AbstractDao {
 	@Transactional
 	public void insert(BrandPojo p) {
 			em.persist(p);
-//			TODO: configure log4j
 	}
 	@Transactional(readOnly = true)
 	public BrandPojo selectByBrandCategory(String brand, String category) {

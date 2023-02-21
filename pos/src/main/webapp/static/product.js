@@ -9,7 +9,7 @@ function addProduct(event){
 	//Set the values to update
 	var val = document.getElementById("inputMrp").value;
     	if(val.includes('-')){
-    	    alert("Invalid MRP");
+    	    handleError("Invalid MRP");
     	    return;
     }
 	var $form = $("#product-form");
@@ -145,8 +145,7 @@ function displayProductList(data){
 	$tbody.empty();
 	for(var i in data){
 		var e = data[i];
-		var buttonHtml = '<button class="btn btn-success btn-sm" onclick="deleteProduct(' + e.id + ')">Delete</button>'
-		buttonHtml += ' <button class="btn btn-dark btn-sm" onclick="displayEditProduct(' + e.id + ')">Edit</button>'
+		var buttonHtml = ' <button class="btn btn-dark btn-sm" onclick="displayEditProduct(' + e.id + ')">Edit</button>'
 		var mrps = e.mrp.toString();
 		if(mrps.indexOf('.') == -1){
 		    mrps += ".00"
